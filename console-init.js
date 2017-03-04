@@ -22,6 +22,7 @@ program.action(function (dest, companyName, options) {
 
     console.log('Project initialized!'.green);
     console.log('Run the following commands:');
+    console.log('cd'.blue, dest.blue);
     console.log('npm install'.blue);
     console.log('bower install'.blue);
     console.log('grunt watch'.blue, 'to have app reload automatically on changes');

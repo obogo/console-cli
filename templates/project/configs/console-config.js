@@ -22,6 +22,16 @@ module.exports = function (grunt, options) {
                     ],
                     dest: 'build/',
                     filter: 'isFile'
+                },
+                "bower": {
+                    expand: true,
+                    // flatten: true,
+                    cwd: 'bower_components',
+                    src: [
+                        'ng-letter-avatar/dist/*.js'
+                    ],
+                    dest: 'build/vendor',
+                    filter: 'isFile'
                 }
             },
             ngtemplates: {

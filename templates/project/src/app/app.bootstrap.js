@@ -3,7 +3,8 @@ var module = angular.module('app', [
     'consoleTemplates',
     'ngAnimate',
     'ui.router',
-    'localytics.directives'
+    'localytics.directives',
+    'ngLetterAvatar'
 ]);
 
 angular.element(function() {

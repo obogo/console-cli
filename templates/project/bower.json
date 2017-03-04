@@ -1,10 +1,8 @@
 {
-  "name": "hive-console",
+  "name": "console",
   "description": "",
   "main": "Gruntfile.js",
-  "authors": [
-    "Robert Taylor <roboncode@gmail.com>"
-  ],
+  "authors": [],
   "license": "MIT",
   "homepage": "",
   "ignore": [
@@ -15,6 +13,7 @@
     "tests"
   ],
   "dependencies": {
-    "angular-chosen-localytics": "^1.6.0"
+    "angular-chosen-localytics": "^1.6.0",
+    "ng-letter-avatar": "ngletteravatar#^4.0.4"
   }
 }
