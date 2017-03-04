@@ -6,11 +6,10 @@ var replace = require('replace');
 var rootPath = path.dirname(fs.realpathSync(__filename));
 var templatesPath = path.join(rootPath, 'templates');
 
-program.action(function (dest, companyName, options) {
+program.action(function (companyName, dest, options) {
 
-    dest = dest || '.';
     companyName = companyName || 'MyCompany';
-
+    dest = typeof dest === 'string' ? dest : 'test';
     fs.copySync(path.join(templatesPath, 'project'), dest);
     replace({
         regex: '{CompanyName}',
