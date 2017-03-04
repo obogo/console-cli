@@ -7,6 +7,8 @@ module.config(function ($stateProvider, $urlRouterProvider) {
     // For any unmatched url, redirect to /state1
     $urlRouterProvider.otherwise("/");
 
-    $stateProvider.state('dashboard', {url: '/', controller: 'DashboardCtrl', templateUrl: 'dashboard'});
+    // DO NOT REMOVE LINE BELOW
+    // %route-injection%
+    $stateProvider.state('dashboard', {url: '/', controller: 'DashboardCtrl', templateUrl: 'dashboard.page.html'});
 
 });

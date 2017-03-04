@@ -1,18 +1,21 @@
 <div class="console-app console-main" layout="column">
 
+    <!-- :: header :: -->
     <console-header></console-header>
 
+    <!-- :: busy indicator :: -->
     <div class="console-busy"></div>
 
     <div class="console-body" flex layout="row">
 
+        <!-- :: menu :: -->
         <console-menu></console-menu>
 
-        <!-- Pages here -->
+        <!-- :: pages :: -->
         <ui-view flex layout="column"></ui-view>
 
     </div>
 
-    <!-- Used to launch a dialog -->
+    <!-- :: dialogs container :: -->
     <console-dialog></console-dialog>
 </div>

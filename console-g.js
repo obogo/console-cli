@@ -80,6 +80,25 @@ function createIntoDirectory(config, name, type, templateFile, dest, strings) {
     });
 }
 
+function udpateRouting(config, name) {
+    console.log('routing', config, name);
+
+    var strings = strings || {};
+    strings.Name = name.toCamelCase(true);
+    strings.name = strings.name || name;
+    strings.namesDash = strings.name.toDash();
+    strings.namesUnderscore = strings.namesDash.split('-').join('_');
+    strings.prefix = config.componentPrefix;
+    strings.serviceName = config.serviceName;
+
+    var routingFile = path.join('src', 'app', 'app.routing.js');
+    fs.readFile(routingFile, 'utf8', function(err, file) {
+        var filez = file.split('// %route-injection%');
+        filez[1] = ("\n    $stateProvider.state('{name}', {url: '/{name}', controller: '{Name}Ctrl', templateUrl: '{name}.page.html'});" + filez[1]).supplant(strings);
+        fs.writeFile(routingFile, filez.join('// routes'));
+    })
+}
+
 program.action(function (type, path, options) {
 
     var name;
@@ -116,6 +135,7 @@ program.action(function (type, path, options) {
                 createIntoSubdirectory(config.app, name, 'page', 'page/template.html', path);
                 createIntoSubdirectory(config.app, name, 'page', 'page/template.less', path);
                 createIntoSubdirectory(config.app, name, 'page', 'page/template.js', path);
+                udpateRouting(config.app, name);
                 break;
 
             case 'service':
