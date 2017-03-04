@@ -10,6 +10,6 @@ module.config(function ($stateProvider, $urlRouterProvider) {
     // DO NOT REMOVE LINE BELOW
     // %route-injection%
     $stateProvider.state('dashboard', {url: '/', controller: 'DashboardCtrl', templateUrl: 'dashboard.page.html'});
-    $stateProvider.state('about', {url: '/', controller: 'AboutCtrl', templateUrl: 'about.page.html'});
+    $stateProvider.state('about', {url: '/about', controller: 'AboutCtrl', templateUrl: 'about.page.html'});
 
 });
