@@ -1,6 +1,5 @@
 {
   "app": {
-    "company": "AccountHive",
     "moduleName": "app",
     "componentPrefix": "console",
     "serviceName": "hive"

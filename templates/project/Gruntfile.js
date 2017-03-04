@@ -24,7 +24,6 @@ module.exports = function (grunt) {
         'ngtemplates:console',
         'ngAnnotate:console',
         'less:console',
-        'copy:console',
-        'copy:bower'
+        'copy:console'
     ]);
 };

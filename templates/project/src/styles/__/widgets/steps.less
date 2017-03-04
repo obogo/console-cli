@@ -1,0 +1,30 @@
+.console-step-indicator {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  font-weight: bold;
+
+  background-color: white;
+  border: 1px solid #ddd;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+  webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+}
+
+.console-step-spacer {
+  width: 70px;
+}
+
+.console-step-active {
+  .console-step-indicator {
+    background: #007fa3;
+    color: #ffffff;
+  }
+
+  .console-step-title {
+    color: #007fa3;
+  }
+}

@@ -1,0 +1,26 @@
+.console-tabs {
+  display: flex;
+  margin-bottom: -1px;
+  z-index: 1;
+
+  .console-tab {
+    display: flex;
+    flex: 1;
+    padding: 10px 15px;
+    font-weight: bold;
+    max-width: 150px;
+    border-top: 1px solid #ddd;
+    border-left: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+    margin-right: -1px;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.35);
+      cursor: default;
+    }
+
+    &.console-active {
+      background: white;
+    }
+  }
+}

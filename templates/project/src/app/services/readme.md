@@ -1,0 +1,1 @@
+This is where services that connect with a remote API will be stored.

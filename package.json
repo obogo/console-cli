@@ -34,6 +34,7 @@
     "pluralize": "^4.0.0",
     "read-file": "^0.2.0",
     "remedial": "^1.0.7",
+    "replace": "^0.3.0",
     "write": "^0.3.1"
   },
   "devDependencies": {

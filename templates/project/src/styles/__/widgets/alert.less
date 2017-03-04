@@ -1,0 +1,63 @@
+.console-alert {
+  background: white;
+  color: #333;
+  border: 1px solid #007fa3;
+  border-radius: 2px;
+  border-left: 8px solid #007fa3;
+  padding: 10px;
+  margin-bottom: 20px;
+
+  -webkit-box-shadow: 0 1px 1px rgba(0,0,0,.05);
+  box-shadow: 0 1px 1px rgba(0,0,0,.05);
+
+  &.console-alert-dismissible {
+    padding-right: 0;
+
+    .console-close {
+      float: right;
+      font-size: 21px;
+      font-weight: 700;
+      line-height: 18px;
+      color: #ffffff;
+      text-shadow: 0 1px 0 #fff;
+      margin-top: -4px;
+      margin-right: 8px;
+      filter: alpha(opacity=20);
+      opacity: .6;
+      will-change: opacity;
+      .transition(all 200ms ease);
+
+      &:hover {
+        opacity: 1;
+      }
+    }
+  }
+
+  &.console-alert-success {
+    border-color: #008638;
+    background: #008638;
+    color: #fff;
+    padding: 18px;
+    line-height: 20px;
+  }
+
+  &.console-alert-info {
+    border-color: #007fa3
+  }
+
+  &.console-alert-danger {
+    border-color: #db0020;
+    background: #db0020;
+    color: #fff;
+    padding: 18px;
+    line-height: 20px;
+  }
+
+  &.console-alert-warn {
+    border-color: #db9301
+  }
+
+  p {
+    margin: 0;
+  }
+}

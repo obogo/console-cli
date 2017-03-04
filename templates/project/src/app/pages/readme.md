@@ -1,0 +1,1 @@
+This is where pages for our web application are store.

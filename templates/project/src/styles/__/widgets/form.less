@@ -1,0 +1,110 @@
+.console-form-group {
+  position: relative;
+  margin-bottom: 10px;
+}
+
+.console-form-label {
+  display: block;
+  padding-top: 4px;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+.console-form-input {
+  width: 100%;
+  box-shadow: none;
+  padding: 4px 5px;
+  line-height: 1.5;
+  border: 1px solid #cccccc;
+  //margin-bottom: 8px;
+  will-change: border-color;
+
+  &:focus {
+    border-color: #007fa3;
+  }
+
+  &[disabled] {
+    background: #efefef;
+  }
+}
+
+.console-form-input-lg {
+  padding: 10px 15px;
+  font-size: 18px;
+}
+
+.console-form-select {
+  position: relative;
+  display: flex;
+  align-items: center;
+  border-radius: 0;
+  background: #FFFFFF;
+
+  &:after {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+
+    content: "\f107";
+    font-family: FontAwesome;
+    font-size: 14px;
+
+    pointer-events: none;
+  }
+
+  select {
+    border: 1px solid #ccc;
+    border-radius: 0;
+    padding: 4px 28px 3px 10px;
+    box-shadow: none;
+    background-color: transparent;
+    background-image: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+
+    &:focus {
+      border: 1px solid #007fa3;
+      box-shadow: none;
+    }
+  }
+}
+
+.console-form-addon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 8px;
+  background: #EEEEEE;
+  border: 1px solid #cccccc;
+  margin: 0 -1px;
+}
+
+.console-form-search {
+  padding: 6px;
+  //z-index: 1;
+}
+
+.console-form-search + button {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  margin-left: -1px;
+  cursor: pointer;
+  min-width: 36px;
+}
+
+.console-form-divider {
+  margin: 5px 0;
+  border-top: 1px solid #CCCCCC;
+}
+
+.console-form-error {
+  .console-form-label {
+    color: #DB0020;
+  }
+
+  .console-form-input {
+    border-color: #DB0020;
+  }
+}

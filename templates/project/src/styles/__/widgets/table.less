@@ -1,0 +1,88 @@
+.console-table {
+  width: 100%;
+  max-width: 100%;
+  //margin-bottom: 20px;
+  border-collapse: collapse;
+
+  thead {
+    tr {
+      th {
+        line-height: 1.42857143;
+        border-bottom: 3px solid #eee;
+        text-align: left;
+        padding: 8px 12px;
+      }
+    }
+  }
+  tbody {
+    tr {
+      th, td {
+        text-align: left;
+        line-height: 1.42857143;
+        border-top: 1px solid #ddd;
+        padding: 8px 12px;
+        vertical-align: top;
+      }
+    }
+  }
+
+  &.console-table-hover {
+    tbody {
+      tr {
+        &:hover {
+          background-color: @hover-color;
+          cursor: default;
+        }
+      }
+    }
+  }
+
+  th.console-sortable {
+    position: relative;
+    cursor: pointer;
+    white-space: nowrap;
+    -webkit-user-select: none; /* Chrome all / Safari all */
+    -moz-user-select: none; /* Firefox all */
+    -ms-user-select: none; /* IE 10+ */
+    user-select: none; /* Likely future */
+
+    .console-table-label {
+      display: block;
+      padding-right: 20px;
+    }
+
+    &:hover {
+      border-color: #007fa3;
+      cursor: pointer;
+    }
+
+    &::after {
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-family: FontAwesome;
+      content: "\f0dc";
+      opacity: 0.2;
+    }
+
+    &.console-asc, &.console-desc {
+      border-color: #007fa3;
+    }
+
+    &.console-asc::after {
+      content: "\f0de";
+      opacity: 1;
+      color: #007fa3;
+    }
+
+    &.console-desc::after {
+      content: "\f0dd";
+      top: 50%;
+      transform: translateY(-50%);
+      opacity: 1;
+      color: #007fa3;
+    }
+  }
+}
+

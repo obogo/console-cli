@@ -1,0 +1,33 @@
+.console-validation {
+  padding: 10px 10px 0 10px;
+}
+
+.console-validation-success {
+  color: #3b8635;
+  padding: 4px 4px 0 4px;
+
+  //&.console-validation-inline {
+  //  line-height: 24px;
+  //}
+
+  &.console-validation-icon::before {
+    font-family: FontAwesome;
+    content: "\f00c";
+    margin-right: 5px;
+  }
+}
+
+.console-validation-fail {
+  color: #dc3240;
+  padding: 4px 4px 0 4px;
+
+  //&.console-validation-inline {
+  //  line-height: 24px;
+  //}
+
+  &.console-validation-icon::before {
+    font-family: FontAwesome;
+    content: "\f00d";
+    margin-right: 8px;
+  }
+}

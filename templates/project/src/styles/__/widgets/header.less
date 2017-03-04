@@ -1,0 +1,47 @@
+.console-header {
+  display: flex;
+  align-items: center;
+  background: #FFC107;
+  min-height: 48px;
+  //border-bottom: 4px solid #D4D4D4;
+
+  .console-title {
+    font-size: 16px;
+  }
+
+  .console-btn-menu {
+    margin: 0 15px 0 10px;
+  }
+
+  .console-btn-header {
+    padding: 16px;
+    border-radius: 0;
+    &:hover {
+      background: #f2fafd;
+    }
+
+    i {
+      margin-right: 5px;
+    }
+  }
+
+  .open .console-btn-header {
+    background: #f2fafd;
+  }
+}
+
+.console-subheader {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+
+  width: 100%;
+  background: #f2f2f2;
+  border-bottom: 1px solid #d0d1d5;
+  height: 50px;
+  padding: 0 20px;
+
+  box-shadow: 0 1px 10px rgba(0, 0, 0, 0.05);
+  -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+}

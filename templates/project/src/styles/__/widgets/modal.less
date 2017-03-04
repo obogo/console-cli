@@ -1,0 +1,74 @@
+.console-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  //position: relative;
+  //top: auto;
+  //right: auto;
+  //bottom: auto;
+  //left: auto;
+  display: block;
+  z-index: 1;
+
+  &.console-modal-dark {
+    background: rgba(0, 0, 0, 0.2);
+  }
+}
+
+.console-modal-dialog {
+  position: relative;
+  //margin: 10px;
+  margin: 20px auto;
+  width: 600px;
+}
+
+.console-modal-content {
+  position: relative;
+  background-color: #fff;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 6px;
+  outline: 0;
+  -webkit-box-shadow: 0 3px 9px rgba(0, 0, 0, .5);
+  box-shadow: 0 3px 9px rgba(0, 0, 0, .5);
+}
+
+.console-modal-close {
+  float: right;
+  font-size: 21px;
+  font-weight: 700;
+  line-height: 1;
+  color: #000;
+  text-shadow: 0 1px 0 #fff;
+  filter: alpha(opacity=20);
+  opacity: .2;
+
+  &:hover {
+    opacity: 1;
+  }
+}
+
+.console-modal-header {
+  padding: 15px;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.console-modal-title {
+  font-size: 18px;
+  margin: 0;
+  line-height: 1.42857143;
+}
+
+.console-modal-body {
+  position: relative;
+  padding: 15px;
+}
+
+.console-modal-footer {
+  padding: 15px;
+  text-align: right;
+  border-top: 1px solid #e5e5e5;
+}
