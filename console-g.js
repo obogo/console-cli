@@ -61,7 +61,6 @@ function createIntoSubdirectory(config, name, type, templateFile, dest, strings)
 
 function createIntoDirectory(config, name, type, templateFile, dest, strings) {
     readFile(path.join(templatesPath, templateFile), 'utf8', function (err, content) {
-        console.log('#name', name);
 
         strings = strings || {};
         strings.Name = name.toCamelCase(true);
@@ -81,7 +80,6 @@ function createIntoDirectory(config, name, type, templateFile, dest, strings) {
 }
 
 function udpateRouting(config, name) {
-    console.log('routing', config, name);
 
     var strings = strings || {};
     strings.Name = name.toCamelCase(true);
