@@ -1,0 +1,42 @@
+{
+  "name": "console-cli",
+  "version": "1.0.0",
+  "description": "Command-line interface for console",
+  "main": "index.js",
+  "bin": {
+    "console": "./index.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/obogo/console-cli.git"
+  },
+  "keywords": [
+    "console",
+    "cli"
+  ],
+  "author": "Rob Taylor <roboncode@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/obogo/console-cli/issues"
+  },
+  "homepage": "https://github.com/obogo/console-cli#readme",
+  "dependencies": {
+    "cli": "^1.0.1",
+    "co": "^4.6.0",
+    "co-prompt": "^1.0.0",
+    "colors": "^1.1.2",
+    "commander": "^2.9.0",
+    "fs-extra": "^2.0.0",
+    "jsonfile": "^2.4.0",
+    "pluralize": "^4.0.0",
+    "read-file": "^0.2.0",
+    "remedial": "^1.0.7",
+    "write": "^0.3.1"
+  },
+  "devDependencies": {
+    "colors": "^1.1.2"
+  }
+}

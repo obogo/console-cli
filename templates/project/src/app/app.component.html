@@ -1,0 +1,91 @@
+<div class="console-app console-main" layout="column">
+
+    <div class="console-header">
+        <!--<button class="console-btn-menu">-->
+            <!--<i class="fa fa-bars fa-lg"></i>-->
+        <!--</button>-->
+        <div class="console-title console-bold" layout="row" layout-align="start center">
+            <div class="hive-logo hive-logo-belly" style="width:24px;height:24px;margin-right: 8px"></div>
+            {CompanyName}
+        </div>
+        <div flex></div>
+
+        <!-- Single button -->
+        <div layout="row">
+            <div class="console-dropdown console-dropdown-right">
+                <button type="button" class="console-btn console-btn-header">
+                    <i class="console-icon-label fa fa-user"></i>
+                    <span>John Smith</span>
+                </button>
+                <ul class="console-dropdown-list">
+                    <li>
+                        <a href="#">
+                            <i class="console-icon-label fa fa-user"></i>
+                            <span>Manage users</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="console-icon-label fa fa-user"></i>
+                            <span>Change password</span>
+                        </a>
+                    </li>
+                    <li class="console-divider"></li>
+                    <li>
+                        <a href="#">
+                            <i class="console-icon-label fa fa-sign-out"></i>
+                            <span>Logout</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="console-busy"></div>
+    <div class="console-body" flex layout="row">
+        <div class="console-menu console-smooth console-menu-open console-scrollable">
+            <div class="console-menu-header">My Account</div>
+            <div class="console-menu-subheader">Welcome</div>
+            <div class="console-menu-subheader">Sign-in &amp; Security</div>
+            <a ui-sref="dashboard" ui-sref-active="console-menu-item-active" class="console-menu-item">Device activity</a>
+            <a ui-sref="dashboard" ui-sref-active="console-menu-item-active" class="console-menu-item">Notifications</a>
+            <a ui-sref="accounts" ui-sref-active="console-menu-item-active" class="console-menu-item">Subscriptions</a>
+            <div class="console-menu-subheader">Personal info &amp Privacy</div>
+            <a ui-sref="players" ui-sref-active="console-menu-item-active" class="console-menu-item">Your personal info</a>
+            <div class="console-menu-subheader">Account preferences</div>
+            <a ui-sref="accounts" ui-sref-active="console-menu-item-active" class="console-menu-item">Language & Input Tools</a>
+            <a ui-sref="accounts" ui-sref-active="console-menu-item-active" class="console-menu-item">Delete your account or services</a>
+            <div class="console-menu-subheader">About {CompanyName}</div>
+            <div class="console-menu-subheader">Privacy Policy</div>
+            <div class="console-menu-subheader">Help and Feedback</div>
+
+
+
+
+
+            <div flex></div>
+            <!--<a ui-sref="members" ui-sref-active="console-menu-item-active" class="console-menu-item">Members</a>-->
+            <div class="console-menu-subheader">Organizations</div>
+            <a ui-sref="orgs" ui-sref-active="console-menu-item-active" class="console-menu-item">Organizations</a>
+            <a ui-sref="players" ui-sref-active="console-menu-item-active" class="console-menu-item">Players</a>
+            <!--<a ui-sref="playlists" ui-sref-active="console-menu-item-active" class="console-menu-item">Playlists</a>-->
+            <!--<a ui-sref="schedules" ui-sref-active="console-menu-item-active" class="console-menu-item">Schedules</a>-->
+            <!--<div class="console-menu-subheader">Media</div>-->
+            <!--<a ui-sref="videos" ui-sref-active="console-menu-item-active" class="console-menu-item">Videos</a>-->
+            <!--<a ui-sref="video-tags" ui-sref-active="console-menu-item-active" class="console-menu-item">Tags</a>-->
+            <!--<a ui-sref="video-types" ui-sref-active="console-menu-item-active" class="console-menu-item">Types ?</a>-->
+            <!--<a ui-sref="video-logs" ui-sref-active="console-menu-item-active" class="console-menu-item">Logs</a>-->
+            <a ui-sref="settings" ui-sref-active="console-menu-item-active" class="console-menu-item">Settings</a>
+            <a ui-sref="help" ui-sref-active="console-menu-item-active" class="console-menu-item">Help</a>
+            <!--<div flex></div>-->
+            <!--<a ui-sref="privacy" ui-sref-active="console-menu-item-active" class="console-menu-item">Privacy Policy</a>-->
+        </div>
+
+        <!-- Pages here -->
+        <ui-view flex layout="column"></ui-view>
+
+    </div>
+
+    <!-- Used to launch a dialog -->
+    <console-dialog></console-dialog>
+</div>

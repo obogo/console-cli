@@ -1,0 +1,7 @@
+{
+  "app": {
+    "moduleName": "app",
+    "componentPrefix": "console",
+    "serviceName": "hive"
+  }
+}
