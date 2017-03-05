@@ -1,6 +1,7 @@
 module.exports = function (grunt) {
 
     grunt.loadTasks('tasks');
+    grunt.loadNpmTasks('hbjs');
 
     // Load grunt tasks automatically
     require('load-grunt-tasks')(grunt);
@@ -18,7 +19,11 @@ module.exports = function (grunt) {
     grunt.initConfig(configs);
 
     grunt.loadNpmTasks('grunt-contrib-watch');
-    grunt.registerTask('default', ['console']);
+    grunt.registerTask('default', ['console', 'services']);
+
+    grunt.registerTask('services', [
+        'compile'
+    ]);
 
     grunt.registerTask('console', [
         'ngtemplates:console',

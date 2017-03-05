@@ -1,7 +1,7 @@
 /* global angular */
-module.factory('{Name}Service', function (ServiceFactory, {Name}) {
+module.factory('{Names}Service', function (ServiceFactory, {Name}) {
 
-    var services = {serviceName}.services.players;
+    var services = console.services.{name};
     return ServiceFactory.create(services, {Name});
 
 });

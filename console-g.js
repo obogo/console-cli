@@ -47,8 +47,12 @@ function createIntoSubdirectory(config, name, type, templateFile, dest, strings)
         strings = strings || {};
         strings.Name = name.toCamelCase(true);
         strings.name = strings.name || name;
+        strings.Names = pluralize(strings.Name);
+        strings.names = pluralize(name);
         strings.namesDash = strings.name.toDash();
         strings.namesUnderscore = strings.namesDash.split('-').join('_');
+        strings.prefix = config.componentPrefix;
+        strings.serviceName = config.serviceName;
         strings.prefix = config.componentPrefix;
         content = content.supplant(strings);
 
@@ -65,6 +69,8 @@ function createIntoDirectory(config, name, type, templateFile, dest, strings) {
         strings = strings || {};
         strings.Name = name.toCamelCase(true);
         strings.name = strings.name || name;
+        strings.Names = pluralize(strings.Name);
+        strings.names = pluralize(name);
         strings.namesDash = strings.name.toDash();
         strings.namesUnderscore = strings.namesDash.split('-').join('_');
         strings.prefix = config.componentPrefix;
@@ -79,18 +85,20 @@ function createIntoDirectory(config, name, type, templateFile, dest, strings) {
     });
 }
 
-function udpateRouting(config, name) {
+function updateRouting(config, name) {
 
     var strings = strings || {};
     strings.Name = name.toCamelCase(true);
     strings.name = strings.name || name;
+    strings.Names = pluralize(strings.Name);
+    strings.names = pluralize(name);
     strings.namesDash = strings.name.toDash();
     strings.namesUnderscore = strings.namesDash.split('-').join('_');
     strings.prefix = config.componentPrefix;
     strings.serviceName = config.serviceName;
 
     var routingFile = path.join('src', 'app', 'app.routing.js');
-    fs.readFile(routingFile, 'utf8', function(err, file) {
+    fs.readFile(routingFile, 'utf8', function (err, file) {
         var filez = file.split('// %route-injection%');
         filez[1] = ("\n    $stateProvider.state('{name}', {url: '/{name}', controller: '{Name}Ctrl', templateUrl: '{name}.page.html'});" + filez[1]).supplant(strings);
         fs.writeFile(routingFile, filez.join('// routes'));
@@ -133,12 +141,13 @@ program.action(function (type, path, options) {
                 createIntoSubdirectory(config.app, name, 'page', 'page/template.html', path);
                 createIntoSubdirectory(config.app, name, 'page', 'page/template.less', path);
                 createIntoSubdirectory(config.app, name, 'page', 'page/template.js', path);
-                udpateRouting(config.app, name);
+                updateRouting(config.app, name);
                 break;
 
             case 'service':
                 name = path.split().pop().toLowerCase();
                 createIntoDirectory(config.app, name, 'service', 'service/template.js', path);
+                createIntoDirectory(config.app, name, 'model', 'model/template.js', path);
                 break;
         }
     });

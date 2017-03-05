@@ -64,8 +64,8 @@ module.exports = function (grunt, options) {
                     options: {},
                     files: {
                         "build/console/console.js": [
-                            "src/app.bootstrap.js",
-                            "src/**/*.js"
+                            "src/app/app.bootstrap.js",
+                            "src/app/**/*.js"
                         ]
                     }
                 }
