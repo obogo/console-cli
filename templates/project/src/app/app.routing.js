@@ -8,7 +8,7 @@ module.config(function ($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise("/");
 
     // DO NOT REMOVE LINE BELOW
-    // routes
+    // %route-injection%
     $stateProvider.state('dashboard', {url: '/', controller: 'DashboardCtrl', templateUrl: 'dashboard.page'});
     $stateProvider.state('about', {url: '/about', controller: 'AboutCtrl', templateUrl: 'about.page'});
     $stateProvider.state('sample', {url: '/samples/:id', controller: 'SampleCtrl', templateUrl: 'sample.page'});

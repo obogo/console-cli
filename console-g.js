@@ -73,7 +73,6 @@ function copyFiles(config, type, templateFile, destPath, createInSubdirectory) {
         var fileExt = templateFile.split('.').pop();
         // console.log('#strings', JSON.stringify(strings, null, 4).blue);
 
-        console.log('#createInsub', createInSubdirectory);
         var outputFile;
         if(destz.length > 1) {
             outputFile = path.join('src', 'app', type + 's', destPath + '.' + type + '.' + fileExt);
@@ -106,9 +105,11 @@ function updateRouting(config, name) {
     var routingFile = path.join('src', 'app', 'app.routing.js');
     fs.readFile(routingFile, 'utf8', function (err, file) {
         var filez = file.split('// %route-injection%');
-        filez[1] = ("\n    $stateProvider.state('{name}', {url: '/{name}', controller: '{Name}Ctrl', templateUrl: '{name}.page.html'});" + filez[1]).supplant(strings);
+        filez[1] = ("\n    $stateProvider.state('{name}', {url: '/{name}', controller: '{Name}Ctrl', templateUrl: '{name}.page'});" + filez[1]).supplant(strings);
         fs.writeFile(routingFile, filez.join('// %route-injection%'));
-    })
+    });
+
+    console.log('Updated: app.routing.js'.blue);
 }
 
 program.action(function (type, path, options) {
