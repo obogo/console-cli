@@ -15,5 +15,6 @@
   "dependencies": {
     "angular-chosen-localytics": "^1.6.0",
     "ng-letter-avatar": "ngletteravatar#^4.0.4"
-  }
+  },
+  "devDependencies": {}
 }

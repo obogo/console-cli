@@ -1,4 +1,4 @@
-module.controller('DashboardCtrl', function ($scope, Dialog, Menu) {
+module.controller('DashboardCtrl', function ($scope, Dialog, Menu, Alert) {
 
     $scope.menu = Menu;
 
@@ -21,5 +21,12 @@ module.controller('DashboardCtrl', function ($scope, Dialog, Menu) {
                 }
             }
         });
-    }
+    };
+
+    $scope.showAlert = function() {
+        Alert.open({
+            dismissible: true,
+            message: 'Hello, world!'
+        })
+    };
 });

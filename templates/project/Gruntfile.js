@@ -30,6 +30,6 @@ module.exports = function (grunt) {
         'ngAnnotate:console',
         'less:console',
         'copy:console',
-        'copy:bower'
+        'copy:vendor'
     ]);
 };

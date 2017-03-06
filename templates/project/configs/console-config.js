@@ -23,7 +23,7 @@ module.exports = function (grunt, options) {
                     dest: 'build/',
                     filter: 'isFile'
                 },
-                "bower": {
+                "vendor": {
                     expand: true,
                     // flatten: true,
                     cwd: 'bower_components',
