@@ -1,6 +1,5 @@
 module.exports = function (grunt) {
 
-    grunt.loadTasks('tasks');
     grunt.loadNpmTasks('hbjs');
 
     // Load grunt tasks automatically
@@ -19,7 +18,7 @@ module.exports = function (grunt) {
     grunt.initConfig(configs);
 
     grunt.loadNpmTasks('grunt-contrib-watch');
-    grunt.registerTask('default', ['console', 'services']);
+    grunt.registerTask('default', ['console', 'services', 'deps']);
 
     grunt.registerTask('services', [
         'compile'
@@ -29,7 +28,11 @@ module.exports = function (grunt) {
         'ngtemplates:console',
         'ngAnnotate:console',
         'less:console',
-        'copy:console',
-        'copy:vendor'
+        'copy:console'
+    ]);
+
+    grunt.registerTask('deps', [
+        'copy:vendor',
+        'copy:node_modules'
     ]);
 };

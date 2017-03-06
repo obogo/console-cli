@@ -6,14 +6,14 @@ var replace = require('replace');
 var rootPath = path.dirname(fs.realpathSync(__filename));
 var templatesPath = path.join(rootPath, 'templates');
 
-program.action(function (companyName, dest, options) {
+program.action(function (productName, dest, options) {
 
-    companyName = companyName || 'MyCompany';
+    productName = productName || 'My Product';
     dest = typeof dest === 'string' ? dest : 'test';
     fs.copySync(path.join(templatesPath, 'project'), dest);
     replace({
-        regex: '{CompanyName}',
-        replacement: companyName,
+        regex: '{ProductName}',
+        replacement: productName,
         paths: [dest],
         recursive: true,
         silent: true
@@ -21,10 +21,8 @@ program.action(function (companyName, dest, options) {
 
     console.log('Project initialized!'.green);
     console.log('Run the following commands:');
-    console.log('cd'.blue, dest.blue);
-    console.log('npm install'.blue);
-    console.log('bower install'.blue);
-    console.log('grunt watch'.blue, 'to have app reload automatically on changes');
+    console.log('cd'.blue, dest.blue, ';npm install;grunt;grunt watch'.blue);
+    console.log('Use "grunt watch"'.blue, 'to have app reload automatically on changes');
 });
 
 program.parse(process.argv);

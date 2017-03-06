@@ -3,12 +3,12 @@
         <i class="material-icons">menu</i>
     </button>
     <div class="console-btn-menu console-mobile-hide">
-        <ng-letter-avatar data="AccountHive"
+        <ng-letter-avatar data="{ProductName}"
                           width="24" height="24" fontSize="12px" shape="round" avatarborder="true"
                           avatarcustombgcolor="#2196F3"></ng-letter-avatar>
     </div>
     <div class="console-title console-bold" layout="row" layout-align="start center">
-        AccountHive
+        {ProductName}
     </div>
     <div flex></div>
 
@@ -16,7 +16,7 @@
     <div layout="row">
         <console-dropdown class="console-dropdown console-dropdown-right" autoclose="true" ng-class="{'open': show}">
             <button type="button" class="console-btn" ng-click="toggle()">
-                <ng-letter-avatar data="AccountHive"
+                <ng-letter-avatar data="{ProductName}"
                                   width="24" height="24" fontSize="12px" shape="round" avatarborder="true"
                                   avatarcustombgcolor="#2196F3"></ng-letter-avatar>
             </button>

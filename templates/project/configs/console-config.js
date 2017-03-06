@@ -5,7 +5,7 @@ module.exports = function (grunt, options) {
             watch: {
                 scripts: {
                     files: ['src/**/*'],
-                    tasks: ['default'],
+                    tasks: ['console', 'services'], // only these so we are not copying over a bunch of deps each time
                     options: {
                         livereload: true
                     }
@@ -26,9 +26,32 @@ module.exports = function (grunt, options) {
                 "vendor": {
                     expand: true,
                     // flatten: true,
-                    cwd: 'bower_components',
+                    cwd: 'vendor',
                     src: [
-                        'ng-letter-avatar/dist/*.js'
+                        'require-lite/*.js',
+                        'fonts/*'
+
+                    ],
+                    dest: 'build/vendor',
+                    filter: 'isFile'
+                },
+                "node_modules": {
+                    expand: true,
+                    cwd: 'node_modules',
+                    src: [
+                        '!*.md',
+                        '!*.json',
+                        'normalize.css/normalize.css',
+                        'material-design-icons/iconfont/*',
+                        'animate.css/animate.min.css',
+                        'chosen-js/*',
+                        'jquery/dist/*',
+                        'angular/angular*.js',
+                        'angular-animate/angular*.js',
+                        'angular-sanitize/angular*.js',
+                        'angular-ui-router/release/angular*.js',
+                        'angular-chosen-localytics/dist/*',
+                        'ngletteravatar/dist/*'
                     ],
                     dest: 'build/vendor',
                     filter: 'isFile'

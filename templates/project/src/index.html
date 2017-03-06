@@ -3,34 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{CompanyName} Console</title>
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
-    <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
-    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:400,600">
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/chosen/1.5.1/chosen.css" />
+    <title>{ProductName} Console</title>
+    <link rel="stylesheet" href="vendor/normalize.css/normalize.css">
+    <link rel="stylesheet" href="vendor/material-design-icons/iconfont/material-icons.css">
+    <link rel="stylesheet" href="vendor/fonts/Open-Sans/css/fonts.css">
+    <link rel="stylesheet" href="vendor/animate.css/animate.min.css">
+    <link rel="stylesheet" href="vendor/chosen-js/chosen.css" />
     <link rel="stylesheet" href="console/styles.css">
 </head>
 <body layout="column">
 <div app ng-cloak></div>
+
 <!-- TODO: For dev only -->
 <script src="//localhost:35729/livereload.js"></script>
 
 
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/chosen/1.5.1/chosen.jquery.min.js"></script>
+<script src="vendor/jquery/dist/jquery.min.js"></script>
+<script src="vendor/chosen-js/chosen.jquery.js"></script>
 
 <!-- TODO: Don't use unminified versions -->
-<script src="//code.angularjs.org/1.6.2/angular.js"></script>
-<script src="//code.angularjs.org/1.6.2/angular-animate.js"></script>
-<script src="//code.angularjs.org/1.6.2/angular-sanitize.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.4.2/angular-ui-router.js"></script>
+<script src="vendor/angular/angular.js"></script>
+<script src="vendor/angular-animate/angular-animate.min.js"></script>
+<script src="vendor/angular-sanitize/angular-sanitize.min.js"></script>
+<script src="vendor/angular-ui-router/release/angular-ui-router.min.js"></script>
 
 
-<script src="//cdnjs.cloudflare.com/ajax/libs/angular-chosen-localytics/1.4.0/angular-chosen.min.js"></script>
-<script src="vendor/ng-letter-avatar/dist/ngletteravatar.min.js"></script>
+<script src="vendor/angular-chosen-localytics/dist/angular-chosen.min.js"></script>
+<script src="vendor/ngletteravatar/dist/ngletteravatar.min.js"></script>
 
-<script src="//cdn.obogo.io/shared/js/require-lite.js"></script>
+<script src="vendor/require-lite/require-lite.min.js"></script>
 <script src="console/services.js"></script>
 
 <!--<script src="vendor/require-lite/require-lite.js"></script>-->

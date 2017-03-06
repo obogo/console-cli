@@ -8,7 +8,7 @@ Console CLI
 	console init [ProductName] [PathToCreateProject]
 
 	Usage:
-	console init AccountHive .
+	console init "My Product's Name" .
 
 #### Generating console elements
 
