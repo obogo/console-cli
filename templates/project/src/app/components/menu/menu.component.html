@@ -1,5 +1,9 @@
-<div class="console-menu console-smooth console-menu-open console-scrollable">
-    <div class="console-menu-header">My Account</div>
+<div class="console-menu console-smooth console-scrollable" ng-class="{'console-menu-open': menu.show}">
+    <div class="console-menu-header" flex-layout="row" flex-align="start center">
+        <div>Menu Header</div>
+        <div flex></div>
+        <i class="material-icons console-desktop-hide" ng-click="menu.close()">close</i>
+    </div>
     <a ui-sref="dashboard" ui-sref-active="console-menu-item-active" class="console-menu-item">Menu Item</a>
     <a ui-sref="about" ui-sref-active="console-menu-item-active" class="console-menu-item console-menu-subitem">Submenu Item</a>
     <a ui-sref="samples" ui-sref-active="console-menu-item-active" class="console-menu-item">Samples</a>

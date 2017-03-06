@@ -1,3 +1,7 @@
+[ng-cloak] {
+  display: none;
+}
+
 .console-main {
   height: 100%;
 }
@@ -40,3 +44,18 @@
 .console-nowrap {
   white-space: nowrap;
 }
+
+
+@media only screen and (min-width: @mobile-view-size) {
+  .console-desktop-hide {
+    display: none;
+  }
+}
+
+
+@media only screen and (max-width: @mobile-view-size) {
+  .console-mobile-hide {
+    display: none;
+  }
+}
+

@@ -74,7 +74,8 @@
                         <div class="console-form-group">
                             <div layout="row" style="flex-wrap: wrap">
                                 <button class="console-btn-checkbox" ng-click="toggleCheck()">
-                                    <i class="fa fa-square" ng-class="{'fa-check-square': form.isChecked}"></i>
+                                    <i class="material-icons" ng-hide="form.isChecked">check_box_outline_blank</i>
+                                    <i class="material-icons" ng-show="form.isChecked">check_box</i>
                                     <span>Checkbox</span>
                                 </button>
                             </div>

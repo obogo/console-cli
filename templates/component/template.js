@@ -2,9 +2,10 @@ module.directive('{prefix}{Name}', function () {
     return {
         scope: true,
         restrict: 'E',
-        templateUrl: '{name}',
+        templateUrl: '{namesDash}',
         replace: true,
         link: function ($scope, $el, $attrs) {
+            // Component
         }
     };
 });

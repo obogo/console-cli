@@ -13,6 +13,18 @@
   border-right: 1px solid #d0d1d5;
   .box-shadow(2px 0 10px rgba(0, 0, 0, 0.05));
 
+  @media only screen and (max-width: @mobile-view-size) {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    z-index: 1;
+  }
+
+  @media only screen and (min-width: @mobile-view-size) {
+    margin-left: 0;
+  }
+
+
   &.console-menu-open {
     margin-left: 0;
   }
@@ -29,6 +41,7 @@
     cursor: pointer;
     padding: 0 20px;
     height: 50px;
+    min-height: 50px;
     background: #FAFAFA;
     border-bottom: 1px solid #dddddd;
   }

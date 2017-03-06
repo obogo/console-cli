@@ -1,43 +1,40 @@
 <div class="console-header">
-    <!--<button class="console-btn-menu">-->
-    <!--<i class="fa fa-bars fa-lg"></i>-->
-    <!--</button>-->
-    <div class="console-title console-bold" layout="row" layout-align="start center">
-        <ng-letter-avatar data="{CompanyName}"
+    <button class="console-btn-menu console-desktop-hide" ng-click="menu.toggle()">
+        <i class="material-icons">menu</i>
+    </button>
+    <div class="console-btn-menu console-mobile-hide">
+        <ng-letter-avatar data="AccountHive"
                           width="24" height="24" fontSize="12px" shape="round" avatarborder="true"
                           avatarcustombgcolor="#2196F3"></ng-letter-avatar>
-        {CompanyName}
+    </div>
+    <div class="console-title console-bold" layout="row" layout-align="start center">
+        AccountHive
     </div>
     <div flex></div>
 
-    <!-- Single button -->
+    <!-- Dropdown-->
     <div layout="row">
-        <div class="console-dropdown console-dropdown-right">
-            <button type="button" class="console-btn console-btn-header">
-                <i class="console-icon-label fa fa-user"></i>
-                <span>John Smith</span>
+        <console-dropdown class="console-dropdown console-dropdown-right" autoclose="true" ng-class="{'open': show}">
+            <button type="button" class="console-btn" ng-click="toggle()">
+                <ng-letter-avatar data="AccountHive"
+                                  width="24" height="24" fontSize="12px" shape="round" avatarborder="true"
+                                  avatarcustombgcolor="#2196F3"></ng-letter-avatar>
             </button>
-            <ul class="console-dropdown-list">
+            <ul name="popup" class="console-dropdown-list">
                 <li>
                     <a href="#">
-                        <i class="console-icon-label fa fa-user"></i>
-                        <span>Manage users</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <i class="console-icon-label fa fa-user"></i>
+                        <i class="material-icons">account_box</i>
                         <span>Change password</span>
                     </a>
                 </li>
                 <li class="console-divider"></li>
                 <li>
                     <a href="#">
-                        <i class="console-icon-label fa fa-sign-out"></i>
+                        <i class="material-icons">lock_open</i>
                         <span>Logout</span>
                     </a>
                 </li>
             </ul>
-        </div>
+        </console-dropdown>
     </div>
 </div>

@@ -44,7 +44,9 @@ module.exports = function (grunt, options) {
                         quotes: 'single',
                         standalone: true,
                         url: function (url) {
-                            return url.split('/').pop().split('.component.html').join('');
+                            return url.split('/').pop()
+                                .split('.component').join('')
+                                .split('.html').join('');
                         },
                         htmlmin: {
                             collapseBooleanAttributes: true,

@@ -31,7 +31,7 @@ String.prototype.toDash = function () {
 
 String.prototype.toCamelCase = function (capitalizeFirstLetter) {
     var input = this;
-    var output = input.toLowerCase().replace(/-(.)/g, function (match, group1) {
+    var output = input.replace(/-(.)/g, function (match, group1) {
         return group1.toUpperCase();
     });
 
@@ -42,33 +42,23 @@ String.prototype.toCamelCase = function (capitalizeFirstLetter) {
     return output;
 };
 
-function createIntoSubdirectory(config, name, type, templateFile, dest, strings) {
-    readFile(path.join(templatesPath, templateFile), 'utf8', function (err, content) {
-        strings = strings || {};
+/**
+ *
+ * @param config
+ * @param type
+ * @param templateFile
+ * @param destPath
+ * @param createInSubdirectory boolean
+ */
+function copyFiles(config, type, templateFile, destPath, createInSubdirectory) {
+    var destz = destPath.split('/');
+    var name = destz.pop();
+
+    readFile(path.join(templatesPath, type, templateFile), 'utf8', function (err, content) {
+
+        var strings = {};
         strings.Name = name.toCamelCase(true);
-        strings.name = strings.name || name;
-        strings.Names = pluralize(strings.Name);
-        strings.names = pluralize(name);
-        strings.namesDash = strings.name.toDash();
-        strings.namesUnderscore = strings.namesDash.split('-').join('_');
-        strings.prefix = config.componentPrefix;
-        strings.serviceName = config.serviceName;
-        strings.prefix = config.componentPrefix;
-        content = content.supplant(strings);
-
-        var fileExt = templateFile.split('.').pop();
-        writeFile(path.join('src', 'app', type + 's', strings.namesDash, dest + '.' + type + '.' + fileExt), content, function (err) {
-            if (err) console.log(err);
-        });
-    });
-}
-
-function createIntoDirectory(config, name, type, templateFile, dest, strings) {
-    readFile(path.join(templatesPath, templateFile), 'utf8', function (err, content) {
-
-        strings = strings || {};
-        strings.Name = name.toCamelCase(true);
-        strings.name = strings.name || name;
+        strings.name = name;
         strings.Names = pluralize(strings.Name);
         strings.names = pluralize(name);
         strings.namesDash = strings.name.toDash();
@@ -77,11 +67,27 @@ function createIntoDirectory(config, name, type, templateFile, dest, strings) {
         strings.serviceName = config.serviceName;
         content = content.supplant(strings);
 
-        var fileExt = templateFile.split('.').pop();
-        writeFile(path.join('src', 'app', type + 's', dest + '.' + type + '.' + fileExt), content, function (err) {
-            if (err) console.log(err);
-        });
+        destz.push(strings.namesDash);
+        destPath = destz.join('/');
 
+        var fileExt = templateFile.split('.').pop();
+        // console.log('#strings', JSON.stringify(strings, null, 4).blue);
+
+        console.log('#createInsub', createInSubdirectory);
+        var outputFile;
+        if(destz.length > 1) {
+            outputFile = path.join('src', 'app', type + 's', destPath + '.' + type + '.' + fileExt);
+        }
+        else if(createInSubdirectory === false) {
+            outputFile = path.join('src', 'app', type + 's', destPath + '.' + type + '.' + fileExt);
+        }
+        else {
+            outputFile = path.join('src', 'app', type + 's', strings.namesDash, destPath + '.' + type + '.' + fileExt);
+        }
+        writeFile(outputFile, content, function (err) {
+            if (err) console.log(err);
+            else console.log(('File created: ' + outputFile).blue);
+        });
     });
 }
 
@@ -101,7 +107,7 @@ function updateRouting(config, name) {
     fs.readFile(routingFile, 'utf8', function (err, file) {
         var filez = file.split('// %route-injection%');
         filez[1] = ("\n    $stateProvider.state('{name}', {url: '/{name}', controller: '{Name}Ctrl', templateUrl: '{name}.page.html'});" + filez[1]).supplant(strings);
-        fs.writeFile(routingFile, filez.join('// routes'));
+        fs.writeFile(routingFile, filez.join('// %route-injection%'));
     })
 }
 
@@ -109,46 +115,47 @@ program.action(function (type, path, options) {
 
     var name;
 
-    jsonfile.readFile('console-cli.json', function (err, config) {
+    jsonfile.readFile('./console-cli.json', function (err, config) {
         switch (type) {
-
             case 'component':
-                name = path.split().pop().toLowerCase();
-                createIntoSubdirectory(config.app, name, 'component', 'component/template.html', path);
-                createIntoSubdirectory(config.app, name, 'component', 'component/template.less', path);
-                createIntoSubdirectory(config.app, name, 'component', 'component/template.js', path);
+                copyFiles(config.app, 'component', 'template.html', path);
+                copyFiles(config.app, 'component', 'template.less', path);
+                copyFiles(config.app, 'component', 'template.js', path);
                 break;
 
             case 'dialog':
-                name = path.split().pop().toLowerCase();
-                createIntoSubdirectory(config.app, name, 'dialog', 'dialog/template.html', path);
-                createIntoSubdirectory(config.app, name, 'dialog', 'dialog/template.less', path);
-                createIntoSubdirectory(config.app, name, 'dialog', 'dialog/template.js', path);
+                name = path.split('/').pop();
+                copyFiles(config.app, 'dialog', 'template.html', path);
+                copyFiles(config.app, 'dialog', 'template.less', path);
+                copyFiles(config.app, 'dialog', 'template.js', path);
                 break;
 
             case 'model':
-                name = path.split().pop().toLowerCase();
-                createIntoDirectory(config.app, name, 'model', 'model/template.js', path);
+                name = path.split('/').pop();
+                copyFiles(config.app, 'model', 'template.js', path, false);
                 break;
 
             case 'pipe':
-                name = path.split().pop();
-                createIntoDirectory(config.app, name, 'pipe', 'pipe/template.js', path);
+                name = path.split('/').pop();
+                copyFiles(config.app, 'pipe', 'template.js', path, false);
                 break;
 
             case 'page':
-                name = path.split().pop().toLowerCase();
-                createIntoSubdirectory(config.app, name, 'page', 'page/template.html', path);
-                createIntoSubdirectory(config.app, name, 'page', 'page/template.less', path);
-                createIntoSubdirectory(config.app, name, 'page', 'page/template.js', path);
+                name = path.split('/').pop();
+                copyFiles(config.app, 'page', 'template.html', path);
+                copyFiles(config.app, 'page', 'template.less', path);
+                copyFiles(config.app, 'page', 'template.js', path);
                 updateRouting(config.app, name);
                 break;
 
             case 'service':
-                name = path.split().pop().toLowerCase();
-                createIntoDirectory(config.app, name, 'service', 'service/template.js', path);
-                createIntoDirectory(config.app, name, 'model', 'model/template.js', path);
+                name = path.split('/').pop();
+                copyFiles(config.app, 'service', 'template.js', path, false);
+                copyFiles(config.app, 'model', 'template.js', path, false);
                 break;
+
+            default:
+                console.log(("Invalid command.").red);
         }
     });
 

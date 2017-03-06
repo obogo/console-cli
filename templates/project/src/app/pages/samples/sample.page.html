@@ -1,6 +1,6 @@
 <div class="console-subheader">
     <div ui-sref="samples" class="console-btn console-btn-default">
-        <i class="fa fa-chevron-left"></i>
+        <i class="material-icons">keyboard_arrow_left</i>
         Samples
     </div>
     <div class="console-spacer"></div>
@@ -52,7 +52,7 @@
                                 <select flex
                                         chosen
                                         placeholder-text-multiple="'Choose an option...'"
-                                        disable-search="true"
+                                        disable-search="false"
                                         allow-single-deselect="false"
                                         ng-model="form.selectedOption">
                                     <option value="">Select option</option>
@@ -74,7 +74,8 @@
                         <div class="console-form-group">
                             <div layout="row" style="flex-wrap: wrap">
                                 <button class="console-btn-checkbox" ng-click="toggleCheck()">
-                                    <i class="fa fa-square" ng-class="{'fa-check-square': form.isChecked}"></i>
+                                    <i class="material-icons" ng-hide="form.isChecked">check_box_outline_blank</i>
+                                    <i class="material-icons" ng-show="form.isChecked">check_box</i>
                                     <span>Checkbox</span>
                                 </button>
                             </div>

@@ -1,7 +1,11 @@
-module.directive('{prefix}{Name}', function (Dialog) {
+module.directive('{prefix}{Name}Dialog', function (Dialog, resolve) {
     return {
-        templateUrl: '{name}',
+        templateUrl: '{namesDash}.dialog',
         link: function ($scope, $el, $attrs) {
+            /*
+             $scope.time = Dialog.options.locals.time;
+             $scope.time = resolve(Dialog).get('optinos.locals.time');
+             */
         }
     };
 });
