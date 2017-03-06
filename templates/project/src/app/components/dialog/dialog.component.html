@@ -2,7 +2,9 @@
     <div class="console-modal-dialog animated-2x slideInDown" role="document">
         <div class="console-modal-content">
             <div ng-show="dialog.options.title" class="console-modal-header">
-                <button type="button" class="console-modal-close" aria-label="Close" ng-click="close()"><span aria-hidden="true">&times;</span></button>
+                <button type="button" class="console-modal-close" aria-label="Close" ng-click="close()">
+                    <i class="material-icons">close</i>
+                </button>
                 <h4 class="console-modal-title">{{dialog.options.title}}</h4>
             </div>
             <div name="body" class="console-modal-body">
