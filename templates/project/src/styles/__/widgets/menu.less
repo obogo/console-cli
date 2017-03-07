@@ -48,6 +48,7 @@
 
   .console-menu-item {
     color: #333333;
+    cursor: default;
 
     //background: #efefef;
     padding: 16px 20px;
@@ -64,9 +65,10 @@
       }
     }
 
-    &:hover {
+    &[href]:hover {
       color: #ffffff;
       background: #448AFF;
+      cursor: pointer;
 
       a {
         color: #ffffff;

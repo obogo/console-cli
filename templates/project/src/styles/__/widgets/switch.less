@@ -1,0 +1,85 @@
+/*
+  Generated from https://proto.io/freebies/onoff/
+ */
+
+.switch {
+  position: relative;
+  width: 35px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+
+.switch-checkbox {
+  display: none;
+}
+
+.switch-label {
+  display: block;
+  overflow: hidden;
+  cursor: pointer;
+  //border: 2px solid #CCCCCC;
+  border-radius: 36px;
+}
+
+.switch-inner {
+  display: block;
+  width: 200%;
+  margin-left: -100%;
+  transition: margin 0.2s ease-in 0s;
+}
+
+.switch-inner:before, .switch-inner:after {
+  display: block;
+  float: left;
+  width: 50%;
+  height: 15px;
+  padding: 0;
+  line-height: 15px;
+  font-size: 16px;
+  color: white;
+  font-family: Trebuchet, Arial, sans-serif;
+  font-weight: bold;
+  box-sizing: border-box;
+}
+
+.switch-inner:before {
+  content: "";
+  padding-left: 10px;
+  background-color: #008638;
+  color: #FFFFFF;
+}
+
+.switch-inner:after {
+  content: "";
+  padding-right: 10px;
+  background-color: #CCCCCC;
+  color: #666666;
+  text-align: right;
+}
+
+.switch-switch {
+  display: block;
+  width: 24px;
+  margin: -4.5px;
+  background: #FFFFFF;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 18px;
+  border: 2px solid #CCCCCC;
+  border-radius: 36px;
+  transition: all 0.2s ease-in 0s;
+}
+
+.switch-checkbox:checked + .switch-label .switch-inner {
+  margin-left: 0;
+}
+
+.switch-checkbox:checked + .switch-label .switch-switch {
+  right: 1px;
+}
+
+.switch + * {
+  margin-left: 8px;
+}
