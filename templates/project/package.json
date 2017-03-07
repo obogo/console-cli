@@ -36,6 +36,7 @@
     "hbjs": "^0.21.3",
     "material-design-icons": "^3.0.1",
     "ngletteravatar": "^4.0.4",
-    "normalize.css": "^5.0.0"
+    "normalize.css": "^5.0.0",
+    "offline-js": "^0.7.18"
   }
 }

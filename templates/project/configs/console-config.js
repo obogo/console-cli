@@ -51,7 +51,9 @@ module.exports = function (grunt, options) {
                         'angular-sanitize/angular*.js',
                         'angular-ui-router/release/angular*.js',
                         'angular-chosen-localytics/dist/*',
-                        'ngletteravatar/dist/*'
+                        'ngletteravatar/dist/*',
+                        'offline-js/offline*.js',
+                        'offline-js/themes/*'
                     ],
                     dest: 'build/vendor',
                     filter: 'isFile'
