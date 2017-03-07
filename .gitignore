@@ -40,3 +40,6 @@ bower_components
 .node_repl_history
 
 server
+
+# test directory for test project should not be committed
+test

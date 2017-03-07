@@ -25,6 +25,7 @@ module.exports = function (grunt) {
     ]);
 
     grunt.registerTask('console', [
+        'compile:console-utils',
         'ngtemplates:console',
         'ngAnnotate:console',
         'less:console',
