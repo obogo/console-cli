@@ -20,16 +20,16 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.registerTask('default', ['console', 'services', 'deps']);
 
-    grunt.registerTask('services', [
-        'compile'
-    ]);
-
     grunt.registerTask('console', [
-        'compile:console-utils',
         'ngtemplates:console',
         'ngAnnotate:console',
         'less:console',
-        'copy:console'
+        'copy:console',
+        'compile:console'
+    ]);
+
+    grunt.registerTask('services', [
+        'compile:services'
     ]);
 
     grunt.registerTask('deps', [

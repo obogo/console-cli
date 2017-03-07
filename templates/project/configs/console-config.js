@@ -109,24 +109,22 @@ module.exports = function (grunt, options) {
                 }
             },
             compile: {
-                "console-utils": {
+                "console": {
                     wrap: 'consoleUtils', // this is your global namespace
                     name: "consoleUtils",
                     filename: 'console-utils',
                     build: 'build/console',
                     scripts: {
+                        embedRequire: false,
                         ignorePatterns: true,
                         inspect: ['src/app/**/**.js'],
                         src: ['src/app/**/*.js'], // search through all JS file in src src directory
                         import: [], // what files should we import and compile
-                        //includes: ['src/widgets/b4h-video/vendor/media.vimeo.js'],
                         export: [''], // hide all from view
                         report: 'verbose',
                         match: function(searchText) {
-                            // console.log("Searching ..." + searchText.length);
                             var matches = [];
                             searchText.replace(/(^|\s)require\((\"|\')(.*?)\2\)/g, function(m, g1, g2, g3) {
-                                console.log("matches " + g3);
                                 matches.push(g3);
                             });
                             return matches;
