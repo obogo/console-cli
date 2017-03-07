@@ -1,24 +1,26 @@
-<div class="console-subheader">
-    <h4>Dashboard</h4>
-</div>
-
-<div class="console-content console-scrollable" flex layout="column">
-    <div class="console-page" layout-padding>
-
-        <console-alert></console-alert>
-
-        <div class="console-panel console-panel-default">
-            <div class="console-panel-body">
-                <h4>Dashboard works!!!</h4>
-                <div class="console-spacer"></div>
-                <div class="console-btn console-btn-default" ng-click="showAlert()">Show Alert</div>
-                <div class="console-btn console-btn-default" ng-click="openDialog()">Open Dialog</div>
-                <div class="console-btn console-btn-default console-desktop-hide" ng-click="menu.toggle()">Toggle Menu</div>
-            </div>
-        </div>
+<console-page>
+    <div class="console-subheader">
+        <h4>Dashboard</h4>
     </div>
 
-    <div flex></div>
+    <div class="console-content console-scrollable" flex layout="column">
+        <div class="console-page" layout-padding>
 
-    <console-footer></console-footer>
-</div>
+            <console-alert></console-alert>
+
+            <div class="console-panel console-panel-default">
+                <div class="console-panel-body">
+                    <h4>Dashboard works!!!</h4>
+                    <div class="console-spacer"></div>
+                    <div class="console-btn console-btn-default" ng-click="showAlert()">Show Alert</div>
+                    <div class="console-btn console-btn-default" ng-click="openDialog()">Open Dialog</div>
+                    <div class="console-btn console-btn-default console-desktop-hide" ng-click="menu.toggle()">Toggle Menu</div>
+                </div>
+            </div>
+        </div>
+
+        <div flex></div>
+
+        <console-footer></console-footer>
+    </div>
+</console-page>

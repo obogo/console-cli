@@ -11,7 +11,15 @@ module.config(function ($stateProvider, $urlRouterProvider) {
     // %route-injection%
     $stateProvider.state('dashboard', {url: '/', controller: 'DashboardCtrl', templateUrl: 'dashboard.page'});
     $stateProvider.state('about', {url: '/about', controller: 'AboutCtrl', templateUrl: 'about.page'});
-    $stateProvider.state('sample', {url: '/samples/:id', controller: 'SampleCtrl', templateUrl: 'sample.page'});
-    $stateProvider.state('samples', {url: '/samples', controller: 'SamplesCtrl', templateUrl: 'samples.page'});
+    $stateProvider.state('sample', {url: '/samples/:id', controller: 'SampleCtrl', templateUrl: 'sample.page', data:{
+        transTo: {
+            samples: 'anim-slide-right'
+        }
+    }});
+    $stateProvider.state('samples', {url: '/samples', controller: 'SamplesCtrl', templateUrl: 'samples.page', data:{
+        transTo: {
+            sample: 'anim-slide-left'
+        }
+    }});
 
 });

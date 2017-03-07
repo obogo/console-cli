@@ -30,7 +30,6 @@ module.exports = function (grunt, options) {
                     src: [
                         'require-lite/*.js',
                         'fonts/*'
-
                     ],
                     dest: 'build/vendor',
                     filter: 'isFile'
@@ -44,6 +43,9 @@ module.exports = function (grunt, options) {
                         'normalize.css/normalize.css',
                         'material-design-icons/iconfont/*',
                         'animate.css/animate.min.css',
+                        'animate.css/animate.min.css',
+                        'angular-ui-router-anim-in-out/css/anim-in-out.css',
+                        'angular-ui-router-anim-in-out/anim-in-out.js',
                         'chosen-js/*',
                         'jquery/dist/*',
                         'angular/angular*.js',
