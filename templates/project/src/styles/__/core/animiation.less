@@ -10,3 +10,30 @@
   -webkit-animation-fill-mode: both;
   animation-fill-mode: both;
 }
+
+.anim-in-out {
+  overflow-x: hidden;
+}
+
+// desktop
+@media only screen and (min-width: @mobile-view-size) {
+  .anim-in-out {
+    &.anim-in, &.anim-out {
+      position: absolute;
+      top: 0;
+      left: @menu-width;
+      width: ~"calc(100% - @{menu-width})";
+    }
+  }
+}
+// mobile
+@media only screen and (max-width: @mobile-view-size) {
+  .anim-in-out {
+    &.anim-in, &.anim-out {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+    }
+  }
+}

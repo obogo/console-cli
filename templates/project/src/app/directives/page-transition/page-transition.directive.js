@@ -3,17 +3,14 @@ module.directive('pageTransition', function ($state) {
     var lastClass = '';
     var transition = '';
     return {
-        restrict: 'E',
-        link: function ($scope, $el) {
-            // Component
+        link: function () {
             transition = prevState && prevState.data && prevState.data.transTo && prevState.data.transTo[$state.current.name] || '';
             lastClass = transition;
             prevState = $state.current;
-            // there is always two.
-            var all = document.querySelectorAll('ui-view page-transition');
-            if (all[0] && all[1]) {
-                all[0].className = transition || 'anim-swap';
-                all[1].className = transition || 'anim-swap';
+
+            var all = document.querySelectorAll('[page-transition]');
+            for (var i = 0; i < all.length; i++) {
+                all[i].className = transition || 'anim-swap';
             }
         }
     };
