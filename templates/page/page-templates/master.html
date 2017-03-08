@@ -1,105 +1,107 @@
-<div class="console-subheader">
-    <h4>Master List</h4>
-    <div flex></div>
-    <button class="console-btn console-btn-primary" ng-click="newPlayer()">New</button>
-</div>
+<page-transition>
+    <div class="console-subheader">
+        <h4>Master List</h4>
+        <div flex></div>
+        <button class="console-btn console-btn-primary" ng-click="newPlayer()">New</button>
+    </div>
 
-<div class="console-content console-scrollable anim-slide-left" flex layout="column">
-    <div class="console-page" layout-padding>
+    <div class="console-content console-scrollable" flex layout="column">
+        <div class="console-page" layout-padding>
 
-        <div class="console-panel console-panel-default">
-            <div class="console-panel-header" layout="row">
+            <div class="console-panel console-panel-default">
+                <div class="console-panel-header" layout="row">
 
-                <!-- :: Filter List :: -->
-                <div class="console-form-select" ng-hide="assignTo">
-                    <select class="console-form-input" id="inputStatus" ng-model="form.selectedOption">
-                        <option value="" selected>Select an option...</option>
-                        <option ng-value="option.value" ng-repeat="option in form.dropdownOptions">{{option.label}}</option>
-                    </select>
-                </div>
-
-                <!-- :: Organization Name :: -->
-                <h4 ng-show="assignTo">Assign a player to {{org.name}}</h4>
-
-                <div flex></div>
-            </div>
-            <div class="console-panel-body">
-
-                <!-- :: Search :: -->
-                <div class="console-form-group">
-                    <div layout="row">
-                        <input type="text" name="inputUsername" id="inputSearch" class="console-form-input console-form-search console-smooth">
-                        <button type="button" class="console-btn console-btn-default">
-                            <i class="material-icons">search</i>
-                        </button>
+                    <!-- :: Filter List :: -->
+                    <div class="console-form-select" ng-hide="assignTo">
+                        <select class="console-form-input" id="inputStatus" ng-model="form.selectedOption">
+                            <option value="" selected>Select an option...</option>
+                            <option ng-value="option.value" ng-repeat="option in form.dropdownOptions">{{option.label}}</option>
+                        </select>
                     </div>
-                </div>
 
-                <div ng-hide="form.list && form.list.length">
-                    No items found.
-                </div>
+                    <!-- :: Organization Name :: -->
+                    <h4 ng-show="assignTo">Assign a player to {{org.name}}</h4>
 
-                <div class="console-scrollable" ng-show="form.list && form.list.length">
-                    <table class="console-table console-table-hover">
-                        <thead>
-                        <tr>
-                            <!--<th><input type="checkbox"></th>-->
-                            <th class="console-sortable">
-                                <div class="console-table-label">First</div>
-                            </th>
-                            <th class="console-sortable">
-                                <div class="console-table-label">Last</div>
-                            </th>
-                            <th style="width: 100%" class="console-sortable">
-                                <div class="console-table-label">Email</i></div>
-                            </th>
-                            <th></th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr ng-repeat="listItem in form.list">
-                            <td>{{listItem.firstName}}</td>
-                            <td>{{listItem.lastName}}</td>
-                            <td class="console-nowrap">{{listItem.email}}</td>
-                            <td>
-                                <div layout="row" layout-spacing>
-                                    <button class="console-btn console-btn-default"
-                                            ng-click="edit(listItem)">Edit</button>
-                                    <button class="console-btn console-btn-default"
-                                            ng-click="open(listItem)">Open</button>
-                                </div>
-                            </td>
-                        </tr>
-                        </tbody>
-                    </table>
-                </div>
-
-                <!-- :: Pagination :: -->
-                <div layout="row">
                     <div flex></div>
-                    <ul class="console-pagination">
-                        <li class="console-disabled">
-                            <a href="#">
-                                <span>First</span>
-                            </a>
-                        </li>
-                        <li class="console-active"><a href="#">1</a></li>
-                        <li><a href="#">2</a></li>
-                        <li><a href="#">3</a></li>
-                        <li><a href="#">4</a></li>
-                        <li><a href="#">5</a></li>
-                        <li>
-                            <a href="#">
-                                <span>Last</span>
-                            </a>
-                        </li>
-                    </ul>
+                </div>
+                <div class="console-panel-body">
+
+                    <!-- :: Search :: -->
+                    <div class="console-form-group">
+                        <div layout="row">
+                            <input type="text" name="inputUsername" id="inputSearch" class="console-form-input console-form-search console-smooth">
+                            <button type="button" class="console-btn console-btn-default">
+                                <i class="material-icons">search</i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div ng-hide="form.list && form.list.length">
+                        No items found.
+                    </div>
+
+                    <div class="console-scrollable" ng-show="form.list && form.list.length">
+                        <table class="console-table console-table-hover">
+                            <thead>
+                            <tr>
+                                <!--<th><input type="checkbox"></th>-->
+                                <th class="console-sortable">
+                                    <div class="console-table-label">First</div>
+                                </th>
+                                <th class="console-sortable">
+                                    <div class="console-table-label">Last</div>
+                                </th>
+                                <th style="width: 100%" class="console-sortable">
+                                    <div class="console-table-label">Email</i></div>
+                                </th>
+                                <th></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr ng-repeat="listItem in form.list">
+                                <td>{{listItem.firstName}}</td>
+                                <td>{{listItem.lastName}}</td>
+                                <td class="console-nowrap">{{listItem.email}}</td>
+                                <td>
+                                    <div layout="row" layout-spacing>
+                                        <button class="console-btn console-btn-default"
+                                                ng-click="edit(listItem)">Edit</button>
+                                        <button class="console-btn console-btn-default"
+                                                ng-click="open(listItem)">Open</button>
+                                    </div>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- :: Pagination :: -->
+                    <div layout="row">
+                        <div flex></div>
+                        <ul class="console-pagination">
+                            <li class="console-disabled">
+                                <a href="#">
+                                    <span>First</span>
+                                </a>
+                            </li>
+                            <li class="console-active"><a href="#">1</a></li>
+                            <li><a href="#">2</a></li>
+                            <li><a href="#">3</a></li>
+                            <li><a href="#">4</a></li>
+                            <li><a href="#">5</a></li>
+                            <li>
+                                <a href="#">
+                                    <span>Last</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
+
+        <div flex></div>
+
+        <console-footer></console-footer>
     </div>
-
-    <div flex></div>
-
-    <console-footer></console-footer>
-</div>
+</page-transition>

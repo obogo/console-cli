@@ -1,101 +1,103 @@
-<div class="console-subheader">
-    <div ui-sref="players" class="console-btn console-btn-default">
-        <i class="material-icons">keyboard_arrow_left</i>
-        Back to list
-    </div>
-    <div class="console-spacer"></div>
-    <div flex></div>
-    <button class="console-btn console-btn-primary" ng-click="save(player)">Save</button>
-</div>
-
-<div class="console-scrollable anim-slide-left" flex layout="column">
-    <div layout-padding class="console-page">
-
-        <div class="console-alert console-alert-dismissible console-alert-success">
-            <button class="console-close">
-                <i class="material-icons">close</i>
-            </button>
-            Save successful!
+<page-transition>
+    <div class="console-subheader">
+        <div ui-sref="players" class="console-btn console-btn-default">
+            <i class="material-icons">keyboard_arrow_left</i>
+            Back to list
         </div>
+        <div class="console-spacer"></div>
+        <div flex></div>
+        <button class="console-btn console-btn-primary" ng-click="save(player)">Save</button>
+    </div>
 
-        <div layout="column" class="console-panels">
-            <div class="console-panel console-panel-default" layout-margin="*" flex>
-                <div class="console-panel-header" layout="row" layout-align="start center">
-                    <h4>Section Header</h4>
-                    <div flex></div>
-                </div>
-                <div class="console-panel-body" layout-width="50%">
-                    <form>
+    <div class="console-scrollable" flex layout="column">
+        <div layout-padding class="console-page">
 
-                        <!-- :: Input field :: -->
-                        <div class="console-form-group">
-                            <label for="inputTitle" class="console-form-label">Input field</label>
-                            <div>
-                                <input type="text" name="inputTitle" id="inputTitle" ng-disabled="form.id"
-                                       class="console-form-input console-smooth" ng-model="form.input">
-                            </div>
-                        </div>
-
-                        <!-- :: Dropdown :: -->
-                        <div class="console-form-group">
-                            <label for="inputStatus" class="console-form-label">Dropdown</label>
-                            <div class="console-form-select">
-                                <select class="console-form-input" id="inputStatus" ng-model="form.selectedOption">
-                                    <option value="">Select option</option>
-                                    <option ng-value="option.value" ng-repeat="option in form.dropdownOptions">{{option.label}}</option>
-                                </select>
-                            </div>
-                        </div>
-
-                        <!-- :: Chosen Dropdown :: -->
-                        <div class="console-form-group">
-                            <label class="console-form-label">Chosen</label>
-                            <div layout="row">
-                                <select flex
-                                        chosen
-                                        placeholder-text-multiple="'Choose an option...'"
-                                        disable-search="true"
-                                        allow-single-deselect="false"
-                                        ng-model="form.selectedOption">
-                                    <option value="">Select option</option>
-                                    <option ng-value="option.value" ng-repeat="option in form.dropdownOptions">{{option.label}}</option>
-                                </select>
-                            </div>
-                        </div>
-
-                        <!-- :: Textarea :: -->
-                        <div class="console-form-group">
-                            <label for="inputDesc" class="console-form-label">Textarea</label>
-                            <div>
-                                <textarea name="inputDesc" id="inputDesc"
-                                          class="console-form-input console-smooth"
-                                          ng-disabled="showPreview" ng-model="form.textarea"></textarea>
-                            </div>
-                        </div>
-
-                        <div class="console-form-group">
-                            <div layout="row" style="flex-wrap: wrap">
-                                <button class="console-btn-checkbox" ng-click="toggleCheck()">
-                                    <i class="material-icons" ng-hide="form.isChecked">check_box_outline_blank</i>
-                                    <i class="material-icons" ng-show="form.isChecked">check_box</i>
-                                    <span>Checkbox</span>
-                                </button>
-                            </div>
-                        </div>
-
-                    </form>
-                </div>
-                <div class="console-panel-footer" layout="row">
-                    <button class="console-btn console-btn-default" ng-click="cancel()">Cancel</button>
-                    <div flex></div>
-                    <button class="console-btn console-btn-primary" ng-click="save()">Save</button>
-                </div>
+            <div class="console-alert console-alert-dismissible console-alert-success">
+                <button class="console-close">
+                    <i class="material-icons">close</i>
+                </button>
+                Save successful!
             </div>
 
+            <div layout="column" class="console-panels">
+                <div class="console-panel console-panel-default" layout-margin="*" flex>
+                    <div class="console-panel-header" layout="row" layout-align="start center">
+                        <h4>Section Header</h4>
+                        <div flex></div>
+                    </div>
+                    <div class="console-panel-body" layout-width="50%">
+                        <form>
+
+                            <!-- :: Input field :: -->
+                            <div class="console-form-group">
+                                <label for="inputTitle" class="console-form-label">Input field</label>
+                                <div>
+                                    <input type="text" name="inputTitle" id="inputTitle" ng-disabled="form.id"
+                                           class="console-form-input console-smooth" ng-model="form.input">
+                                </div>
+                            </div>
+
+                            <!-- :: Dropdown :: -->
+                            <div class="console-form-group">
+                                <label for="inputStatus" class="console-form-label">Dropdown</label>
+                                <div class="console-form-select">
+                                    <select class="console-form-input" id="inputStatus" ng-model="form.selectedOption">
+                                        <option value="">Select option</option>
+                                        <option ng-value="option.value" ng-repeat="option in form.dropdownOptions">{{option.label}}</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <!-- :: Chosen Dropdown :: -->
+                            <div class="console-form-group">
+                                <label class="console-form-label">Chosen</label>
+                                <div layout="row">
+                                    <select flex
+                                            chosen
+                                            placeholder-text-multiple="'Choose an option...'"
+                                            disable-search="true"
+                                            allow-single-deselect="false"
+                                            ng-model="form.selectedOption">
+                                        <option value="">Select option</option>
+                                        <option ng-value="option.value" ng-repeat="option in form.dropdownOptions">{{option.label}}</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <!-- :: Textarea :: -->
+                            <div class="console-form-group">
+                                <label for="inputDesc" class="console-form-label">Textarea</label>
+                                <div>
+                                    <textarea name="inputDesc" id="inputDesc"
+                                              class="console-form-input console-smooth"
+                                              ng-disabled="showPreview" ng-model="form.textarea"></textarea>
+                                </div>
+                            </div>
+
+                            <div class="console-form-group">
+                                <div layout="row" style="flex-wrap: wrap">
+                                    <button class="console-btn-checkbox" ng-click="toggleCheck()">
+                                        <i class="material-icons" ng-hide="form.isChecked">check_box_outline_blank</i>
+                                        <i class="material-icons" ng-show="form.isChecked">check_box</i>
+                                        <span>Checkbox</span>
+                                    </button>
+                                </div>
+                            </div>
+
+                        </form>
+                    </div>
+                    <div class="console-panel-footer" layout="row">
+                        <button class="console-btn console-btn-default" ng-click="cancel()">Cancel</button>
+                        <div flex></div>
+                        <button class="console-btn console-btn-primary" ng-click="save()">Save</button>
+                    </div>
+                </div>
+
+            </div>
         </div>
+
+        <div flex></div>
+
+        <console-footer></console-footer>
     </div>
-
-    <div flex></div>
-
-    <console-footer></console-footer>
-</div>
+</page-transition>
