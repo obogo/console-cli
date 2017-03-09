@@ -23,6 +23,25 @@ module.exports = function (grunt, options) {
                     dest: 'build/',
                     filter: 'isFile'
                 },
+                "languages": {
+                    expand: true,
+                    flatten: false,
+                    cwd: 'languages',
+                    src: [
+                        '**/*.lang.json'
+                    ],
+                    dest: 'build/languages',
+                    filter: 'isFile'
+                },
+                // "bower": {
+                //     expand: true,
+                //     cwd: 'bower_components',
+                //     src: [
+                //         'angular-localization/angular-localization*.js'
+                //     ],
+                //     dest: 'build/vendor',
+                //     filter: 'isFile'
+                // },
                 "vendor": {
                     expand: true,
                     // flatten: true,

@@ -7,6 +7,9 @@ var module = angular.module('app', [
     'localytics.directives',
     'ngLetterAvatar'
 ]);
+module.run(function(LocaleService) {
+    // LocaleService auto loads.
+});
 
 angular.element(function() {
     angular.bootstrap(document, ['app']);

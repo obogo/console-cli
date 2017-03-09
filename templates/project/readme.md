@@ -52,3 +52,37 @@ https://ui-router.github.io/ng1/docs/latest/index.html
         }
     });
     
+#### Localization
+
+Usage:
+
+    <p>{{locale.myString}}</p>
+    
+Supplant Usage:
+
+    // in localization
+    "myString": "Hello, {name}"
+
+    <p>{{locale('myString', {name:'Fred'})}}</p>
+    // will output "Hello, Fred".
+    
+How to load different language:
+
+    LocaleService.load('en-US').then(function() {
+        console.log(LocaleService.language);
+    });
+    
+How to change the defaults.
+
+    var module = angular.module('app');
+    module
+        .value('localeConf', {
+            localStorageKey: 'language',
+            basePath: 'languages',
+            defaultLocale: 'en-US',
+            fileExtension: '.lang.json',
+            persistLanguage: true,
+            supported: ['en-US', 'es-SP'],
+            fallbacks: {'en': 'en-US', 'sp': 'es-SP'}
+        });
+        

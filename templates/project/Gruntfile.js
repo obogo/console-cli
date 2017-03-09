@@ -25,6 +25,8 @@ module.exports = function (grunt) {
         'ngAnnotate:console',
         'less:console',
         'copy:console',
+        'copy:languages',
+        // 'copy:bower',
         'compile:console'
     ]);
 

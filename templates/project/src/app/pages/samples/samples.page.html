@@ -1,6 +1,6 @@
 <div flex layout="column" page-transition>
     <div class="console-subheader">
-        <h4>Master List</h4>
+        <h4>{{locale('masterList')}}</h4>
         <div flex></div>
         <button class="console-btn console-btn-primary" ng-click="newPlayer()">New</button>
     </div>
@@ -65,9 +65,9 @@
                                 <td>
                                     <div layout="row" layout-spacing>
                                         <button class="console-btn console-btn-default"
-                                                ng-click="edit(listItem)">Edit</button>
+                                                ng-click="edit(listItem)">{{locale.edit}}</button>
                                         <button class="console-btn console-btn-default"
-                                                ng-click="open(listItem)">Open</button>
+                                                ng-click="open(listItem)">{{locale.open}}</button>
                                     </div>
                                 </td>
                             </tr>
