@@ -11,10 +11,11 @@ module
         fallbacks: {'en':'en-US','sp':'es-SP'}
     });
 module.factory('LocaleService', function ($q, $http, $rootScope, locale, localeConf) {
-    var language;
+    var loaded;
     function load(lang) {
         var deferred = $q.defer();
-        if (!language || lang !== language) {
+        if (lang && locale.$lang !== lang || !loaded) {
+            loaded = true;
             locale.$config = localeConf;
             locale.$lang = lang;
             $http.get(locale.$url)
@@ -34,7 +35,7 @@ module.factory('LocaleService', function ($q, $http, $rootScope, locale, localeC
         load: load // do it this way because it returns a promise for when it is loaded.
     };
     Object.defineProperty(api, 'language', {
-        get: function() { return language; },
+        get: function() { return locale.$lang; },
     });
     load();
     $rootScope.locale = locale;
