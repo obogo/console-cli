@@ -1,24 +1,24 @@
-<div class="console-modal console-modal-dark" role="dialog" layout-padding ng-show="dialog.show">
+<div class="console-modal console-modal-dark" role="dialog" layout-padding ng-show="$ctrl.dialog.show">
     <div class="console-modal-dialog animated-2x slideInDown" role="document">
         <div class="console-modal-content">
-            <div ng-show="dialog.options.title" class="console-modal-header">
-                <button type="button" class="console-modal-close" aria-label="Close" ng-click="close()">
+            <div ng-show="$ctrl.dialog.options.title" class="console-modal-header">
+                <button type="button" class="console-modal-close" aria-label="Close" ng-click="$ctrl.close()">
                     <i class="material-icons">close</i>
                 </button>
-                <h4 class="console-modal-title">{{dialog.options.title}}</h4>
+                <h4 class="console-modal-title">{{$ctrl.dialog.options.title}}</h4>
             </div>
             <div name="body" class="console-modal-body">
                 <!-- COMPONENT INSERTED HERE-->
             </div>
-            <div ng-show="dialog.options.footer" class="console-modal-footer" layout="row">
-                <button ng-show="dialog.options.footer.cancelLabel" type="button"
-                        class="console-btn console-btn-default" ng-click="close()">
-                    {{dialog.options.footer.cancelLabel}}
+            <div ng-show="$ctrl.dialog.options.footer" class="console-modal-footer" layout="row">
+                <button ng-show="$ctrl.dialog.options.footer.cancelLabel" type="button"
+                        class="console-btn console-btn-default" ng-click="$ctrl.close()">
+                    {{$ctrl.dialog.options.footer.cancelLabel}}
                 </button>
                 <div flex=""></div>
-                <button ng-show="dialog.options.footer.okLabel" type="button"
-                        class="console-btn console-btn-primary" ng-click="close(true)">
-                    {{dialog.options.footer.okLabel}}
+                <button ng-show="$ctrl.dialog.options.footer.okLabel" type="button"
+                        class="console-btn console-btn-primary" ng-click="$ctrl.close(true)">
+                    {{$ctrl.dialog.options.footer.okLabel}}
                 </button>
             </div>
         </div>

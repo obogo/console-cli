@@ -1,11 +1,8 @@
-module.directive('consoleSampleDialog', function (Dialog, resolve) {
-    return {
-        templateUrl: 'sample.dialog',
-        link: function ($scope, $el, $attrs) {
-            /*
-             $scope.time = Dialog.options.locals.time;
-             $scope.time = resolve(Dialog).get('optinos.locals.time');
-             */
-        }
-    };
+module.component('consoleSampleDialog', {
+    templateUrl: 'sample.dialog',
+    controller: function (Dialog) {
+        var ctrl = this;
+        var resolve = require('resolve');
+        ctrl.time = resolve(Dialog).get('options.locals.time') || 'Time now found';
+    }
 });

@@ -1,6 +1,6 @@
 <div flex layout="column" page-transition>
     <div class="console-subheader">
-        <h4>{{locale('masterList')}}</h4>
+        <h4>{{$ctrl.locale.masterList}}</h4>
         <div flex></div>
         <button class="console-btn console-btn-primary" ng-click="newPlayer()">New</button>
     </div>
@@ -15,12 +15,12 @@
                     <div class="console-form-select" ng-hide="assignTo">
                         <select class="console-form-input" id="inputStatus" ng-model="form.selectedOption">
                             <option value="" selected>Select an option...</option>
-                            <option ng-value="option.value" ng-repeat="option in form.dropdownOptions">{{option.label}}</option>
+                            <option ng-value="option.value" ng-repeat="option in $ctrl.form.dropdownOptions">{{option.label}}</option>
                         </select>
                     </div>
 
                     <!-- :: Organization Name :: -->
-                    <h4 ng-show="assignTo">Assign a player to {{org.name}}</h4>
+                    <h4 ng-show="assignTo">Assign a player to {{$ctrl.org.name}}</h4>
 
                     <div flex></div>
                 </div>
@@ -36,11 +36,11 @@
                         </div>
                     </div>
 
-                    <div ng-hide="form.list && form.list.length">
+                    <div ng-hide="$ctrl.form.list && $ctrl.form.list.length">
                         No items found.
                     </div>
 
-                    <div class="console-scrollable" ng-show="form.list && form.list.length">
+                    <div class="console-scrollable" ng-show="$ctrl.form.list && $ctrl.form.list.length">
                         <table class="console-table console-table-hover">
                             <thead>
                             <tr>
@@ -58,16 +58,16 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <tr ng-repeat="listItem in form.list">
+                            <tr ng-repeat="listItem in $ctrl.form.list">
                                 <td>{{listItem.firstName}}</td>
                                 <td>{{listItem.lastName}}</td>
                                 <td class="console-nowrap">{{listItem.email}}</td>
                                 <td>
                                     <div layout="row" layout-spacing>
                                         <button class="console-btn console-btn-default"
-                                                ng-click="edit(listItem)">{{locale.edit}}</button>
+                                                ng-click="edit(listItem)">{{$ctrl.locale.edit}}</button>
                                         <button class="console-btn console-btn-default"
-                                                ng-click="open(listItem)">{{locale.open}}</button>
+                                                ng-click="open(listItem)">{{$ctrl.locale.open}}</button>
                                     </div>
                                 </td>
                             </tr>

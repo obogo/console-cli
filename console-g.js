@@ -124,6 +124,10 @@ program.action(function (type, path, options) {
                 copyFiles(config.app, 'component', 'template.js', path);
                 break;
 
+            case 'directive':
+                copyFiles(config.app, 'directive', 'template.js', path);
+                break;
+
             case 'dialog':
                 name = path.split('/').pop();
                 copyFiles(config.app, 'dialog', 'template.html', path);

@@ -1,11 +1,7 @@
-module.directive('consoleMenu', function (Menu) {
-    return {
-        scope: true,
-        restrict: 'E',
-        templateUrl: 'menu',
-        replace: true,
-        link: function ($scope) {
-            $scope.menu = Menu;
-        }
-    };
+module.component('consoleMenu', {
+    templateUrl: 'menu',
+    controller: function (Menu) {
+        var ctrl = this;
+        ctrl.menu = Menu;
+    }
 });

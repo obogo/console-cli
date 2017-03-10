@@ -1,34 +1,31 @@
-module.directive('consoleDialog', function (Dialog, $templateCache, $compile) {
-    return {
-        scope: true,
-        restrict: 'E',
-        link: function ($scope, $el) {
+module.component('consoleDialog', {
+    controller: function ($scope, $element, Dialog, $templateCache, $compile) {
+        var ctrl = this;
+        var component, options, dialogEl, body, linkFn, content;
 
-            var component, options, dialogEl, body, linkFn, content;
-            $scope.dialog = Dialog;
-            $scope.$watch('dialog.show', function (val) {
-                if (val) {
-                    options = Dialog.options;
+        ctrl.close = function () {
+            component.$destroy();
+            $element.empty();
+            Dialog.close(true);
+        };
 
-                    dialogEl = angular.element($templateCache.get(options.template ? options.template : 'dialog'));
+        ctrl.dialog = Dialog;
 
-                    body = angular.element(dialogEl[0].querySelector('[name=body]'));
-                    body.append('<' + Dialog.options.component + '></' + Dialog.options.component + '>');
+        $scope.$watch('$ctrl.dialog.show', function (val) {
+            if (val) {
+                options = Dialog.options;
 
-                    linkFn = $compile(dialogEl[0].outerHTML);
-                    component = $scope.$new();
-                    content = linkFn(component);
+                dialogEl = angular.element($templateCache.get(options.template ? options.template : 'dialog'));
 
-                    $el.append(content);
-                }
-            });
+                body = angular.element(dialogEl[0].querySelector('[name=body]'));
+                body.append('<' + options.component + '></' + options.component + '>');
 
-            $scope.close = function () {
-                component.$destroy();
-                $el.empty();
-                Dialog.close(true);
-            };
+                linkFn = $compile(dialogEl[0].outerHTML);
+                component = $scope.$new();
+                content = linkFn(component);
 
-        }
-    };
+                $element.append(content);
+            }
+        });
+    }
 });

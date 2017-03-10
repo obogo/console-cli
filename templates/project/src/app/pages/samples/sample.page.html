@@ -6,7 +6,7 @@
         </div>
         <div class="console-spacer"></div>
         <div flex></div>
-        <button class="console-btn console-btn-primary" ng-click="save()">Save</button>
+        <button class="console-btn console-btn-primary" ng-click="$ctrl.save()">Save</button>
     </div>
 
     <div class="console-scrollable" flex layout="column">
@@ -32,8 +32,8 @@
                             <div class="console-form-group">
                                 <label for="inputTitle" class="console-form-label">Input field</label>
                                 <div>
-                                    <input type="text" name="inputTitle" id="inputTitle" ng-disabled="form.id"
-                                           class="console-form-input console-smooth" ng-model="form.input">
+                                    <input type="text" name="inputTitle" id="inputTitle" ng-disabled="$ctrl.form.id"
+                                           class="console-form-input console-smooth" ng-model="$ctrl.form.input">
                                 </div>
                             </div>
 
@@ -41,9 +41,9 @@
                             <div class="console-form-group">
                                 <label for="inputStatus" class="console-form-label">Dropdown</label>
                                 <div class="console-form-select">
-                                    <select class="console-form-input" id="inputStatus" ng-model="form.selectedOption">
+                                    <select class="console-form-input" id="inputStatus" ng-model="$ctrl.form.selectedOption">
                                         <option value="">Select option</option>
-                                        <option ng-value="option.value" ng-repeat="option in form.dropdownOptions">{{option.label}}</option>
+                                        <option ng-value="option.value" ng-repeat="option in $ctrl.form.dropdownOptions">{{option.label}}</option>
                                     </select>
                                 </div>
                             </div>
@@ -59,7 +59,7 @@
                                             allow-single-deselect="false"
                                             ng-model="form.selectedOption">
                                         <option value="">Select option</option>
-                                        <option ng-value="option.value" ng-repeat="option in form.dropdownOptions">{{option.label}}</option>
+                                        <option ng-value="option.value" ng-repeat="option in $ctrl.form.dropdownOptions">{{option.label}}</option>
                                     </select>
                                 </div>
                             </div>
@@ -70,15 +70,15 @@
                                 <div>
                                     <textarea name="inputDesc" id="inputDesc"
                                               class="console-form-input console-smooth"
-                                              ng-disabled="showPreview" ng-model="form.textarea"></textarea>
+                                              ng-disabled="$ctrl.showPreview" ng-model="$ctrl.form.textarea"></textarea>
                                 </div>
                             </div>
 
                             <div class="console-form-group">
                                 <div layout="row" style="flex-wrap: wrap">
-                                    <button class="console-btn-checkbox" ng-click="toggleCheck()">
-                                        <i class="material-icons" ng-hide="form.isChecked">check_box_outline_blank</i>
-                                        <i class="material-icons" ng-show="form.isChecked">check_box</i>
+                                    <button class="console-btn-checkbox" ng-click="$ctrl.toggleCheck()">
+                                        <i class="material-icons" ng-hide="$ctrl.form.isChecked">check_box_outline_blank</i>
+                                        <i class="material-icons" ng-show="$ctrl.form.isChecked">check_box</i>
                                         <span>Checkbox</span>
                                     </button>
                                 </div>
@@ -99,9 +99,9 @@
                         </form>
                     </div>
                     <div class="console-panel-footer" layout="row">
-                        <button class="console-btn console-btn-default" ng-click="cancel()">Cancel</button>
+                        <button class="console-btn console-btn-default" ng-click="$ctrl.cancel()">Cancel</button>
                         <div flex></div>
-                        <button class="console-btn console-btn-primary" ng-click="save()">Save</button>
+                        <button class="console-btn console-btn-primary" ng-click="$ctrl.save()">Save</button>
                     </div>
                 </div>
 

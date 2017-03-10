@@ -1,3 +1,6 @@
-module.controller('AboutCtrl', function ($scope, $stateParams) {
+module.component('aboutPage', {
+    templateUrl: 'about.page',
+    controller: function ($stateParams) {
 
+    }
 });

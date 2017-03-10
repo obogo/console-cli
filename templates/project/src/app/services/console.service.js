@@ -1,4 +1,5 @@
-define("servicesApi", ["rest.crudify", "http"], function (crudify, http) {
+/* global define */
+define("consoleService", ["rest.crudify", "http"], function (crudify, http) {
     var rest = {};
     var options = {
         baseUrl: 'https://mycompany.com/v1',

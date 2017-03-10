@@ -1,11 +1,6 @@
-module.directive('{prefix}{Name}', function () {
-    return {
-        scope: true,
-        restrict: 'E',
-        templateUrl: '{namesDash}',
-        replace: true,
-        link: function ($scope, $el, $attrs) {
-            // Component
-        }
-    };
+module.component('{prefix}{Name}', {
+    templateUrl: '{namesDash}',
+    controller: function () {
+        var ctrl = this;
+    }
 });

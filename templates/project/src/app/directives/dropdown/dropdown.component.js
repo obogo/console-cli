@@ -1,7 +1,5 @@
 module.directive('consoleDropdown', function () {
     return {
-        scope: true,
-        restrict: 'E',
         link: function ($scope, $el, $attrs) {
 
             var popupEl = $el[0].querySelector('[name=popup]');
@@ -9,7 +7,7 @@ module.directive('consoleDropdown', function () {
             function popupClickHandler(evt) {
                 evt.stopPropagation();
 
-                if($attrs.autoclose !== 'false') {
+                if ($attrs.autoclose !== 'false') {
                     $scope.close();
                 }
             }
@@ -32,21 +30,19 @@ module.directive('consoleDropdown', function () {
 
             $scope.open = function () {
                 $scope.show = true;
-                setTimeout(function(){
-                    $scope.$apply();
-                });
-
                 unsubscribeFromHitTest();
-                setTimeout(subscribeToHitTest)
+                setTimeout(subscribeToHitTest);
+                setTimeout(function () {
+                    $scope.$apply()
+                });
             };
 
             $scope.close = function () {
                 $scope.show = false;
-                setTimeout(function(){
-                    $scope.$apply();
-                });
-
                 unsubscribeFromHitTest();
+                setTimeout(function () {
+                    $scope.$apply()
+                });
             };
 
             $scope.toggle = function () {

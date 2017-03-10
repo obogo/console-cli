@@ -1,6 +1,6 @@
-<div ng-if="alert.show" class="console-alert console-alert-dismissible console-alert-{{alert.options.type}}">
-    <button class="console-close" ng-click="alert.close()" ng-if="alert.options.dismissible">
+<div ng-if="$ctrl.alert.show" class="console-alert console-alert-dismissible console-alert-{{$ctrl.alert.options.type}}">
+    <button class="console-close" ng-click="$ctrl.alert.close()" ng-if="$ctrl.alert.options.dismissible">
         <i class="material-icons">close</i>
     </button>
-    {{alert.options.message}}
+    {{$ctrl.alert.options.message}}
 </div>

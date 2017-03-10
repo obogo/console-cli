@@ -1,32 +1,35 @@
-module.controller('DashboardCtrl', function ($scope, Dialog, Menu, Alert) {
+module.component('dashboardPage', {
+    templateUrl: 'dashboard.page',
+    controller: function (Dialog, Menu, Alert) {
+        var ctrl = this;
+        ctrl.menu = Menu;
 
-    $scope.menu = Menu;
-
-    $scope.openDialog = function() {
-        Dialog.open({
-            title: "Sample",
-            footer: {
-                cancelLabel: 'Cancel',
-                okLabel: 'Save'
-            },
-            component: "console-sample-dialog",
-            locals: {
-                time: new Date()
-            },
-            close: function(save) {
-                if(save) {
-                    // save
-                } else {
-                    // cancel
+        ctrl.openDialog = function() {
+            Dialog.open({
+                title: "Sample",
+                footer: {
+                    cancelLabel: 'Cancel',
+                    okLabel: 'Save'
+                },
+                component: "console-sample-dialog",
+                locals: {
+                    time: new Date()
+                },
+                close: function(save) {
+                    if(save) {
+                        // save
+                    } else {
+                        // cancel
+                    }
                 }
-            }
-        });
-    };
+            });
+        };
 
-    $scope.showAlert = function() {
-        Alert.open({
-            dismissible: true,
-            message: 'Hello, world!'
-        })
-    };
+        ctrl.showAlert = function() {
+            Alert.open({
+                dismissible: true,
+                message: 'Hello, world!'
+            })
+        };
+    }
 });

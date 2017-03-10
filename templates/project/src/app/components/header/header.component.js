@@ -1,11 +1,7 @@
-module.directive('consoleHeader', function (Menu) {
-    return {
-        scope: true,
-        restrict: 'E',
-        templateUrl: 'header',
-        replace: true,
-        link: function ($scope, $el, $attrs) {
-            $scope.menu = Menu;
-        }
-    };
+module.component('consoleHeader', {
+    templateUrl: 'header',
+    controller: function (Menu) {
+        var ctrl = this;
+        ctrl.menu = Menu;
+    }
 });
