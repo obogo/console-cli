@@ -8,9 +8,20 @@ var module = angular.module('app', [
     'ngLetterAvatar'
 ]);
 module.run(function(LocaleService) {
-    // LocaleService auto loads.
+    // LocaleService just needs to run to setup rootScope.
 });
 
 angular.element(function() {
-    angular.bootstrap(document, ['app']);
+    require('localeService').config({
+            localStorageKey: 'language',
+            basePath: 'languages',
+            defaultLocale: 'en-US',
+            fileExtension: '.lang.json',
+            persistLanguage: true,
+            supported: ['en-US', 'es-SP'],
+            fallbacks: {'en':'en-US','sp':'es-SP'}
+        })
+        .load().then(function() {
+            angular.bootstrap(document, ['app']);
+        });
 });
