@@ -125,7 +125,7 @@ module.exports = function (grunt, options) {
                     },
                     files: {
                         'build/console/styles.css': [
-                            'src/styles/styles.less',
+                            'src/styles/**/styles.less',
                             'src/app/**/*.less'
                         ]
                     }

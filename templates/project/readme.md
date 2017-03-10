@@ -29,6 +29,10 @@ Generating an element is the same for elements by changing some options:
 Console uses ui-router to manage its routing. The API reference can be found here:
 https://ui-router.github.io/ng1/docs/latest/index.html
 
+We are using UI-Router 1.x
+
+https://ui-router.github.io/guide/ng1/migrate-to-1_0
+
 ### Prebuilt Components
 
 #### Creating a dialog

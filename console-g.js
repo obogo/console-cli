@@ -105,7 +105,7 @@ function updateRouting(config, name) {
     var routingFile = path.join('src', 'app', 'app.routing.js');
     fs.readFile(routingFile, 'utf8', function (err, file) {
         var filez = file.split('// %route-injection%');
-        filez[1] = ("\n    $stateProvider.state('{name}', {url: '/{name}', controller: '{Name}Ctrl', templateUrl: '{name}.page'});" + filez[1]).supplant(strings);
+        filez[1] = ("\n    $stateProvider.state('{name}', {url: '/{name}', component: '{name}Page'});" + filez[1]).supplant(strings);
         fs.writeFile(routingFile, filez.join('// %route-injection%'));
     });
 
@@ -150,6 +150,7 @@ program.action(function (type, path, options) {
                 copyFiles(config.app, 'page', 'template.html', path);
                 copyFiles(config.app, 'page', 'template.less', path);
                 copyFiles(config.app, 'page', 'template.js', path);
+                copyFiles(config.app, 'page', 'template.json', path);
                 updateRouting(config.app, name);
                 break;
 

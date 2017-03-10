@@ -1,0 +1,43 @@
+<div flex layout="column" page-transition>
+    <div class="console-subheader">
+        <div ui-sref="signin" class="console-btn console-btn-default">
+            <i class="material-icons">keyboard_arrow_left</i>
+            Sign In
+        </div>
+    </div>
+
+    <div class="console-scrollable" flex layout="column">
+        <div layout-padding class="console-page">
+            <div layout="column" class="console-panels">
+                <div class="console-panel console-panel-default">
+                    <div class="console-panel-body">
+                        <form>
+                            <!-- :: Email field :: -->
+                            <div class="console-form-group">
+                                <label for="inputEmail" class="console-form-label">Email</label>
+                                <div>
+                                    <input type="text" name="inputEmail" id="inputEmail"
+                                           class="console-form-input console-smooth" ng-model="$ctrl.form.username">
+                                </div>
+                            </div>
+
+                            <!-- :: Password field :: -->
+                            <div class="console-form-group">
+                                <label for="inputPassword" class="console-form-label">Password</label>
+                                <div>
+                                    <input type="password" name="inputPassword" id="inputPassword"
+                                           class="console-form-input console-smooth" ng-model="$ctrl.form.password">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="console-panel-footer" layout="row">
+                        <div flex></div>
+                        <button ui-sref="dashboard" class="console-btn console-btn-primary">Sign In</button>
+                        <!--<button ui-sref="signin" class="console-btn console-btn-primary" ng-click="$ctrl.signIn()">Sign In</button>-->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

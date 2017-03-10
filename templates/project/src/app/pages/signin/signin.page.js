@@ -1,5 +1,5 @@
-module.component('{name}Page', {
-    templateUrl: '{name}.page',
+module.component('signinPage', {
+    templateUrl: 'signin.page',
     controller: function ($stateParams, locale) {
         var ctrl = this;
         ctrl.locale = locale;

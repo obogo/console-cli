@@ -7,21 +7,23 @@ var module = angular.module('app', [
     'localytics.directives',
     'ngLetterAvatar'
 ]);
-module.run(function(LocaleService) {
-    // LocaleService just needs to run to setup rootScope.
+
+module.run(function ($trace) {
+    // $trace.enable('TRANSITION');
 });
 
-angular.element(function() {
-    require('localeService').config({
-            localStorageKey: 'language',
-            basePath: 'languages',
-            defaultLocale: 'en-US',
-            fileExtension: '.lang.json',
-            persistLanguage: true,
-            supported: ['en-US', 'es-SP'],
-            fallbacks: {'en':'en-US','sp':'es-SP'}
-        })
-        .load().then(function() {
-            angular.bootstrap(document, ['app']);
-        });
+// module.run(function($transitions) {
+//     $transitions.onStart({ }, function(trans) {
+//         console.log('#started');
+//     });
+//     $transitions.onSuccess({ }, function(trans) {
+//         console.log('#success', trans);
+//     });
+// });
+
+angular.element(function () {
+    require('localeService').config(appConfig.locale)
+        .load().then(function () {
+        angular.bootstrap(document, ['app']);
+    });
 });
