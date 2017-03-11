@@ -1,7 +1,13 @@
-<div flex layout="column" page-transition>
+<div name="signin" flex layout="column" page-transition>
     <div class="console-scrollable" flex layout="column">
-        <div layout-padding class="console-page">
-            <button ui-sref="login" class="console-btn console-btn-default">Login</button>
+        <div layout-padding flex class="console-page" layout="column">
+            <div flex layout="column" layout-align="center center">
+                <ng-letter-avatar data="{ProductName}"
+                                  width="128" height="128" fontSize="64" shape="round"
+                                  avatarcustombgcolor="#78909C"></ng-letter-avatar>
+                <h1>{ProductName}</h1>
+            </div>
+            <button ui-sref="login" class="console-btn console-btn-lg">Login with email</button>
         </div>
     </div>
 </div>

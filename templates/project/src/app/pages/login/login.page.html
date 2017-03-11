@@ -9,7 +9,7 @@
     <div class="console-scrollable" flex layout="column">
         <div layout-padding class="console-page">
             <div layout="column" class="console-panels">
-                <div class="console-panel console-panel-default">
+                <div class="console-panel">
                     <div class="console-panel-body">
                         <form>
                             <!-- :: Email field :: -->
@@ -32,9 +32,7 @@
                         </form>
                     </div>
                     <div class="console-panel-footer" layout="row">
-                        <div flex></div>
-                        <button ui-sref="dashboard" class="console-btn console-btn-primary">Sign In</button>
-                        <!--<button ui-sref="signin" class="console-btn console-btn-primary" ng-click="$ctrl.signIn()">Sign In</button>-->
+                        <button flex class="console-btn console-btn-lg console-btn-primary" ng-click="$ctrl.signIn()">Sign In</button>
                     </div>
                 </div>
             </div>
