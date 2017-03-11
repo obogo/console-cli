@@ -20,12 +20,10 @@ angular.element(function () {
         credentials: true,
         success: function(response) {
             appConfig.sso = response.data;
-            if(appConfig.sso.accessToken) {
-                require('localeService').config(appConfig.locale)
-                    .load().then(function () {
-                    angular.bootstrap(document, ['app']);
-                });
-            }
+            require('localeService').config(appConfig.locale)
+                .load().then(function () {
+                angular.bootstrap(document, ['app']);
+            });
         },
         error: function() {
             require('localeService').config(appConfig.locale)

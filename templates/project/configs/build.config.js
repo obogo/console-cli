@@ -158,10 +158,11 @@ module.exports = function (grunt, options) {
                 }
             },
             localizer: {
-                console: {
+                console_build: {
                     lang: 'en-US',
                     files: 'src/app/**/*.json',
                     dest: 'build/languages/',
+                    log: 'logs/language.report.json',
                     usage: ['src/app/**/*.js', 'src/app/**/*.html', 'src/index.html', 'src/index-cdn.html']
                 }
             }

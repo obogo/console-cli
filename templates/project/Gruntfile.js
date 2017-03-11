@@ -28,7 +28,8 @@ module.exports = function (grunt) {
         'less:console_build',
         'copy:console_build',
         'copy:languages_build',
-        'compile:console_build'
+        'compile:console_build',
+        'localizer:console_build'
     ]);
 
     grunt.registerTask('dev_vendor', [
@@ -43,7 +44,8 @@ module.exports = function (grunt) {
         'less:console_dist',
         'copy:console_dist',
         'copy:languages_dist',
-        'compile:console_dist'
+        'compile:console_dist',
+        'localizer:console_dist'
     ]);
 
     grunt.registerTask('prod_vendor', [

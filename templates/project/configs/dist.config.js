@@ -166,6 +166,13 @@ module.exports = function (grunt, options) {
                         }
                     }
                 }
+            },
+            localizer: {
+                console_dist: {
+                    lang: 'en-US',
+                    files: 'src/app/**/*.json',
+                    dest: 'prod/languages/'
+                }
             }
         }
     };
