@@ -14,7 +14,8 @@ module.component('loginPage', {
 
             ApiService.login(ctrl.form, {
                 product: AppConfig.hive.product,
-                provider: AppConfig.hive.provider
+                provider: AppConfig.hive.provider,
+                redirect: location.href
             }).then(function (response) {
                 $state.go('dashboard');
             }, function () {

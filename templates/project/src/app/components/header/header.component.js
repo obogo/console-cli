@@ -7,10 +7,10 @@ module.component('consoleHeader', {
 
         $transitions.onStart({}, function (trans) {
             ctrl.state = trans.targetState().state().data || {};
-            $attrs.$addClass('animated-2x slideInDown');
-            setTimeout(function () {
-                $attrs.$removeClass('animated-2x slideInDown');
-            }, 500);
+            // $attrs.$addClass('animated-2x slideInDown');
+            // setTimeout(function () {
+            //     $attrs.$removeClass('animated-2x slideInDown');
+            // }, 500);
         });
 
         $transitions.onFinish({}, function (trans) {

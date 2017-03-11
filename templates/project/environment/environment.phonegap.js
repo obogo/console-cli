@@ -1,6 +1,6 @@
 (function () {
     window.appConfig = {
-        isPhoneGap: true,
+        isNative: true,
         hive: {
             baseUrl: 'http://localhost:5010/v1',
             product: "579e2b3b5339c2768234a699",

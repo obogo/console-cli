@@ -1,4 +1,4 @@
-module.factory('ApiService', function(AppConfig) {
+module.factory('ApiService', function (AppConfig) {
     var crudify = require('rest.crudify');
     var http = require('http');
     var api = {};
@@ -17,15 +17,24 @@ module.factory('ApiService', function(AppConfig) {
             methods: {
                 login: {
                     type: "POST",
-                    url: AppConfig.hive.baseUrl + "/login"
+                    url: AppConfig.hive.baseUrl + "/login",
+                    options: {
+                        withCredentials: true
+                    }
                 },
                 logout: {
                     type: "POST",
-                    url: AppConfig.hive.baseUrl + "/logout"
+                    url: AppConfig.hive.baseUrl + "/logout",
+                    options: {
+                        withCredentials: true
+                    }
                 },
                 signup: {
                     type: "GET",
-                    url: AppConfig.hive.baseUrl + "/signup"
+                    url: AppConfig.hive.baseUrl + "/signup",
+                    options: {
+                        withCredentials: true
+                    }
                 },
                 getIP: {
                     type: "GET",
