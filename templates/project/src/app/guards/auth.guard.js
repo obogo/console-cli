@@ -6,12 +6,13 @@ module.factory('authGuard', function AuthGuardProvider() {
             deferred.resolve();
         } else {
             deferred.reject();
-            if (AppConfig.isPhoneGap) {
+            if (AppConfig.isNative) {
                 $state.go('landing');
             } else {
                 location.href = supplant(AppConfig.hive.redirectUrl, {
                     provider: AppConfig.hive.provider,
-                    product: AppConfig.hive.product
+                    product: AppConfig.hive.product,
+                    redirect: location.href
                 });
             }
         }

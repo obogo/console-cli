@@ -1,10 +1,8 @@
 /* global angular, module */
-module.directive('app', function (Menu) {
-    return {
-        templateUrl: 'app',
-        replace: true,
-        link: function ($scope, $el, $attrs) {
-            $scope.menu = Menu;
-        }
-    };
+module.component('consoleApp', {
+    templateUrl: 'app',
+    controllerAs: 'app',
+    controller: function (Menu) {
+        this.menu = Menu;
+    }
 });
