@@ -5,7 +5,7 @@ module.component('consoleMenu', {
         ctrl.menu = Menu;
 
         $transitions.onCreate({ }, function(trans) {
-            ctrl.state = trans.targetState().state().data;
+            ctrl.state = trans.targetState().state().data || {};
             if(ctrl.state.hideMenu) {
                 $attrs.$addClass('menu-hide');
             } else {

@@ -1,10 +1,10 @@
 (function () {
     window.appConfig = {
+        isPhoneGap: true,
         hive: {
             baseUrl: 'http://localhost:5010/v1',
             product: "579e2b3b5339c2768234a699",
-            provider: "579e2b3b5339c2768234a626",
-            redirectUrl: 'http://localhost:5010/login?provider={provider}&product={product}'
+            provider: "579e2b3b5339c2768234a626"
         },
         services: {
             baseUrl: 'http://localhost/api',

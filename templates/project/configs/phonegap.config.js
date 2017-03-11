@@ -11,7 +11,7 @@ module.exports = function (grunt, options) {
                         'index.html',
                         'vendor/**/*'
                     ],
-                    dest: 'dist/',
+                    dest: 'phonegap/',
                     filter: 'isFile'
                 },
                 "languages": {
@@ -21,7 +21,7 @@ module.exports = function (grunt, options) {
                     src: [
                         '**/*.lang.json'
                     ],
-                    dest: 'dist/languages',
+                    dest: 'phonegap/languages',
                     filter: 'isFile'
                 },
                 // "bower": {
@@ -30,7 +30,7 @@ module.exports = function (grunt, options) {
                 //     src: [
                 //         'angular-localization/angular-localization*.js'
                 //     ],
-                //     dest: 'dist/vendor',
+                //     dest: 'phonegap/vendor',
                 //     filter: 'isFile'
                 // },
                 "vendor": {
@@ -41,7 +41,7 @@ module.exports = function (grunt, options) {
                         'require-lite/*.js',
                         'fonts/*'
                     ],
-                    dest: 'dist/vendor',
+                    dest: 'phonegap/vendor',
                     filter: 'isFile'
                 },
                 "node_modules": {
@@ -57,17 +57,17 @@ module.exports = function (grunt, options) {
                         'angular-ui-router-anim-in-out/css/anim-in-out.css',
                         'angular-ui-router-anim-in-out/anim-in-out.js',
                         'chosen-js/*',
-                        'jquery/dist/*',
+                        'jquery/phonegap/*',
                         'angular/angular*.js',
                         'angular-animate/angular*.js',
                         'angular-sanitize/angular*.js',
                         'angular-ui-router/release/angular*.js',
-                        'angular-chosen-localytics/dist/*',
-                        'ngletteravatar/dist/*',
+                        'angular-chosen-localytics/phonegap/*',
+                        'ngletteravatar/phonegap/*',
                         'offline-js/offline*.js',
                         'offline-js/themes/*'
                     ],
-                    dest: 'dist/vendor',
+                    dest: 'phonegap/vendor',
                     filter: 'isFile'
                 }
             },
@@ -75,7 +75,7 @@ module.exports = function (grunt, options) {
                 "console": {
                     cwd: 'src',
                     src: '**/*.html',
-                    dest: 'dist/assets/console-templates.js',
+                    dest: 'phonegap/assets/console-templates.js',
                     options: {
                         module: 'consoleTemplates',
                         quotes: 'single',
@@ -102,7 +102,7 @@ module.exports = function (grunt, options) {
                 "console": {
                     options: {},
                     files: {
-                        "dist/assets/console.js": [
+                        "phonegap/assets/console.js": [
                             "environment/environment.js",
                             "src/app/app.bootstrap.js",
                             "src/app/**/*.js"
@@ -112,7 +112,7 @@ module.exports = function (grunt, options) {
                 "console-dev": {
                     options: {},
                     files: {
-                        "dist/assets/console.js": [
+                        "phonegap/assets/console.js": [
                             "environment/environment.dev.js",
                             "src/app/app.bootstrap.js",
                             "src/app/**/*.js"
@@ -122,7 +122,7 @@ module.exports = function (grunt, options) {
                 "console-prod": {
                     options: {},
                     files: {
-                        "dist/assets/console.js": [
+                        "phonegap/assets/console.js": [
                             "environment/environment.prod.js",
                             "src/app/app.bootstrap.js",
                             "src/app/**/*.js"
@@ -136,7 +136,7 @@ module.exports = function (grunt, options) {
                         strictImports: true
                     },
                     files: {
-                        'dist/assets/styles.css': [
+                        'phonegap/assets/styles.css': [
                             'src/styles/**/styles.less',
                             'src/app/**/*.less'
                         ]
@@ -148,7 +148,7 @@ module.exports = function (grunt, options) {
                     wrap: 'consoleUtils', // this is your global namespace
                     name: "consoleUtils",
                     filename: 'console-utils',
-                    build: 'dist/assets',
+                    build: 'phonegap/assets',
                     scripts: {
                         embedRequire: false,
                         ignorePatterns: true,

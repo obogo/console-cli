@@ -41,7 +41,5 @@ module.factory('ApiService', function(AppConfig) {
         crudify(api, resources[i], options);
     }
 
-    exports.services = api;
-
     return api;
 });

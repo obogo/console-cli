@@ -26,7 +26,14 @@
       height: 100%;
     }
   }
+
+  .menu-hide + .anim-in-out {
+    &.anim-in, &.anim-out {
+      width: 100%;
+    }
+  }
 }
+
 // mobile
 @media only screen and (max-width: @mobile-view-size) {
   .anim-in-out {

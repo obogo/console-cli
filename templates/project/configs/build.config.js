@@ -75,7 +75,7 @@ module.exports = function (grunt, options) {
                 "console_build": {
                     cwd: 'src',
                     src: '**/*.html',
-                    dest: 'build/console/console-templates.js',
+                    dest: 'build/assets/console-templates.js',
                     options: {
                         module: 'consoleTemplates',
                         quotes: 'single',
@@ -102,7 +102,7 @@ module.exports = function (grunt, options) {
                 "console_build": {
                     options: {},
                     files: {
-                        "build/console/console.js": [
+                        "build/assets/console.js": [
                             "environment/environment.js",
                             "src/app/app.bootstrap.js",
                             "src/app/**/*.js"
@@ -112,7 +112,7 @@ module.exports = function (grunt, options) {
                 "console_dev": {
                     options: {},
                     files: {
-                        "build/console/console.js": [
+                        "build/assets/console.js": [
                             "environment/environment.dev.js",
                             "src/app/app.bootstrap.js",
                             "src/app/**/*.js"
@@ -126,7 +126,7 @@ module.exports = function (grunt, options) {
                         strictImports: true
                     },
                     files: {
-                        'build/console/styles.css': [
+                        'build/assets/styles.css': [
                             'src/styles/**/styles.less',
                             'src/app/**/*.less'
                         ]
@@ -138,7 +138,7 @@ module.exports = function (grunt, options) {
                     wrap: 'consoleUtils', // this is your global namespace
                     name: "consoleUtils",
                     filename: 'console-utils',
-                    build: 'build/console',
+                    build: 'build/assets',
                     scripts: {
                         embedRequire: false,
                         ignorePatterns: true,

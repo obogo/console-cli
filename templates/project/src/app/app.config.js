@@ -1,3 +1,1 @@
-module.factory('AppConfig', function() {
-    return window.appConfig;
-});
+module.value('AppConfig', window.appConfig);

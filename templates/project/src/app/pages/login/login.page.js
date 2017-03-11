@@ -1,6 +1,6 @@
 module.component('loginPage', {
     templateUrl: 'login.page',
-    controller: function ($state, $stateParams, locale) {
+    controller: function ($rootScope, $state, $stateParams, locale, Alert, ApiService, AppConfig) {
         var ctrl = this;
 
         ctrl.form = {
@@ -9,8 +9,21 @@ module.component('loginPage', {
         };
         ctrl.locale = locale;
 
-        ctrl.signIn = function() {
-            console.log('#whois', ctrl.form);
+        ctrl.login = function () {
+            Alert.close();
+
+            ApiService.login(ctrl.form, {
+                product: AppConfig.hive.product,
+                provider: AppConfig.hive.provider
+            }).then(function (response) {
+                $state.go('dashboard');
+            }, function () {
+                Alert.open({
+                    dismissible: false,
+                    type: 'danger',
+                    message: 'Invalid credentials. Please try again.'
+                });
+            });
         }
     }
 });

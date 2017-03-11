@@ -1,10 +1,12 @@
 <div flex layout="column" page-transition>
     <div class="console-subheader">
-        <div ui-sref="signin" class="console-btn console-btn-default">
+        <div ui-sref="landing" class="console-btn console-btn-default">
             <i class="material-icons">keyboard_arrow_left</i>
             Sign In
         </div>
     </div>
+
+    <console-alert></console-alert>
 
     <div class="console-scrollable" flex layout="column">
         <div layout-padding class="console-page">
@@ -32,7 +34,7 @@
                         </form>
                     </div>
                     <div class="console-panel-footer" layout="row">
-                        <button flex class="console-btn console-btn-lg console-btn-primary" ng-click="$ctrl.signIn()">Sign In</button>
+                        <button flex class="console-btn console-btn-lg console-btn-primary" ng-click="$ctrl.login()">Sign In</button>
                     </div>
                 </div>
             </div>

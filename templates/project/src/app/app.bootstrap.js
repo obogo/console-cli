@@ -9,21 +9,29 @@ var module = angular.module('app', [
 ]);
 
 module.run(function ($trace) {
+    // to see the transition statements in ui-router
     // $trace.enable('TRANSITION');
 });
 
-// module.run(function($transitions) {
-//     $transitions.onStart({ }, function(trans) {
-//         console.log('#started');
-//     });
-//     $transitions.onSuccess({ }, function(trans) {
-//         console.log('#success', trans);
-//     });
-// });
-
 angular.element(function () {
-    require('localeService').config(appConfig.locale)
-        .load().then(function () {
-        angular.bootstrap(document, ['app']);
+    var http = require('http');
+    http.get({
+        url: appConfig.hive.baseUrl + '/sso?provider=' + appConfig.hive.provider + '&product=' + appConfig.hive.product,
+        credentials: true,
+        success: function(response) {
+            appConfig.sso = response.data;
+            if(appConfig.sso.accessToken) {
+                require('localeService').config(appConfig.locale)
+                    .load().then(function () {
+                    angular.bootstrap(document, ['app']);
+                });
+            }
+        },
+        error: function() {
+            require('localeService').config(appConfig.locale)
+                .load().then(function () {
+                angular.bootstrap(document, ['app']);
+            });
+        }
     });
 });
