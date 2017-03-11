@@ -13,7 +13,12 @@ module.run(function ($trace) {
     // $trace.enable('TRANSITION');
 });
 
-angular.element(function () {
+angular.element(function (el) {
+
+    if(appConfig.isNative) {
+        document.body.setAttribute('is-native', true);
+    }
+
     var http = require('http');
     http.get({
         url: appConfig.hive.baseUrl + '/sso?provider=' + appConfig.hive.provider + '&product=' + appConfig.hive.product,

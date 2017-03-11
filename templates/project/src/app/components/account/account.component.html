@@ -11,17 +11,17 @@
                 <div style="font-weight: bold;">{{$ctrl.user.profile.displayName}}</div>
                 <div style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;width: 150px">{{$ctrl.user.username}}</div>
                 <div style="height: 15px;"></div>
-                <a class="panel-popup--primary-btn" ng-click="$ctrl.gotoMyHiveAccount()">My Account</a>
+                <a class="panel-popup--primary-btn console-native-hide" ng-click="$ctrl.gotoMyHiveAccount()">My Account</a>
             </div>
         </div>
         <div class="mdl-divider"></div>
         <div layout="row" style="padding: 10px;background: #f5f5f5">
-            <a class="panel-popup--secondary-btn disabled">Add account</a>
+            <a class="panel-popup--secondary-btn disabled console-native-hide">Add account</a>
             <div flex></div>
             <a class="panel-popup--secondary-btn" ng-click="$ctrl.logout()">Sign out</a>
         </div>
         <div class="mdl-divider"></div>
-        <div style="color: #999999;padding: 10px;background: #f5f5f5;text-align: center;box-sizing: border-box">
+        <div class="console-native-hide" style="color: #999999;padding: 10px;background: #f5f5f5;text-align: center;box-sizing: border-box">
             Managed by AccountHive
         </div>
     </div>
