@@ -1,13 +1,11 @@
 {
-  "Welcome": "",
   "sample": {
-    "message": "",
-    "message1": "",
     "Sample": "Muestra",
     "SectionHeader": "Encabezado de sección",
     "SectionOption": "Seleccionar opción",
     "Chosen": "Elegido",
-    "Textarea": "Área de texto"
+    "Textarea": "Área de texto",
+    "Switch": "Cambiar"
   },
   "samples": {
     "masterList": "Lista maestra",
