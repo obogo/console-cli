@@ -1,8 +1,9 @@
 module.component('consoleHeader', {
     templateUrl: 'header',
-    controller: function ($transitions, $state, Menu, $attrs) {
+    controller: function ($transitions, $state, $attrs, Menu, sso) {
         var ctrl = this;
         ctrl.menu = Menu;
+        ctrl.user = sso.user;
 
         $transitions.onStart({}, function (trans) {
             ctrl.state = trans.targetState().state().data || {};
