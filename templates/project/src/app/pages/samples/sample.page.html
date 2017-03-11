@@ -2,7 +2,7 @@
     <div class="console-subheader">
         <div ui-sref="samples" class="console-btn console-btn-default">
             <i class="material-icons">keyboard_arrow_left</i>
-            Samples
+            {{$ctrl.locale.sample.Sample}}
         </div>
         <div class="console-spacer"></div>
         <div flex></div>
@@ -22,7 +22,7 @@
             <div layout="column" class="console-panels">
                 <div class="console-panel console-panel-default" layout-margin="*" flex>
                     <div class="console-panel-header" layout="row" layout-align="start center">
-                        <h4>Section Header</h4>
+                        <h4>{{$ctrl.locale.sample.SectionHeader}}</h4>
                         <div flex></div>
                     </div>
                     <div class="console-panel-body" layout-width="50%">
@@ -42,7 +42,7 @@
                                 <label for="inputStatus" class="console-form-label">Dropdown</label>
                                 <div class="console-form-select">
                                     <select class="console-form-input" id="inputStatus" ng-model="$ctrl.form.selectedOption">
-                                        <option value="">Select option</option>
+                                        <option value="">{{$ctrl.locale.sample.SectionOption}}</option>
                                         <option ng-value="option.value" ng-repeat="option in $ctrl.form.dropdownOptions">{{option.label}}</option>
                                     </select>
                                 </div>
@@ -50,7 +50,7 @@
 
                             <!-- :: Chosen Dropdown :: -->
                             <div class="console-form-group">
-                                <label class="console-form-label">Chosen</label>
+                                <label class="console-form-label">{{$ctrl.locale.sample.Chosen}}</label>
                                 <div layout="row">
                                     <select flex
                                             chosen
@@ -66,7 +66,7 @@
 
                             <!-- :: Textarea :: -->
                             <div class="console-form-group">
-                                <label for="inputDesc" class="console-form-label">Textarea</label>
+                                <label for="inputDesc" class="console-form-label">{{$ctrl.locale.sample.Textarea}}</label>
                                 <div>
                                     <textarea name="inputDesc" id="inputDesc"
                                               class="console-form-input console-smooth"

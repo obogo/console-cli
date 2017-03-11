@@ -1,5 +1,7 @@
 {
   "samples": {
-    "masterList": "Master List"
+    "masterList": "Master List",
+    "edit": "Edit",
+    "open": "Open"
   }
 }
