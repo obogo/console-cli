@@ -1,27 +1,11 @@
 /* global angular, hive */
-module.config(function ($stateProvider, $urlRouterProvider) {
+module.config(function ($stateProvider, $urlRouterProvider, authGuardProvider) {
 
     var supplant = require('supplant');
 
     // Used to check auth, other things before going to state
-    var guard = {
-        auth: function ($q, $state, AppConfig) {
-            var deferred = $q.defer();
-            if (AppConfig.sso.accessToken) {
-                deferred.resolve();
-            } else {
-                deferred.reject();
-                if(AppConfig.isPhoneGap) {
-                    $state.go('landing');
-                } else {
-                    location.href = AppConfig.hive.redirectUrl.supplant({
-                        provider: AppConfig.hive.provider,
-                        product: AppConfig.hive.product
-                    });
-                }
-            }
-            return deferred.promise;
-        }
+    var guards = {
+        auth: authGuardProvider.$get()
     };
 
     // For any unmatched url, redirect to /state1
@@ -51,10 +35,10 @@ module.config(function ($stateProvider, $urlRouterProvider) {
             hideMenu: true
         }
     });
-    $stateProvider.state('dashboard', {url: '/', component: 'dashboardPage', resolve: guard});
-    $stateProvider.state('about', {url: '/about', component: "aboutPage", resolve: guard});
+    $stateProvider.state('dashboard', {url: '/', component: 'dashboardPage', resolve: guards});
+    $stateProvider.state('about', {url: '/about', component: "aboutPage", resolve: guards});
     $stateProvider.state('samples', {
-        url: '/samples', component: 'samplesPage', resolve: guard,
+        url: '/samples', component: 'samplesPage', resolve: guards,
         data: {
             transTo: {
                 sample: 'anim-slide-left'
@@ -62,7 +46,7 @@ module.config(function ($stateProvider, $urlRouterProvider) {
         }
     });
     $stateProvider.state('sample', {
-        url: '/samples/:id', component: 'samplePage', resolve: guard,
+        url: '/samples/:id', component: 'samplePage', resolve: guards,
         data: {
             transTo: {
                 samples: 'anim-slide-right'
