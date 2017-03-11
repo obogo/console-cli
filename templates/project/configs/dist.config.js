@@ -2,15 +2,6 @@
 module.exports = function (grunt, options) {
     return {
         tasks: {
-            watch: {
-                scripts: {
-                    files: ['src/**/*'],
-                    tasks: ['console', 'services'], // only these so we are not copying over a bunch of deps each time
-                    options: {
-                        livereload: true
-                    }
-                }
-            },
             copy: {
                 "console": {
                     expand: true,
@@ -20,7 +11,7 @@ module.exports = function (grunt, options) {
                         'index.html',
                         'vendor/**/*'
                     ],
-                    dest: 'build/',
+                    dest: 'dist/',
                     filter: 'isFile'
                 },
                 "languages": {
@@ -30,7 +21,7 @@ module.exports = function (grunt, options) {
                     src: [
                         '**/*.lang.json'
                     ],
-                    dest: 'build/languages',
+                    dest: 'dist/languages',
                     filter: 'isFile'
                 },
                 // "bower": {
@@ -39,7 +30,7 @@ module.exports = function (grunt, options) {
                 //     src: [
                 //         'angular-localization/angular-localization*.js'
                 //     ],
-                //     dest: 'build/vendor',
+                //     dest: 'dist/vendor',
                 //     filter: 'isFile'
                 // },
                 "vendor": {
@@ -50,7 +41,7 @@ module.exports = function (grunt, options) {
                         'require-lite/*.js',
                         'fonts/*'
                     ],
-                    dest: 'build/vendor',
+                    dest: 'dist/vendor',
                     filter: 'isFile'
                 },
                 "node_modules": {
@@ -76,7 +67,7 @@ module.exports = function (grunt, options) {
                         'offline-js/offline*.js',
                         'offline-js/themes/*'
                     ],
-                    dest: 'build/vendor',
+                    dest: 'dist/vendor',
                     filter: 'isFile'
                 }
             },
@@ -84,7 +75,7 @@ module.exports = function (grunt, options) {
                 "console": {
                     cwd: 'src',
                     src: '**/*.html',
-                    dest: 'build/console/console-templates.js',
+                    dest: 'dist/console/console-templates.js',
                     options: {
                         module: 'consoleTemplates',
                         quotes: 'single',
@@ -111,7 +102,28 @@ module.exports = function (grunt, options) {
                 "console": {
                     options: {},
                     files: {
-                        "build/console/console.js": [
+                        "dist/console/console.js": [
+                            "environment/environment.js",
+                            "src/app/app.bootstrap.js",
+                            "src/app/**/*.js"
+                        ]
+                    }
+                },
+                "console-dev": {
+                    options: {},
+                    files: {
+                        "dist/console/console.js": [
+                            "environment/environment.dev.js",
+                            "src/app/app.bootstrap.js",
+                            "src/app/**/*.js"
+                        ]
+                    }
+                },
+                "console-prod": {
+                    options: {},
+                    files: {
+                        "dist/console/console.js": [
+                            "environment/environment.prod.js",
                             "src/app/app.bootstrap.js",
                             "src/app/**/*.js"
                         ]
@@ -124,7 +136,7 @@ module.exports = function (grunt, options) {
                         strictImports: true
                     },
                     files: {
-                        'build/console/styles.css': [
+                        'dist/console/styles.css': [
                             'src/styles/**/styles.less',
                             'src/app/**/*.less'
                         ]
@@ -136,15 +148,15 @@ module.exports = function (grunt, options) {
                     wrap: 'consoleUtils', // this is your global namespace
                     name: "consoleUtils",
                     filename: 'console-utils',
-                    build: 'build/console',
+                    build: 'dist/console',
                     scripts: {
                         embedRequire: false,
                         ignorePatterns: true,
                         inspect: ['src/app/**/**.js'],
-                        src: ['src/app/**/*.js'], // search through all JS file in src src directory
+                        src: ['src/app/**/*.js'], // search through all JS file in specified directories
                         import: [], // what files should we import and compile
                         export: [''], // hide all from view
-                        report: 'verbose',
+                        report: false,
                         match: function(searchText) {
                             var matches = [];
                             searchText.replace(/(^|\s)require\((\"|\')(.*?)\2\)/g, function(m, g1, g2, g3) {

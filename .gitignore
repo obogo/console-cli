@@ -1,3 +1,4 @@
 node_modules
 test
-build
+templates/project/build
+templates/project/dist

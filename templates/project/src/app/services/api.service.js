@@ -1,10 +1,12 @@
-/* global define */
-define("consoleService", ["rest.crudify", "http"], function (crudify, http) {
-    var rest = {};
+module.factory('ApiService', function(AppConfig) {
+    var crudify = require('rest.crudify');
+    var http = require('http');
+    var api = {};
+
     var options = {
-        baseUrl: 'https://mycompany.com/v1',
-        withCredentials: false,
-        useGETPOSTonly: false
+        baseUrl: AppConfig.services.baseUrl,
+        withCredentials: AppConfig.services.withCredentials,
+        useGETPOSTonly: AppConfig.services.useGETPOSTOnly
     };
 
     // http.defaults.headers["Content-Type"] = "application/json;charset=UTF-8";
@@ -15,15 +17,15 @@ define("consoleService", ["rest.crudify", "http"], function (crudify, http) {
             methods: {
                 login: {
                     type: "POST",
-                    url: "/login"
+                    url: AppConfig.hive.baseUrl + "/login"
                 },
                 logout: {
                     type: "POST",
-                    url: "/logout"
+                    url: AppConfig.hive.baseUrl + "/logout"
                 },
-                getUser: {
+                signup: {
                     type: "GET",
-                    url: "/user"
+                    url: AppConfig.hive.baseUrl + "/signup"
                 },
                 getIP: {
                     type: "GET",
@@ -31,17 +33,15 @@ define("consoleService", ["rest.crudify", "http"], function (crudify, http) {
                 }
             }
         },
-        {name: "accounts"},
-        {name: "orgs"},
-        {name: "projects"},
+        {name: "example"},
         {name: 'samples', 'uri': "orgs/:orgId/samples"}
     ];
 
     for (var i = 0; i < resources.length; i += 1) {
-        crudify(rest, resources[i], options);
+        crudify(api, resources[i], options);
     }
 
-    exports.services = rest;
+    exports.services = api;
 
-    return rest;
+    return api;
 });

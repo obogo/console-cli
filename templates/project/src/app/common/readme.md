@@ -1,1 +1,0 @@
-This is common utility items are stored.

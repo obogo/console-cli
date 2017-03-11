@@ -18,24 +18,35 @@ module.exports = function (grunt) {
     grunt.initConfig(configs);
 
     grunt.loadNpmTasks('grunt-contrib-watch');
-    grunt.registerTask('default', ['console', 'services', 'deps']);
+    grunt.registerTask('default', ['dev', 'dev_vendor']);
 
-    grunt.registerTask('console', [
-        'ngtemplates:console',
-        'ngAnnotate:console',
-        'less:console',
-        'copy:console',
-        'copy:languages',
-        // 'copy:bower',
-        'compile:console'
+    // :: Development Build :: //
+    grunt.registerTask('dev', [
+        'ngtemplates:console_build',
+        'ngAnnotate:console_dev',
+        'less:console_build',
+        'copy:console_build',
+        'copy:languages_build',
+        'compile:console_build'
     ]);
 
-    grunt.registerTask('services', [
-        'compile:services'
+    grunt.registerTask('dev_vendor', [
+        'copy:vendor_build',
+        'copy:node_modules_build'
     ]);
 
-    grunt.registerTask('deps', [
-        'copy:vendor',
-        'copy:node_modules'
+    // :: Production Build :: //
+    grunt.registerTask('prod', [
+        'ngtemplates:console_dist',
+        'ngAnnotate:console_prod',
+        'less:console_dist',
+        'copy:console_dist',
+        'copy:languages_dist',
+        'compile:console_dist'
+    ]);
+
+    grunt.registerTask('prod_vendor', [
+        'copy:vendor_dist',
+        'copy:node_modules_dist'
     ]);
 };
