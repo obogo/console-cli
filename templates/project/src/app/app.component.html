@@ -8,8 +8,10 @@
         <!-- :: menu :: -->
         <console-menu></console-menu>
 
-        <!-- :: pages :: -->
-        <ui-view flex layout="column" class="anim-in-out" data-anim-speed="500" data-anim-sync="true"></ui-view>
+        <div class="ui-view-container" flex layout="row">
+            <!-- :: pages :: -->
+            <ui-view flex layout="column"></ui-view>
+        </div>
 
     </div>
 

@@ -3,7 +3,6 @@ var module = angular.module('app', [
     'consoleTemplates',
     'ngAnimate',
     'ui.router',
-    'anim-in-out',
     'localytics.directives',
     'ngLetterAvatar'
 ]);

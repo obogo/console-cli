@@ -37,20 +37,6 @@ module.config(function ($stateProvider, $urlRouterProvider, authGuardProvider) {
     });
     $stateProvider.state('dashboard', {url: '/', component: 'dashboardPage', resolve: guards});
     $stateProvider.state('about', {url: '/about', component: "aboutPage", resolve: guards});
-    $stateProvider.state('samples', {
-        url: '/samples', component: 'samplesPage', resolve: guards,
-        data: {
-            transTo: {
-                sample: 'anim-slide-left'
-            }
-        }
-    });
-    $stateProvider.state('sample', {
-        url: '/samples/:id', component: 'samplePage', resolve: guards,
-        data: {
-            transTo: {
-                samples: 'anim-slide-right'
-            }
-        }
-    });
+    $stateProvider.state('samples', {url: '/samples', component: 'samplesPage', resolve: guards});
+    $stateProvider.state('sample', {url: '/samples/:id', component: 'samplePage', resolve: guards});
 });

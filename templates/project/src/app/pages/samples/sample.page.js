@@ -1,8 +1,10 @@
 module.component('samplePage', {
     templateUrl: 'sample.page',
-    controller: function ($stateParams) {
+    controller: function ($stateParams, $state) {
         var ctrl = this;
         var form = {};
+
+        $state.indexes = ['1', '2', '3', '4'];
 
         form.input = 'Input value';
 
@@ -36,6 +38,18 @@ module.component('samplePage', {
 
         ctrl.save = function () {
 
+        };
+
+        ctrl.prev = function() {
+            var id = parseInt($stateParams.id, 10) - 1;
+            console.log('#prev', id);
+            $state.go('sample', {id: id});
+        };
+
+        ctrl.next = function() {
+            var id = parseInt($stateParams.id, 10) + 1;
+            console.log('#next', id);
+            $state.go('sample', {id: id});
         };
     }
 });

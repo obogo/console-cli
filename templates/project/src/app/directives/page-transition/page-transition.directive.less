@@ -1,0 +1,78 @@
+/* Have to set height explicity on ui-view
+to prevent collapsing during animation*/
+@duration: 1s;
+.parent-child {
+  &.ui-view-container {
+    position: relative;
+    overflow: hidden;
+  }
+
+  ui-view.ng-enter, ui-view.ng-leave {
+    position: absolute;
+    left: 0;
+    right: 0;
+  }
+
+  ui-view.ng-enter {
+    -webkit-animation: slideInRight @duration;
+    animation: slideInRight @duration;
+  }
+
+  /*[ui-view].ng-enter-active {}*/
+
+  ui-view.ng-leave {
+    -webkit-animation: slideOutLeft @duration;
+    animation: slideOutLeft @duration;
+  }
+
+  /*[ui-view].ng-leave-active {}*/
+  &.back {
+    ui-view.ng-enter {
+      -webkit-animation: slideInLeft @duration;
+      animation: slideInLeft @duration;
+    }
+
+    ui-view.ng-leave {
+      -webkit-animation: slideOutRight @duration;
+      animation: slideOutRight @duration;
+    }
+  }
+}
+
+.sibling {
+  &.ui-view-container {
+    position: relative;
+    overflow: hidden;
+  }
+
+  ui-view.ng-enter, ui-view.ng-leave {
+    position: absolute;
+    left: 0;
+    right: 0;
+  }
+
+  ui-view.ng-enter {
+    -webkit-animation: slideInRight @duration;
+    animation: slideInRight @duration;
+  }
+
+  /*[ui-view].ng-enter-active {}*/
+
+  ui-view.ng-leave {
+    -webkit-animation: slideOutLeft @duration;
+    animation: slideOutLeft @duration;
+  }
+
+  /*[ui-view].ng-leave-active {}*/
+  &.back {
+    ui-view.ng-enter {
+      -webkit-animation: slideInLeft @duration;
+      animation: slideInLeft @duration;
+    }
+
+    ui-view.ng-leave {
+      -webkit-animation: slideOutRight @duration;
+      animation: slideOutRight @duration;
+    }
+  }
+}

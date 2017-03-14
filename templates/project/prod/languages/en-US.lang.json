@@ -1,0 +1,15 @@
+{
+  "sample": {
+    "Sample": "Sample",
+    "SectionHeader": "Section Header",
+    "SectionOption": "Select option",
+    "Chosen": "Chosen",
+    "Textarea": "Textarea",
+    "Switch": "Switch"
+  },
+  "samples": {
+    "masterList": "Master List",
+    "edit": "Edit",
+    "open": "Open"
+  }
+}
