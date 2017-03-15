@@ -16,12 +16,11 @@ module.directive('viewTransition', function ($state, $transitions) {
     }
 
     function getIndex(state, indexes, params) {
-        debugger;
         var url = state.url;
         var identity = url.replace(inverseRx, '$1');
         var hasIdentity = params.hasOwnProperty(identity);
         if (indexes && identity && hasIdentity) {
-            return matchIndexOf(indexes, params[identity].toString());
+            return indexes.indexOf(params[identity].toString());
         }
         return -1;
     }
@@ -34,14 +33,12 @@ module.directive('viewTransition', function ($state, $transitions) {
                 container.removeClass('sibling parent-child back forward none');
 
                 var state = trans.targetState().state();
-                console.log('#state', state.url);
                 var url = state.url;
-                var index = getIndex(state, $state.indexes, trans.targetState().params());
-                var prevIndex = prevState && getIndex(prevState, $state.indexes, prevStateParams) || -1;
-                if (index !== -1 && prevIndex !== -1) {
+                var prevIndex = prevState && getIndex(prevState, $state.indexes, prevStateParams);
+                var nextIndex = getIndex(state, $state.indexes, trans.targetState().params());
+                if (nextIndex !== -1 && prevIndex !== -1) {
                     sibling = true;
-                    if (index < prevIndex) {
-                        console.log('sibling', index, prevIndex);
+                    if (nextIndex < prevIndex) {
                         container.addClass('sibling');
                         transition = 'back';
                     } else {
@@ -52,21 +49,19 @@ module.directive('viewTransition', function ($state, $transitions) {
                     var parentUrl = getParentUrl(url);
                     sibling = false;
                     if (prevState && parentUrl === prevState.url) {// child to parent back
-                        console.log('to child');
                         container.addClass('parent-child');
                         transition = 'forward';
                     } else if (url === getParentUrl(prevState && prevState.url)) {// child to parent back
-                        console.log('to parent');
                         container.addClass('parent-child');
                         transition = 'back';
                     } else {
-                        console.log('otherwise');
+                        // do nothing
+                        // console.log('otherwise');
                         // transition = 'forward';
                     }
                 }
                 prevState = state;
                 prevStateParams = angular.copy(trans.targetState().params());
-                debugger;
 
                 container.addClass(transition);
             });
