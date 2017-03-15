@@ -10,7 +10,7 @@ module.directive('pageTransition', function ($state, $stateParams) {
     var classes = ['sibling', 'parent-child', 'back', 'forward', 'none'];
 
     function getParentUrl(url) {
-        if (!url){
+        if (!url) {
             return '';
         }
         var u = url.replace(rx, '');
@@ -27,7 +27,7 @@ module.directive('pageTransition', function ($state, $stateParams) {
 
     function clearClasses() {
         console.log('clearClasses');
-        for(var i = 0; i < classes.length; i += 1) {
+        for (var i = 0; i < classes.length; i += 1) {
             try {
                 console.log('\tremoving', classes[i]);
                 container.removeClass(classes[i]);
@@ -45,21 +45,25 @@ module.directive('pageTransition', function ($state, $stateParams) {
                 sibling = true;
                 if (index < prevIndex) {
                     console.log('sibling', index, prevIndex);
+                    container.addClass('sibling');
                     transition = 'back';
                 } else {
+                    container.addClass('sibling');
                     transition = 'forward';
                 }
             } else {
                 sibling = false;
                 if (prevState && getParentUrl(url) === prevState.url) {// child to parent back
                     console.log('to child');
+                    container.addClass('parent-child');
                     transition = 'forward';
                 } else if (url === getParentUrl(prevState && prevState.url)) {// child to parent back
                     console.log('to parent');
+                    container.addClass('parent-child');
                     transition = 'back';
                 } else {
                     console.log('otherwise');
-                    transition = 'forward';
+                    // transition = 'forward';
                 }
             }
             prevState = $state.current;
@@ -67,9 +71,8 @@ module.directive('pageTransition', function ($state, $stateParams) {
             if (!container) {
                 container = angular.element(document.querySelector('.ui-view-container'));
             }
-            container.addClass(sibling ? 'sibling' : 'parent-child');
             container.addClass(transition);
-            setTimeout(clearClasses, 1000);
+            setTimeout(clearClasses, 1500);
         }
     };
 
