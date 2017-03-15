@@ -2,11 +2,6 @@
 to prevent collapsing during animation*/
 @duration: 5s;
 .parent-child {
-  &.ui-view-container {
-    position: relative;
-    overflow: hidden;
-  }
-
   ui-view.ng-enter, ui-view.ng-leave {
     position: absolute;
     left: 0;
@@ -40,11 +35,6 @@ to prevent collapsing during animation*/
 }
 
 .sibling {
-  &.ui-view-container {
-    position: relative;
-    overflow: hidden;
-  }
-
   ui-view.ng-enter, ui-view.ng-leave {
     position: absolute;
     left: 0;

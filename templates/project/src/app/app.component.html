@@ -3,12 +3,12 @@
     <!-- :: header :: -->
     <console-header></console-header>
 
-    <div class="console-body" flex layout="row">
+    <div flex layout="row">
 
         <!-- :: menu :: -->
         <console-menu></console-menu>
 
-        <div class="ui-view-container" flex style="position: relative;background: red">
+        <div class="console-body" view-transition flex>
             <!-- :: pages :: -->
             <ui-view></ui-view>
         </div>
