@@ -7,7 +7,7 @@ module.directive('pageTransition', function ($state, $stateParams) {
     var matchIndexOf = require('matchIndexOf');
     var rx = /\/:\w+$/;
     var inverseRx = /^.*?:(\w+)$/;
-    var classes = ['sibling', 'parent-child', 'back', 'forward', 'none'];
+    var container = angular.element(document.querySelector('.ui-view-container'));
 
     function getParentUrl(url) {
         if (!url) {
@@ -25,20 +25,11 @@ module.directive('pageTransition', function ($state, $stateParams) {
         return -1;
     }
 
-    function clearClasses() {
-        console.log('clearClasses');
-        for (var i = 0; i < classes.length; i += 1) {
-            try {
-                console.log('\tremoving', classes[i]);
-                container.removeClass(classes[i]);
-            } catch (e) {
-                console.log('%cclearClasses failed', "color:#F00");
-            }
-        }
-    }
-
     return {
         link: function () {
+
+            container.removeClass('sibling parent-child back forward none');
+
             var index = getIndex($state.current, $state.indexes, $stateParams), prevIndex = prevState && getIndex(prevState, $state.indexes, prevStateParams) || -1;
             var url = $state.current.url;
             if (index !== -1 && prevIndex !== -1) {
@@ -68,11 +59,8 @@ module.directive('pageTransition', function ($state, $stateParams) {
             }
             prevState = $state.current;
             prevStateParams = require('extend')({}, $stateParams);
-            if (!container) {
-                container = angular.element(document.querySelector('.ui-view-container'));
-            }
+
             container.addClass(transition);
-            setTimeout(clearClasses, 1500);
         }
     };
 
