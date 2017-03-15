@@ -19,6 +19,10 @@ module.directive('viewTransition', function ($state, $transitions) {
         var url = state.url;
         var identity = url.replace(inverseRx, '$1');
         var hasIdentity = params.hasOwnProperty(identity);
+        var index;
+        if (indexes && !hasIdentity && (index = indexes.indexOf(url)) !== -1) {// match pages that act as siblings
+            return index;
+        }
         if (indexes && identity && hasIdentity) {
             return indexes.indexOf(params[identity].toString());
         }
@@ -26,7 +30,7 @@ module.directive('viewTransition', function ($state, $transitions) {
     }
 
     return {
-        link: function ($scope, $element, $attrs) {
+        link: function ($scope, $element) {
             var container = $element;
 
             $transitions.onStart({}, function (trans) {
