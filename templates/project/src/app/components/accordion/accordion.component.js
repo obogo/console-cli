@@ -2,11 +2,11 @@ module.component('consoleAccordion', {
     templateUrl: 'accordion',
     transclude: true,
     bindings: {
-        accordionBody: '@',
-        collapsed: "=",
-        onReady: '&',
-        onOpen: '&',
-        onClose: '&'
+        accordionBody: '@?',
+        // isOpen: "=?",
+        onReady: '&?',
+        onOpen: '&?',
+        onClose: '&?'
     },
     controllerAs: 'accordion',
     controller: function ($element) {
@@ -31,24 +31,26 @@ module.component('consoleAccordion', {
         var ctrl = this;
         var transitionEvent = whichTransitionEvent();
         var collapsedClass = 'is-collapsed';
+        var defaultBodySelector = '.console-accordion-body';
         var $accordionBody;
 
+        ctrl.opened = false;
 
-        ctrl.isOpen = false;
+        ctrl.isOpen = function () {
+            return !$accordionBody.hasClass(collapsedClass);
+        };
 
         ctrl.toggle = function () {
-            if ($accordionBody.hasClass(collapsedClass)) {
-                this.open();
-            } else {
+            if (ctrl.isOpen()) {
                 this.close();
+            } else {
+                this.open();
             }
         };
 
         ctrl.open = function () {
-            if ($accordionBody.hasClass(collapsedClass)) {
-                ctrl.isOpen = true;
-                // ctrl.isOpenChange.emit(ctrl.isOpen);
-
+            if (!ctrl.isOpen()) {
+                ctrl.opened = true;
                 var rect;
                 // this quickly removes the class that hides the body, gets the size and then restores it again
                 angular.element($accordionBody.removeClass(collapsedClass));
@@ -64,16 +66,16 @@ module.component('consoleAccordion', {
                 if (!ctrl.accordionBody) {
                     ctrl.accordionBody = $accordionBody;
 
-                    $accordionBody.on(transitionEvent, function() {
-                       $accordionBody[0].style['max-height'] = '';
+                    $accordionBody.on(transitionEvent, function () {
+                        $accordionBody[0].style['max-height'] = '';
                     });
                 }
             }
         };
 
         ctrl.close = function () {
-            if (!$accordionBody.hasClass(collapsedClass)) {
-                ctrl.isOpen = false;
+            if (ctrl.isOpen()) {
+                ctrl.opened = false;
                 // reset the height (was changed on transition end)
                 var rect = $accordionBody[0].getBoundingClientRect();
                 $accordionBody[0].style['max-height'] = rect.height + 'px';
@@ -86,31 +88,26 @@ module.component('consoleAccordion', {
             }
         };
 
-        ctrl.$postLink = function() {
-            if(!ctrl.accordionBody) {
-                throw new Error('Attribute "accordion-body" is required');
+        ctrl.$postLink = function () {
+            if (!ctrl.accordionBody) {
+                ctrl.accordionBody = defaultBodySelector;
             }
 
             $accordionBody = $element.find(ctrl.accordionBody);
 
-            if(ctrl.onReady) {
+            if (ctrl.onReady) {
                 ctrl.onReady({
                     accordion: ctrl
                 });
             }
-
-            if(ctrl.collapsed) {
-                ctrl.close();
-            }
         };
 
-        ctrl.$onDestroy = function() {
+        ctrl.$onDestroy = function () {
 
         };
 
-
-        ctrl.$onChanges = function(changesObj) {
-            console.log('#changes', changesObj);
+        ctrl.$onChanges = function (changesObj) {
+            // console.log('#changes', changesObj);
         };
     }
 

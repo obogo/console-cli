@@ -1,28 +1,13 @@
-//.console-accordion {
-//  position: relative;
-//  background-color: #eee;
-//}
-
-.console-accordion-title {
-  background-color: #38cc70;
-  padding: 1em;
-  display: block;
-  text-decoration: none;
-  color: #fff;
-}
-
 .console-accordion-body {
   height: auto;
   overflow: hidden;
   -webkit-transition: max-height 0.5s;
+  -moz-transition: max-height 0.5s;
+  -ms-transition: max-height 0.5s;
+  -o-transition: max-height 0.5s;
   transition: max-height 0.5s;
 }
 
 .console-accordion-body.is-collapsed {
   max-height: 0;
-}
-
-.console-accordion-body.is-expanded {
-  -webkit-transition: max-height 0.5s;
-  transition: max-height 0.5s;
 }
