@@ -30,17 +30,18 @@ module.component('consoleAccordion', {
 
         var ctrl = this;
         var transitionEvent = whichTransitionEvent();
-        var collapsedClass = 'is-collapsed';
+        var openClass = 'open';
         var defaultBodySelector = '.console-accordion-body';
         var $accordionBody;
 
         ctrl.opened = false;
 
         ctrl.isOpen = function () {
-            return !$accordionBody.hasClass(collapsedClass);
+            return $accordionBody.hasClass(openClass);
         };
 
         ctrl.toggle = function () {
+            console.log('#toggle.isOpen', ctrl.isOpen());
             if (ctrl.isOpen()) {
                 this.close();
             } else {
@@ -53,23 +54,15 @@ module.component('consoleAccordion', {
                 ctrl.opened = true;
                 var rect;
                 // this quickly removes the class that hides the body, gets the size and then restores it again
-                angular.element($accordionBody.removeClass(collapsedClass));
+                angular.element($accordionBody.addClass(openClass));
                 rect = $accordionBody[0].getBoundingClientRect();
-                angular.element($accordionBody).addClass(collapsedClass);
+                angular.element($accordionBody).removeClass(openClass);
 
                 // we need the timeout in order for the transition to occur
                 setTimeout(function () {
                     $accordionBody[0].style['max-height'] = rect.height + 'px';
-                    angular.element($accordionBody.removeClass(collapsedClass));
+                    angular.element($accordionBody.addClass(openClass));
                 });
-
-                if (!ctrl.accordionBody) {
-                    ctrl.accordionBody = $accordionBody;
-
-                    $accordionBody.on(transitionEvent, function () {
-                        $accordionBody[0].style['max-height'] = '';
-                    });
-                }
             }
         };
 
@@ -83,7 +76,7 @@ module.component('consoleAccordion', {
                 // we need the timeout in order for the transition to occur
                 setTimeout(function () {
                     $accordionBody[0].style['max-height'] = '';
-                    angular.element($accordionBody).addClass(collapsedClass);
+                    angular.element($accordionBody).removeClass(openClass);
                 });
             }
         };
@@ -95,6 +88,10 @@ module.component('consoleAccordion', {
 
             $accordionBody = $element.find(ctrl.accordionBody);
             $accordionBody.addClass('transition');
+
+            $accordionBody.on(transitionEvent, function () {
+                $accordionBody[0].style['max-height'] = '';
+            });
 
             ctrl.opened = ctrl.isOpen();
 

@@ -1,18 +1,28 @@
-.console-accordion-body {
-  height: auto;
-  overflow: hidden;
-
-  &.transition {
-    -webkit-transition: max-height 0.5s;
-    -moz-transition: max-height 0.5s;
-    -ms-transition: max-height 0.5s;
-    -o-transition: max-height 0.5s;
-    transition: max-height 0.5s;
+console-accordion {
+  .accordion-status-icon {
+    transition: transform 200ms ease;
+    &.open {
+      -ms-transform: rotate(180deg); /* IE 9 */
+      -webkit-transform: rotate(180deg); /* Safari */
+      transform: rotate(180deg); /* Standard syntax */
+    }
   }
 
-  &.is-collapsed {
+  .console-accordion-body {
+    height: auto;
+    overflow: hidden;
     max-height: 0;
+
+    &.transition {
+      -webkit-transition: max-height 0.5s;
+      -moz-transition: max-height 0.5s;
+      -ms-transition: max-height 0.5s;
+      -o-transition: max-height 0.5s;
+      transition: max-height 0.5s;
+    }
+
+    &.open {
+      max-height: inherit;
+    }
   }
-
 }
-

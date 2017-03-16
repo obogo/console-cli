@@ -21,18 +21,17 @@
 
             <div layout="column" class="console-panels">
                 <console-accordion
-
                         on-ready="$ctrl.onAccordionReady(accordion)"
                         class="console-panel console-panel-default" layout-margin="*" flex>
                     <div class="console-panel-header" layout="row" layout-align="start center" ng-click="$ctrl.accordion.toggle()">
-                        <i class="material-icons accordion-arrow" ng-class="{'is-open':$ctrl.accordion.opened}">keyboard_arrow_up</i>
+                        <i class="material-icons accordion-status-icon" ng-class="{'open':$ctrl.accordion.opened}">keyboard_arrow_up</i>
                         <!--<i class="material-icons accordion-arrow" ng-hide="$ctrl.accordion.opened">keyboard_arrow_up</i>-->
                         <!--<i class="material-icons" ng-show="$ctrl.accordion.opened">keyboard_arrow_down</i>-->
                         <div class="console-spacer"></div>
-                        <h4>{{$ctrl.locale.sample.SectionHeader}} {{$ctrl.accordion.opened}}</h4>
+                        <h4>{{$ctrl.locale.sample.SectionHeader}}</h4>
                         <div flex></div>
                     </div>
-                    <div class="console-accordion-body">
+                    <div class="console-accordion-body open">
                         <div class="console-panel-body" layout-width="50%">
                             <form>
 
@@ -45,32 +44,36 @@
                                     </div>
                                 </div>
 
-                                <!-- :: Dropdown :: -->
-                                <div class="console-form-group">
-                                    <label for="inputStatus" class="console-form-label">Dropdown</label>
-                                    <div class="console-form-select">
-                                        <select class="console-form-input" id="inputStatus" ng-model="$ctrl.form.selectedOption">
-                                            <option value="">{{$ctrl.locale.sample.SectionOption}}</option>
-                                            <option ng-value="option.value" ng-repeat="option in $ctrl.form.dropdownOptions">{{option.label}}</option>
-                                        </select>
+                                <div class="console-desktop-hide">
+                                    <!-- :: Dropdown :: -->
+                                    <div class="console-form-group">
+                                        <label for="inputStatus" class="console-form-label">Dropdown</label>
+                                        <div class="console-form-select">
+                                            <select class="console-form-input" id="inputStatus" ng-model="$ctrl.form.selectedOption">
+                                                <option value="">{{$ctrl.locale.sample.SectionOption}}</option>
+                                                <option ng-value="option.value" ng-repeat="option in $ctrl.form.dropdownOptions">{{option.label}}</option>
+                                            </select>
+                                        </div>
                                     </div>
+
+                                    <!-- :: Chosen Dropdown :: -->
+                                    <div class="console-form-group">
+                                        <label class="console-form-label">{{$ctrl.locale.sample.Chosen}}</label>
+                                        <div layout="row">
+                                            <select flex
+                                                    chosen
+                                                    placeholder-text-multiple="'Choose an option...'"
+                                                    disable-search="false"
+                                                    allow-single-deselect="false"
+                                                    ng-model="$ctrl.form.selectedOption">
+                                                <option value="">Select option</option>
+                                                <option ng-value="option.value" ng-repeat="option in $ctrl.form.dropdownOptions">{{option.label}}</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
                                 </div>
 
-                                <!-- :: Chosen Dropdown :: -->
-                                <div class="console-form-group">
-                                    <label class="console-form-label">{{$ctrl.locale.sample.Chosen}}</label>
-                                    <div layout="row">
-                                        <select flex
-                                                chosen
-                                                placeholder-text-multiple="'Choose an option...'"
-                                                disable-search="false"
-                                                allow-single-deselect="false"
-                                                ng-model="$ctrl.form.selectedOption">
-                                            <option value="">Select option</option>
-                                            <option ng-value="option.value" ng-repeat="option in $ctrl.form.dropdownOptions">{{option.label}}</option>
-                                        </select>
-                                    </div>
-                                </div>
 
                                 <!-- :: Textarea :: -->
                                 <div class="console-form-group">
