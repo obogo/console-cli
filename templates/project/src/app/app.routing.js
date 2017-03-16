@@ -13,8 +13,20 @@ module.config(function ($stateProvider, $urlRouterProvider, authGuardProvider) {
 
     // DO NOT REMOVE LINE BELOW
     // %route-injection%
-    $stateProvider.state('landing', {url: '/landing',component: 'landingPage'});
-    $stateProvider.state('login', {url: '/login', component: 'loginPage'});
+    $stateProvider.state('landing', {
+        url: '/landing',
+        component: 'landingPage',
+        data: {
+            hideHeader: true,
+            hideMenu: true
+        }
+    });
+    $stateProvider.state('login', {
+        url: '/login', component: 'loginPage', data: {
+            hideHeader: true,
+            hideMenu: true
+        }
+    });
     $stateProvider.state('dashboard', {url: '/', component: 'dashboardPage', resolve: guards});
     $stateProvider.state('about', {url: '/about', component: "aboutPage", resolve: guards});
     $stateProvider.state('samples', {url: '/samples', component: 'samplesPage', resolve: guards});

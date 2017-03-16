@@ -1,6 +1,7 @@
 {
   "sample": {
-    "Sample": "Sample",
+    "Back": "Back",
+    "Title": "Sample",
     "SectionHeader": "Section Header",
     "SectionOption": "Select option",
     "Chosen": "Chosen",

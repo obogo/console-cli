@@ -3,7 +3,7 @@ module.component('loginPage', {
     controller: function ($rootScope, $state, $stateParams, locale, Alert, ApiService, AppConfig) {
         var ctrl = this;
 
-        $state.indexes = ['/landing', '/login'];
+        $state.indexes = ['/landing', '/login', '/'];
 
         ctrl.form = {
             username: '',
