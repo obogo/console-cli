@@ -94,6 +94,9 @@ module.component('consoleAccordion', {
             }
 
             $accordionBody = $element.find(ctrl.accordionBody);
+            $accordionBody.addClass('transition');
+
+            ctrl.opened = ctrl.isOpen();
 
             if (ctrl.onReady) {
                 ctrl.onReady({

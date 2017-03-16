@@ -20,17 +20,19 @@
             </div>
 
             <div layout="column" class="console-panels">
-                <console-accordion on-ready="$ctrl.onAccordionReady(accordion)"
-                                   class="console-panel console-panel-default" layout-margin="*" flex>
+                <console-accordion
+
+                        on-ready="$ctrl.onAccordionReady(accordion)"
+                        class="console-panel console-panel-default" layout-margin="*" flex>
                     <div class="console-panel-header" layout="row" layout-align="start center" ng-click="$ctrl.accordion.toggle()">
                         <i class="material-icons accordion-arrow" ng-class="{'is-open':$ctrl.accordion.opened}">keyboard_arrow_up</i>
                         <!--<i class="material-icons accordion-arrow" ng-hide="$ctrl.accordion.opened">keyboard_arrow_up</i>-->
                         <!--<i class="material-icons" ng-show="$ctrl.accordion.opened">keyboard_arrow_down</i>-->
                         <div class="console-spacer"></div>
-                        <h4>{{$ctrl.locale.sample.SectionHeader}}</h4>
+                        <h4>{{$ctrl.locale.sample.SectionHeader}} {{$ctrl.accordion.opened}}</h4>
                         <div flex></div>
                     </div>
-                    <div class="console-accordion-body is-collapsed">
+                    <div class="console-accordion-body">
                         <div class="console-panel-body" layout-width="50%">
                             <form>
 
