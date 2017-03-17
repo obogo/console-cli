@@ -20,11 +20,11 @@
             </div>
 
             <div layout="column" class="console-panels">
-                <console-accordion
-                        on-ready="$ctrl.onAccordionReady(accordion)"
-                        class="console-panel console-panel-default" layout-margin="*" flex>
-                    <div class="console-panel-header" layout="row" layout-align="start center" ng-click="$ctrl.accordion.toggle()">
-                        <i class="material-icons accordion-status-icon" ng-class="{'open':$ctrl.accordion.opened}">keyboard_arrow_up</i>
+                <console-accordion class="console-panel console-panel-default" layout-margin="*" flex
+                                   on-ready="$ctrl.onAccordionReady(accordion)">
+
+                    <div class="console-panel-header console-accordion-header open" layout="row" layout-align="start center" ng-click="$ctrl.accordion.toggle()">
+                        <i class="material-icons accordion-status-icon">keyboard_arrow_up</i>
                         <!--<i class="material-icons accordion-arrow" ng-hide="$ctrl.accordion.opened">keyboard_arrow_up</i>-->
                         <!--<i class="material-icons" ng-show="$ctrl.accordion.opened">keyboard_arrow_down</i>-->
                         <div class="console-spacer"></div>

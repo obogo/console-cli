@@ -1,10 +1,15 @@
 console-accordion {
   .accordion-status-icon {
     transition: transform 200ms ease;
+  }
+
+  .console-accordion-header {
     &.open {
-      -ms-transform: rotate(180deg); /* IE 9 */
-      -webkit-transform: rotate(180deg); /* Safari */
-      transform: rotate(180deg); /* Standard syntax */
+      .accordion-status-icon {
+        -ms-transform: rotate(180deg); /* IE 9 */
+        -webkit-transform: rotate(180deg); /* Safari */
+        transform: rotate(180deg); /* Standard syntax */
+      }
     }
   }
 

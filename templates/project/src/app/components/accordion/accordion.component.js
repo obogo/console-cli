@@ -31,7 +31,9 @@ module.component('consoleAccordion', {
         var ctrl = this;
         var transitionEvent = whichTransitionEvent();
         var openClass = 'open';
+        var defaultHeaderSelector = '.console-accordion-header';
         var defaultBodySelector = '.console-accordion-body';
+        var $accordionHeader;
         var $accordionBody;
 
         ctrl.opened = false;
@@ -41,7 +43,6 @@ module.component('consoleAccordion', {
         };
 
         ctrl.toggle = function () {
-            console.log('#toggle.isOpen', ctrl.isOpen());
             if (ctrl.isOpen()) {
                 this.close();
             } else {
@@ -53,15 +54,17 @@ module.component('consoleAccordion', {
             if (!ctrl.isOpen()) {
                 ctrl.opened = true;
                 var rect;
+                $accordionHeader.addClass(openClass);
+
                 // this quickly removes the class that hides the body, gets the size and then restores it again
-                angular.element($accordionBody.addClass(openClass));
+                $accordionBody.addClass(openClass);
                 rect = $accordionBody[0].getBoundingClientRect();
-                angular.element($accordionBody).removeClass(openClass);
+                $accordionBody.removeClass(openClass);
 
                 // we need the timeout in order for the transition to occur
                 setTimeout(function () {
                     $accordionBody[0].style['max-height'] = rect.height + 'px';
-                    angular.element($accordionBody.addClass(openClass));
+                    $accordionBody.addClass(openClass);
                 });
             }
         };
@@ -69,6 +72,9 @@ module.component('consoleAccordion', {
         ctrl.close = function () {
             if (ctrl.isOpen()) {
                 ctrl.opened = false;
+
+                $accordionHeader.removeClass(openClass);
+
                 // reset the height (was changed on transition end)
                 var rect = $accordionBody[0].getBoundingClientRect();
                 $accordionBody[0].style['max-height'] = rect.height + 'px';
@@ -76,16 +82,24 @@ module.component('consoleAccordion', {
                 // we need the timeout in order for the transition to occur
                 setTimeout(function () {
                     $accordionBody[0].style['max-height'] = '';
-                    angular.element($accordionBody).removeClass(openClass);
+                    $accordionBody.removeClass(openClass);
                 });
             }
         };
 
         ctrl.$postLink = function () {
+
+            // Setup Header
+            if (!ctrl.accordionHeader) {
+                ctrl.accordionHeader = defaultHeaderSelector;
+            }
+            $accordionHeader = $element.find(ctrl.accordionHeader);
+            $accordionHeader.addClass('transition');
+
+            // Setup Body
             if (!ctrl.accordionBody) {
                 ctrl.accordionBody = defaultBodySelector;
             }
-
             $accordionBody = $element.find(ctrl.accordionBody);
             $accordionBody.addClass('transition');
 
