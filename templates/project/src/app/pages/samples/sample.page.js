@@ -54,8 +54,12 @@ module.component('samplePage', {
             $state.go('sample', {id: id});
         };
 
-        ctrl.onAccordionReady = function(accordion) {
-            ctrl.accordion = accordion;
-        }
+        ctrl.getAccordion = function(accordion) {
+            return accordion;
+        };
+
+        ctrl.setAccordionName = function(name, accordion) {
+            ctrl[name] = accordion;
+        };
     }
 });
