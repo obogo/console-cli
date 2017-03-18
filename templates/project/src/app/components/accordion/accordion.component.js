@@ -38,12 +38,8 @@ module.component('consoleAccordion', {
 
         ctrl.opened = false;
 
-        ctrl.isOpen = function () {
-            return $accordionBody.hasClass(openClass);
-        };
-
         ctrl.toggle = function () {
-            if (ctrl.isOpen()) {
+            if (ctrl.opened) {
                 this.close();
             } else {
                 this.open();
@@ -51,7 +47,7 @@ module.component('consoleAccordion', {
         };
 
         ctrl.open = function () {
-            if (!ctrl.isOpen()) {
+            if (!ctrl.opened) {
                 ctrl.opened = true;
                 var rect;
                 $accordionHeader.addClass(openClass);
@@ -70,7 +66,7 @@ module.component('consoleAccordion', {
         };
 
         ctrl.close = function () {
-            if (ctrl.isOpen()) {
+            if (ctrl.opened) {
                 ctrl.opened = false;
 
                 $accordionHeader.removeClass(openClass);
@@ -89,31 +85,37 @@ module.component('consoleAccordion', {
 
         ctrl.$postLink = function () {
 
-            // Setup Header
-            if (!ctrl.accordionHeader) {
-                ctrl.accordionHeader = defaultHeaderSelector;
-            }
-            $accordionHeader = $element.find(ctrl.accordionHeader);
-            $accordionHeader.addClass('transition');
+            setTimeout(function() {
+                // Setup Header
+                if (!ctrl.accordionHeader) {
+                    ctrl.accordionHeader = defaultHeaderSelector;
+                }
+                $accordionHeader = $element.find(ctrl.accordionHeader);
+                $accordionHeader.addClass('transition');
 
-            // Setup Body
-            if (!ctrl.accordionBody) {
-                ctrl.accordionBody = defaultBodySelector;
-            }
-            $accordionBody = $element.find(ctrl.accordionBody);
-            $accordionBody.addClass('transition');
+                // Setup Body
+                if (!ctrl.accordionBody) {
+                    ctrl.accordionBody = defaultBodySelector;
+                }
+                $accordionBody = $element.find(ctrl.accordionBody);
+                $accordionBody.addClass('transition');
 
-            $accordionBody.on(transitionEvent, function () {
-                $accordionBody[0].style['max-height'] = '';
-            });
-
-            ctrl.opened = ctrl.isOpen();
-
-            if (ctrl.onReady) {
-                ctrl.onReady({
-                    accordion: ctrl
+                $accordionBody.on(transitionEvent, function () {
+                    $accordionBody[0].style['max-height'] = '';
                 });
-            }
+
+                if ($accordionBody.hasClass(openClass)) {
+                    ctrl.opened = true;
+                    ctrl.close();
+                    ctrl.open();
+                }
+
+                if (ctrl.onReady) {
+                    ctrl.onReady({
+                        accordion: ctrl
+                    });
+                }
+            })
         };
 
         ctrl.$onDestroy = function () {

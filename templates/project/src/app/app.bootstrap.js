@@ -4,7 +4,8 @@ var module = angular.module('app', [
     'ngAnimate',
     'ui.router',
     'localytics.directives',
-    'ngLetterAvatar'
+    'ngLetterAvatar',
+    'headroom'
 ]);
 
 module.run(function ($trace) {
