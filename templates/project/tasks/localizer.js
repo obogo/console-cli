@@ -19,7 +19,7 @@ module.exports = function(grunt) {
                 if(src.hasOwnProperty(i)) {
                     p = path && path + '.' + i || i;
                     if (writeTypes.indexOf(typeof src[i]) === -1) {
-                        dest[i] = dest[i] || {};
+                        dest[i] = dest[i] || (src[i] instanceof Array ? [] : {});
                         extend(dest[i], src[i], p, filePath);
                     } else {
                         dest[i] = src[i];// only writes strings.
@@ -43,7 +43,7 @@ module.exports = function(grunt) {
 
 
         // USAGE BELOW
-        var cleanUpRX = /(\s+|^\.|"|'|\{|\})/g;
+        var cleanUpRX = /(\s+|^\.|\."|\.'|"|'|\{|\}|\()/g;
         var fileUrl;
 
         function findInContents(path) {
@@ -78,9 +78,18 @@ module.exports = function(grunt) {
             var p = path.split('.'), prop;
             while(p.length > 1) {
                 prop = p.shift();
-                obj = obj[prop] = obj[prop] || {};
+                obj = obj[prop] = obj[prop] || (p[0] === "0" ? [] : {});
             }
             obj[p[0]] = stringFilePaths[path];
+        }
+
+        function hasPath(obj, path) {
+            var p = path.split('.'), prop;
+            while(obj && p.length > 1) {
+                prop = p.shift();
+                obj = obj[prop];
+            }
+            return obj && obj.hasOwnProperty(p[0]);
         }
 
         if (data.usage) {
@@ -96,15 +105,17 @@ module.exports = function(grunt) {
                         report.used += 1;
                         resolve(reportContent.used, i);
                     } else if (usages[i] < 0) {
-                        report.missing += 1;
-                        resolve(reportContent.missing, i);
+                        if (!hasPath(root, i)) {
+                            report.missing += 1;
+                            resolve(reportContent.missing, i);
+                        }
                     } else {
                         report.unused += 1;
                         resolve(reportContent.unused, i);
                     }
                 }
             }
-            // console.log(JSON.stringify(usages, null, 2));
+            // console.log(JSON.stringify(reportContent, null, 2));
             if (log) {
                 grunt.file.write(log, JSON.stringify(reportContent, null, 2));
             }
