@@ -9,7 +9,6 @@
   "author": "",
   "license": "MIT",
   "devDependencies": {
-    "angular-ui-router-anim-in-out": "^1.0.2",
     "grunt": "^1.0.1",
     "grunt-angular-templates": "^1.1.0",
     "grunt-bump": "^0.8.0",
@@ -35,6 +34,7 @@
     "animate.css": "^3.5.2",
     "chosen-js": "^1.6.2",
     "hbjs": "^0.21.10",
+    "headroom.js": "^0.9.3",
     "material-design-icons": "^3.0.1",
     "ngletteravatar": "^4.0.4",
     "normalize.css": "^5.0.0",

@@ -1,6 +1,6 @@
 module.component('samplePage', {
     templateUrl: 'sample.page',
-    controller: function ($stateParams, $state) {
+    controller: function ($stateParams, $state, locale) {
         var ctrl = this;
         var form = {};
 
@@ -26,6 +26,8 @@ module.component('samplePage', {
             {id: 4, firstName: "Jane", lastName: "Doe", email: "jane.doe@obogo.io"}
         ];
 
+        ctrl.locale = locale;
+
         ctrl.form = form;
 
         ctrl.toggleCheck = function () {
@@ -50,6 +52,14 @@ module.component('samplePage', {
             var id = parseInt($stateParams.id, 10) + 1;
             console.log('#next', id);
             $state.go('sample', {id: id});
+        };
+
+        ctrl.getAccordion = function(accordion) {
+            return accordion;
+        };
+
+        ctrl.setAccordionName = function(name, accordion) {
+            ctrl[name] = accordion;
         };
     }
 });

@@ -65,7 +65,8 @@ module.exports = function (grunt, options) {
                         'angular-chosen-localytics/dist/*',
                         'ngletteravatar/dist/*',
                         'offline-js/offline*.js',
-                        'offline-js/themes/*'
+                        'offline-js/themes/*',
+                        'headroom.js/dist/*'
                     ],
                     dest: 'build/vendor',
                     filter: 'isFile'

@@ -2,7 +2,7 @@
     <div class="console-subheader">
         <div ui-sref="samples" class="console-btn console-btn-default">
             <i class="material-icons">keyboard_arrow_left</i>
-            {{$ctrl.locale.sample.Sample}}
+            {{$ctrl.locale.sample.Back}}
         </div>
         <div class="console-spacer"></div>
         <div flex></div>
@@ -20,99 +20,129 @@
             </div>
 
             <div layout="column" class="console-panels">
-                <div class="console-panel console-panel-default" layout-margin="*" flex>
-                    <div class="console-panel-header" layout="row" layout-align="start center">
+                <console-accordion class="console-panel console-panel-default" layout-margin="*" flex
+                                   opened="true"
+                                   on-ready="$ctrl.setAccordionName('acc', accordion)">
+
+                    <div class="console-panel-header console-accordion-header" layout="row" layout-align="start center" ng-click="$ctrl.acc.toggle()">
+                        <i class="material-icons accordion-status-icon">keyboard_arrow_up</i>
+                        <!--<i class="material-icons accordion-arrow" ng-hide="$ctrl.accordion.opened">keyboard_arrow_up</i>-->
+                        <!--<i class="material-icons" ng-show="$ctrl.accordion.opened">keyboard_arrow_down</i>-->
+                        <div class="console-spacer"></div>
                         <h4>{{$ctrl.locale.sample.SectionHeader}}</h4>
                         <div flex></div>
                     </div>
-                    <div class="console-panel-body" layout-width="50%">
-                        <form>
+                    <div class="console-accordion-body">
+                        <div class="console-panel-body" layout-width="50%">
+                            <form>
 
-                            <!-- :: Input field :: -->
-                            <div class="console-form-group">
-                                <label for="inputTitle" class="console-form-label">Input field</label>
-                                <div>
-                                    <input type="text" name="inputTitle" id="inputTitle" ng-disabled="$ctrl.form.id"
-                                           class="console-form-input console-smooth" ng-model="$ctrl.form.input">
+                                <!-- :: Input field :: -->
+                                <div class="console-form-group">
+                                    <label for="inputTitle" class="console-form-label">Input field</label>
+                                    <div>
+                                        <input type="text" name="inputTitle" id="inputTitle" ng-disabled="$ctrl.form.id"
+                                               class="console-form-input console-smooth" ng-model="$ctrl.form.input">
+                                    </div>
                                 </div>
-                            </div>
 
-                            <!-- :: Dropdown :: -->
-                            <div class="console-form-group">
-                                <label for="inputStatus" class="console-form-label">Dropdown</label>
-                                <div class="console-form-select">
-                                    <select class="console-form-input" id="inputStatus" ng-model="$ctrl.form.selectedOption">
-                                        <option value="">{{$ctrl.locale.sample.SectionOption}}</option>
-                                        <option ng-value="option.value" ng-repeat="option in $ctrl.form.dropdownOptions">{{option.label}}</option>
-                                    </select>
+                                <div class="console-desktop-hide">
+                                    <!-- :: Dropdown :: -->
+                                    <div class="console-form-group">
+                                        <label for="inputStatus" class="console-form-label">Dropdown</label>
+                                        <div class="console-form-select">
+                                            <select class="console-form-input" id="inputStatus" ng-model="$ctrl.form.selectedOption">
+                                                <option value="">{{$ctrl.locale.sample.SectionOption}}</option>
+                                                <option ng-value="option.value" ng-repeat="option in $ctrl.form.dropdownOptions">{{option.label}}</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <!-- :: Chosen Dropdown :: -->
+                                    <div class="console-form-group">
+                                        <label class="console-form-label">{{$ctrl.locale.sample.Chosen}}</label>
+                                        <div layout="row">
+                                            <select flex
+                                                    chosen
+                                                    placeholder-text-multiple="'Choose an option...'"
+                                                    disable-search="false"
+                                                    allow-single-deselect="false"
+                                                    ng-model="$ctrl.form.selectedOption">
+                                                <option value="">Select option</option>
+                                                <option ng-value="option.value" ng-repeat="option in $ctrl.form.dropdownOptions">{{option.label}}</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
                                 </div>
-                            </div>
 
-                            <!-- :: Chosen Dropdown :: -->
-                            <div class="console-form-group">
-                                <label class="console-form-label">{{$ctrl.locale.sample.Chosen}}</label>
-                                <div layout="row">
-                                    <select flex
-                                            chosen
-                                            placeholder-text-multiple="'Choose an option...'"
-                                            disable-search="false"
-                                            allow-single-deselect="false"
-                                            ng-model="$ctrl.form.selectedOption">
-                                        <option value="">Select option</option>
-                                        <option ng-value="option.value" ng-repeat="option in $ctrl.form.dropdownOptions">{{option.label}}</option>
-                                    </select>
-                                </div>
-                            </div>
 
-                            <!-- :: Textarea :: -->
-                            <div class="console-form-group">
-                                <label for="inputDesc" class="console-form-label">{{$ctrl.locale.sample.Textarea}}</label>
-                                <div>
+                                <!-- :: Textarea :: -->
+                                <div class="console-form-group">
+                                    <label for="inputDesc" class="console-form-label">{{$ctrl.locale.sample.Textarea}}</label>
+                                    <div>
                                     <textarea name="inputDesc" id="inputDesc"
                                               class="console-form-input console-smooth"
                                               ng-disabled="$ctrl.showPreview" ng-model="$ctrl.form.textarea"></textarea>
+                                    </div>
                                 </div>
-                            </div>
 
-                            <div class="console-form-group">
-                                <div layout="row" style="flex-wrap: wrap">
-                                    <button class="console-btn-checkbox" ng-click="$ctrl.toggleCheck()">
-                                        <i class="material-icons" ng-hide="$ctrl.form.isChecked">check_box_outline_blank</i>
-                                        <i class="material-icons" ng-show="$ctrl.form.isChecked">check_box</i>
-                                        <span>Checkbox</span>
-                                    </button>
+                                <div class="console-form-group">
+                                    <div layout="row" style="flex-wrap: wrap">
+                                        <button class="console-btn-checkbox" ng-click="$ctrl.toggleCheck()">
+                                            <i class="material-icons" ng-hide="$ctrl.form.isChecked">check_box_outline_blank</i>
+                                            <i class="material-icons" ng-show="$ctrl.form.isChecked">check_box</i>
+                                            <span>Checkbox</span>
+                                        </button>
+                                    </div>
                                 </div>
-                            </div>
 
 
-                            <div class="console-form-group" layout="row" layout-align="start center">
-                                <div class="switch">
-                                    <input type="checkbox" name="switch" class="switch-checkbox" id="myswitch" ng-model="$ctrl.form.isChecked">
-                                    <label class="switch-label" for="myswitch">
-                                        <span class="switch-inner"></span>
-                                        <span class="switch-switch"></span>
-                                    </label>
+                                <div class="console-form-group" layout="row" layout-align="start center">
+                                    <div class="switch">
+                                        <input type="checkbox" name="switch" class="switch-checkbox" id="myswitch" ng-model="$ctrl.form.isChecked">
+                                        <label class="switch-label" for="myswitch">
+                                            <span class="switch-inner"></span>
+                                            <span class="switch-switch"></span>
+                                        </label>
+                                    </div>
+                                    <span>{{$ctrl.locale.sample.Switch}}</span>
                                 </div>
-                                <span>{{$ctrl.locale.sample.Switch}}</span>
-                            </div>
 
-                            <!--<div view-transition="['1','2','3','4']">-->
+                                <!--<div view-transition="['1','2','3','4']">-->
                                 <!--<div>One</div>-->
                                 <!--<div>Two</div>-->
                                 <!--<div>Three</div>-->
                                 <!--<div>Four</div>-->
-                            <!--</div>-->
+                                <!--</div>-->
 
-                        </form>
+                                <!-- Example using accordion as a view details widget -->
+                                <console-accordion opened="false" on-ready="$ctrl.setAccordionName('accDetails', accordion)">
+                                    <div class="console-accordion-body">
+                                        These are my details.
+                                    </div>
+                                    <div ng-hide="$ctrl.accDetails.opened" style="cursor: pointer" layout="row" layout-align="start center" ng-click="$ctrl.accDetails.toggle()">
+                                        <i class="material-icons" >add</i>
+                                        <span>View Details</span>
+                                    </div>
+
+                                    <div ng-show="$ctrl.accDetails.opened" style="cursor: pointer" layout="row" layout-align="start center" ng-click="$ctrl.accDetails.toggle()">
+                                        <i class="material-icons">remove</i>
+                                        <span>Hide Details</span>
+                                    </div>
+                                </console-accordion>
+
+                            </form>
+                        </div>
+                        <div class="console-panel-footer" layout="row">
+                            <button class="console-btn console-btn-default" ng-click="$ctrl.cancel()">Cancel</button>
+                            <button class="console-btn console-btn-default" ng-click="$ctrl.prev()">Prev</button>
+                            <div flex></div>
+                            <button class="console-btn console-btn-default" ng-click="$ctrl.next()">Next</button>
+                            <button class="console-btn console-btn-primary" ng-click="$ctrl.save()">Save</button>
+                        </div>
                     </div>
-                    <div class="console-panel-footer" layout="row">
-                        <button class="console-btn console-btn-default" ng-click="$ctrl.cancel()">Cancel</button>
-                        <button class="console-btn console-btn-default" ng-click="$ctrl.prev()">Prev</button>
-                        <div flex></div>
-                        <button class="console-btn console-btn-default" ng-click="$ctrl.next()">Next</button>
-                        <button class="console-btn console-btn-primary" ng-click="$ctrl.save()">Save</button>
-                    </div>
-                </div>
+
+                </console-accordion>
 
             </div>
         </div>
