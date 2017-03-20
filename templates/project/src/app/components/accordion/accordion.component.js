@@ -4,6 +4,7 @@ module.component('consoleAccordion', {
     bindings: {
         accordionBody: '@?',
         // isOpen: "=?",
+        opened: '=?',
         onReady: '&?',
         onOpen: '&?',
         onClose: '&?'
@@ -46,8 +47,8 @@ module.component('consoleAccordion', {
             }
         };
 
-        ctrl.open = function () {
-            if (!ctrl.opened) {
+        ctrl.open = function (force) {
+            if (!ctrl.opened || force) {
                 ctrl.opened = true;
                 var rect;
                 $accordionHeader.addClass(openClass);
@@ -65,8 +66,8 @@ module.component('consoleAccordion', {
             }
         };
 
-        ctrl.close = function () {
-            if (ctrl.opened) {
+        ctrl.close = function (force) {
+            if (ctrl.opened || force) {
                 ctrl.opened = false;
 
                 $accordionHeader.removeClass(openClass);
@@ -84,30 +85,35 @@ module.component('consoleAccordion', {
         };
 
         ctrl.$postLink = function () {
-
             setTimeout(function() {
                 // Setup Header
                 if (!ctrl.accordionHeader) {
                     ctrl.accordionHeader = defaultHeaderSelector;
                 }
-                $accordionHeader = $element.find(ctrl.accordionHeader);
+                $accordionHeader = angular.element($element[0].querySelector(ctrl.accordionHeader));
                 $accordionHeader.addClass('transition');
+                if(ctrl.opened) {
+                    $accordionHeader.addClass('open');
+                }
 
                 // Setup Body
                 if (!ctrl.accordionBody) {
                     ctrl.accordionBody = defaultBodySelector;
                 }
-                $accordionBody = $element.find(ctrl.accordionBody);
+                $accordionBody = angular.element($element[0].querySelector(ctrl.accordionBody));
                 $accordionBody.addClass('transition');
+                if(ctrl.opened) {
+                    $accordionBody.addClass('open');
+                }
 
                 $accordionBody.on(transitionEvent, function () {
                     $accordionBody[0].style['max-height'] = '';
                 });
 
-                if ($accordionBody.hasClass(openClass)) {
-                    ctrl.opened = true;
-                    ctrl.close();
-                    ctrl.open();
+                var isOpen = ctrl.opened;
+                ctrl.close(true);
+                if (isOpen) {
+                    ctrl.open(true);
                 }
 
                 if (ctrl.onReady) {

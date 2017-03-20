@@ -21,9 +21,10 @@
 
             <div layout="column" class="console-panels">
                 <console-accordion class="console-panel console-panel-default" layout-margin="*" flex
+                                   opened="true"
                                    on-ready="$ctrl.setAccordionName('acc', accordion)">
 
-                    <div class="console-panel-header console-accordion-header open" layout="row" layout-align="start center" ng-click="$ctrl.acc.toggle()">
+                    <div class="console-panel-header console-accordion-header" layout="row" layout-align="start center" ng-click="$ctrl.acc.toggle()">
                         <i class="material-icons accordion-status-icon">keyboard_arrow_up</i>
                         <!--<i class="material-icons accordion-arrow" ng-hide="$ctrl.accordion.opened">keyboard_arrow_up</i>-->
                         <!--<i class="material-icons" ng-show="$ctrl.accordion.opened">keyboard_arrow_down</i>-->
@@ -31,7 +32,7 @@
                         <h4>{{$ctrl.locale.sample.SectionHeader}}</h4>
                         <div flex></div>
                     </div>
-                    <div class="console-accordion-body open">
+                    <div class="console-accordion-body">
                         <div class="console-panel-body" layout-width="50%">
                             <form>
 
@@ -115,7 +116,7 @@
                                 <!--</div>-->
 
                                 <!-- Example using accordion as a view details widget -->
-                                <console-accordion on-ready="$ctrl.setAccordionName('accDetails', accordion)">
+                                <console-accordion opened="false" on-ready="$ctrl.setAccordionName('accDetails', accordion)">
                                     <div class="console-accordion-body">
                                         These are my details.
                                     </div>
@@ -128,7 +129,6 @@
                                         <i class="material-icons">remove</i>
                                         <span>Hide Details</span>
                                     </div>
-
                                 </console-accordion>
 
                             </form>
