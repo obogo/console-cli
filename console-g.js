@@ -58,7 +58,7 @@ function copyFiles(config, type, templateFile, destPath, createInSubdirectory) {
 
         var strings = {};
         strings.Name = name.toCamelCase(true);
-        strings.name = name;
+        strings.name = name.toCamelCase(false);
         strings.Names = pluralize(strings.Name);
         strings.names = pluralize(name);
         strings.namesDash = strings.name.toDash();
@@ -94,7 +94,7 @@ function updateRouting(config, name) {
 
     var strings = strings || {};
     strings.Name = name.toCamelCase(true);
-    strings.name = strings.name || name;
+    strings.name = strings.name || name.toCamelCase(false);
     strings.Names = pluralize(strings.Name);
     strings.names = pluralize(name);
     strings.namesDash = strings.name.toDash();
@@ -105,7 +105,7 @@ function updateRouting(config, name) {
     var routingFile = path.join('src', 'app', 'app.routing.js');
     fs.readFile(routingFile, 'utf8', function (err, file) {
         var filez = file.split('// %route-injection%');
-        filez[1] = ("\n    $stateProvider.state('{name}', {url: '/{name}', component: '{name}Page'});" + filez[1]).supplant(strings);
+        filez[1] = ("\n    $stateProvider.state('{name}', {url: '/{namesDash}', component: '{name}Page'});" + filez[1]).supplant(strings);
         fs.writeFile(routingFile, filez.join('// %route-injection%'));
     });
 

@@ -1,5 +1,5 @@
 module.component('{name}Page', {
-    templateUrl: '{name}.page',
+    templateUrl: '{namesDash}.page',
     controller: function ($stateParams, locale) {
         var ctrl = this;
         ctrl.locale = locale;

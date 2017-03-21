@@ -40,7 +40,7 @@ function createIntoSubdirectory(config, name, type, templateFile, dest, strings)
     readFile(path.join(templatesPath, templateFile), 'utf8', function (err, content) {
         strings = strings || {};
         strings.Name = name.toCamelCase(true);
-        strings.name = strings.name || name;
+        strings.name = strings.name || name.toCamelCase(false);
         strings.namesDash = strings.name.toDash();
         strings.namesUnderscore = strings.namesDash.split('-').join('_');
         strings.prefix = config.componentPrefix;
@@ -57,7 +57,7 @@ program.action(function (name, template, options) {
 
     var strings = strings || {};
     strings.Name = name.toCamelCase(true);
-    strings.name = strings.name || name;
+    strings.name = strings.name || name.toCamelCase(false);
     strings.namesDash = strings.name.toDash();
     strings.namesUnderscore = strings.namesDash.split('-').join('_');
 
