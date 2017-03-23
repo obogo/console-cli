@@ -3,7 +3,7 @@ module.exports = function (grunt, options) {
     return {
         tasks: {
             copy: {
-                "console": {
+                "console_prod": {
                     expand: true,
                     flatten: false,
                     cwd: 'src',
@@ -11,17 +11,17 @@ module.exports = function (grunt, options) {
                         'index.html',
                         'vendor/**/*'
                     ],
-                    dest: 'dist/',
+                    dest: '../electron/console/',
                     filter: 'isFile'
                 },
-                "languages": {
+                "languages_prod": {
                     expand: true,
                     flatten: false,
                     cwd: 'languages',
                     src: [
                         '**/*.lang.json'
                     ],
-                    dest: 'dist/languages',
+                    dest: '../electron/console/languages',
                     filter: 'isFile'
                 },
                 // "bower": {
@@ -30,10 +30,10 @@ module.exports = function (grunt, options) {
                 //     src: [
                 //         'angular-localization/angular-localization*.js'
                 //     ],
-                //     dest: 'dist/vendor',
+                //     dest: '../electron/console/vendor',
                 //     filter: 'isFile'
                 // },
-                "vendor": {
+                "vendor_prod": {
                     expand: true,
                     // flatten: true,
                     cwd: 'vendor',
@@ -41,10 +41,10 @@ module.exports = function (grunt, options) {
                         'require-lite/*.js',
                         'fonts/*'
                     ],
-                    dest: 'dist/vendor',
+                    dest: '../electron/console/vendor',
                     filter: 'isFile'
                 },
-                "node_modules": {
+                "node_modules_prod": {
                     expand: true,
                     cwd: 'node_modules',
                     src: [
@@ -65,17 +65,18 @@ module.exports = function (grunt, options) {
                         'angular-chosen-localytics/dist/*',
                         'ngletteravatar/dist/*',
                         'offline-js/offline*.js',
-                        'offline-js/themes/*'
+                        'offline-js/themes/*',
+                        'headroom.js/dist/*'
                     ],
-                    dest: 'dist/vendor',
+                    dest: '../electron/console/vendor',
                     filter: 'isFile'
                 }
             },
             ngtemplates: {
-                "console": {
+                "console_prod": {
                     cwd: 'src',
                     src: '**/*.html',
-                    dest: 'dist/assets/console-templates.js',
+                    dest: '../electron/console/assets/console-templates.js',
                     options: {
                         module: 'consoleTemplates',
                         quotes: 'single',
@@ -99,30 +100,10 @@ module.exports = function (grunt, options) {
                 }
             },
             ngAnnotate: {
-                "console": {
+                "console_prod": {
                     options: {},
                     files: {
-                        "dist/assets/console.js": [
-                            "environment/environment.js",
-                            "src/app/app.bootstrap.js",
-                            "src/app/**/*.js"
-                        ]
-                    }
-                },
-                "console-dev": {
-                    options: {},
-                    files: {
-                        "dist/assets/console.js": [
-                            "environment/environment.dev.js",
-                            "src/app/app.bootstrap.js",
-                            "src/app/**/*.js"
-                        ]
-                    }
-                },
-                "console-prod": {
-                    options: {},
-                    files: {
-                        "dist/assets/console.js": [
+                        "../electron/console/assets/console.js": [
                             "environment/environment.prod.js",
                             "src/app/app.bootstrap.js",
                             "src/app/**/*.js"
@@ -131,12 +112,12 @@ module.exports = function (grunt, options) {
                 }
             },
             less: {
-                "console": {
+                "console_prod": {
                     options: {
                         strictImports: true
                     },
                     files: {
-                        'dist/assets/styles.css': [
+                        '../electron/console/assets/styles.css': [
                             'src/styles/**/styles.less',
                             'src/app/**/*.less'
                         ]
@@ -144,11 +125,11 @@ module.exports = function (grunt, options) {
                 }
             },
             compile: {
-                "console": {
+                "console_prod": {
                     wrap: 'consoleUtils', // this is your global namespace
                     name: "consoleUtils",
                     filename: 'console-utils',
-                    build: 'dist/assets',
+                    build: '../electron/console/assets',
                     scripts: {
                         embedRequire: false,
                         ignorePatterns: true,
@@ -168,10 +149,12 @@ module.exports = function (grunt, options) {
                 }
             },
             localizer: {
-                console_dist: {
+                "console_prod": {
                     lang: 'en-US',
                     files: 'src/app/**/*.json',
-                    dest: 'prod/languages/'
+                    dest: '../electron/console/languages/',
+                    log: 'logs/language.report.json',
+                    usage: ['src/app/**/*.js', 'src/app/**/*.html', 'src/index.html', 'src/index-cdn.html']
                 }
             }
         }

@@ -1,7 +1,43 @@
 /* global module */
+
+var fs = require('fs');
+
 module.exports = function (grunt, options) {
     return {
         tasks: {
+            replace: {
+                "console_build": {
+                    options: {
+                        usePrefix: false,
+                        patterns: [
+                            {
+                                match: '<!-- %INSERT_SCRIPTS% -->',
+                                replacement: function () {
+                                    var tpl = '<script src="%FILENAME%"></script>';
+
+                                    var scripts = [
+                                        tpl.split('%FILENAME%').join('//localhost:35729/livereload.js'),
+                                        tpl.split('%FILENAME%').join('vendor/sinon/pkg/sinon-no-sourcemaps.js')
+                                    ];
+
+                                    var files = grunt.file.expand({cwd: 'src'}, [
+                                        'mocks/mocks.bootstrap.js',
+                                        'mocks/stubs/*.js'
+                                    ]);
+
+                                    for (var i = 0; i < files.length; i++) {
+                                        scripts.push(tpl.split('%FILENAME%').join(files[i]));
+                                    }
+                                    return scripts.join('\n');
+                                }
+                            }
+                        ]
+                    },
+                    files: [
+                        {expand: true, flatten: true, src: ['src/index.html'], dest: 'build/'}
+                    ]
+                }
+            },
             copy: {
                 "console_build": {
                     expand: true,
@@ -9,6 +45,7 @@ module.exports = function (grunt, options) {
                     cwd: 'src',
                     src: [
                         'index.html',
+                        'mocks/**/*',
                         'vendor/**/*'
                     ],
                     dest: 'build/',
@@ -17,22 +54,13 @@ module.exports = function (grunt, options) {
                 "languages_build": {
                     expand: true,
                     flatten: false,
-                    cwd: 'languages',
+                    cwd: 'src/languages',
                     src: [
                         '**/*.lang.json'
                     ],
                     dest: 'build/languages',
                     filter: 'isFile'
                 },
-                // "bower": {
-                //     expand: true,
-                //     cwd: 'bower_components',
-                //     src: [
-                //         'angular-localization/angular-localization*.js'
-                //     ],
-                //     dest: 'build/vendor',
-                //     filter: 'isFile'
-                // },
                 "vendor_build": {
                     expand: true,
                     // flatten: true,
@@ -66,7 +94,8 @@ module.exports = function (grunt, options) {
                         'ngletteravatar/dist/*',
                         'offline-js/offline*.js',
                         'offline-js/themes/*',
-                        'headroom.js/dist/*'
+                        'headroom.js/dist/*',
+                        'sinon/pkg/sinon-no-sourcemaps.js'
                     ],
                     dest: 'build/vendor',
                     filter: 'isFile'
@@ -148,9 +177,9 @@ module.exports = function (grunt, options) {
                         import: [], // what files should we import and compile
                         export: [''], // hide all from view
                         report: false,
-                        match: function(searchText) {
+                        match: function (searchText) {
                             var matches = [];
-                            searchText.replace(/(^|\s)require\((\"|\')(.*?)\2\)/g, function(m, g1, g2, g3) {
+                            searchText.replace(/(^|\s)require\((\"|\')(.*?)\2\)/g, function (m, g1, g2, g3) {
                                 matches.push(g3);
                             });
                             return matches;
@@ -163,7 +192,7 @@ module.exports = function (grunt, options) {
                     lang: 'en-US',
                     files: 'src/app/**/*.json',
                     dest: 'build/languages/',
-                    log: 'logs/language.report.json',
+                    // log: 'logs/language.report.json',
                     usage: ['src/app/**/*.js', 'src/app/**/*.html', 'src/index.html', 'src/index-cdn.html']
                 }
             }

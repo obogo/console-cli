@@ -15,23 +15,24 @@ module.run(function ($trace) {
 
 angular.element(function (el) {
 
-    if(appConfig.isNative) {
+    if(environment.isNative) {
         document.body.setAttribute('is-native', true);
     }
 
+    // TODO: Use this to check authentication before bootstrapping Angular
     var http = require('http');
     http.get({
-        url: appConfig.hive.baseUrl + '/sso?provider=' + appConfig.hive.provider + '&product=' + appConfig.hive.product,
+        url: environment.authService.baseUrl + '/check',
         credentials: true,
         success: function(response) {
-            appConfig.sso = response.data;
-            require('localeService').config(appConfig.locale)
+            environment.sso = response.data;
+            require('localeService').config(environment.locale)
                 .load().then(function () {
                 angular.bootstrap(document, ['app']);
             });
         },
         error: function() {
-            require('localeService').config(appConfig.locale)
+            require('localeService').config(environment.locale)
                 .load().then(function () {
                 angular.bootstrap(document, ['app']);
             });

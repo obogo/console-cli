@@ -1,19 +1,15 @@
 module.factory('authGuard', function AuthGuardProvider() {
     var supplant = require('supplant');
-    return function ($q, $state, AppConfig) {
+    return function ($q, $state, environment) {
         var deferred = $q.defer();
-        if (AppConfig.sso.accessToken) {
+        if (environment.sso.accessToken) {
             deferred.resolve();
         } else {
             deferred.reject();
-            if (AppConfig.isNative) {
-                $state.go('landing');
+            if (environment.authService.useRedirect) {
+                location.href = environment.authService.redirectUrl;
             } else {
-                location.href = supplant(AppConfig.hive.redirectUrl, {
-                    provider: AppConfig.hive.provider,
-                    product: AppConfig.hive.product,
-                    redirect: location.href
-                });
+                $state.go('landing');
             }
         }
         return deferred.promise;

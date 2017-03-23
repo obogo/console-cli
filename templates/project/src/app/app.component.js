@@ -4,5 +4,6 @@ module.component('consoleApp', {
     controllerAs: 'app',
     controller: function (Menu) {
         this.menu = Menu;
+
     }
 });

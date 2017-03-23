@@ -1,6 +1,6 @@
 module.component('loginPage', {
     templateUrl: 'login.page',
-    controller: function ($rootScope, $state, $stateParams, locale, Alert, ApiService, AppConfig) {
+    controller: function ($rootScope, $state, $stateParams, locale, Alert, ApiService, environment) {
         var ctrl = this;
 
         $state.indexes = ['/landing', '/login', '/'];
@@ -14,19 +14,18 @@ module.component('loginPage', {
         ctrl.login = function () {
             Alert.close();
 
-            ApiService.login(ctrl.form, {
-                product: AppConfig.hive.product,
-                provider: AppConfig.hive.provider,
-                redirect: location.href
-            }).then(function (response) {
-                $state.go('dashboard');
-            }, function () {
-                Alert.open({
-                    dismissible: false,
-                    type: 'danger',
-                    message: 'Invalid credentials. Please try again.'
-                });
-            });
+            // TODO: Fake login, uncomment code below and remove this line
+            $state.go('dashboard');
+
+            // ApiService.login(ctrl.form, environment.authService.params).then(function (response) {
+            //     $state.go('dashboard');
+            // }, function () {
+            //     Alert.open({
+            //         dismissible: false,
+            //         type: 'danger',
+            //         message: 'Invalid credentials. Please try again.'
+            //     });
+            // });
         }
     }
 });

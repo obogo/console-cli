@@ -1,1 +1,1 @@
-module.value('AppConfig', window.appConfig);
+module.value('environment', window.environment);

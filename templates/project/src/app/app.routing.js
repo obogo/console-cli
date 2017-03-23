@@ -1,4 +1,4 @@
-/* global angular, hive */
+/* global angular */
 module.config(function ($stateProvider, $urlRouterProvider, authGuardProvider) {
 
     var supplant = require('supplant');

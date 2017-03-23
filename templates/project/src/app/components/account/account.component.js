@@ -1,6 +1,6 @@
 module.component('consoleAccount', {
     templateUrl: 'account',
-    controller: function ($state, sso, ApiService, AppConfig) {
+    controller: function ($state, sso, ApiService, environment) {
         var supplant = require('supplant');
 
         var ctrl = this;
@@ -8,14 +8,10 @@ module.component('consoleAccount', {
 
         ctrl.logout = function() {
             ApiService.logout({}).then(function (response) {
-                if(AppConfig.isNative) {
-                    $state.go('landing');
+                if(environment.useRedirect) {
+                    location.href = environment.authService.redirect.url;
                 } else {
-                    location.href = supplant(AppConfig.hive.redirectUrl, {
-                        provider: AppConfig.hive.provider,
-                        product: AppConfig.hive.product,
-                        redirect: location.href
-                    });
+                    $state.go('landing');
                 }
             });
         };

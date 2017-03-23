@@ -1,3 +1,3 @@
-module.factory('sso', function (AppConfig) {
-    return AppConfig.sso;
+module.factory('sso', function (environment) {
+    return environment.sso;
 });

@@ -19,9 +19,10 @@ module.exports = function (grunt) {
     grunt.initConfig(configs);
 
     grunt.loadNpmTasks('grunt-contrib-watch');
-    grunt.registerTask('default', ['dev', 'dev_vendor']);
 
     // :: Development Build :: //
+    grunt.registerTask('default', ['dev', 'dev_vendor']);
+
     grunt.registerTask('dev', [
         'ngtemplates:console_build',
         'ngAnnotate:console_dev',
@@ -29,7 +30,8 @@ module.exports = function (grunt) {
         'copy:console_build',
         'copy:languages_build',
         'compile:console_build',
-        'localizer:console_build'
+        'localizer:console_build',
+        'replace:console_build'
     ]);
 
     grunt.registerTask('dev_vendor', [
@@ -38,18 +40,20 @@ module.exports = function (grunt) {
     ]);
 
     // :: Production Build :: //
-    grunt.registerTask('prod', [
-        'ngtemplates:console_dist',
+    grunt.registerTask('prod', ['prod_build', 'prod_vendor']);
+
+    grunt.registerTask('prod_build', [
+        'ngtemplates:console_prod',
         'ngAnnotate:console_prod',
-        'less:console_dist',
-        'copy:console_dist',
-        'copy:languages_dist',
-        'compile:console_dist',
-        'localizer:console_dist'
+        'less:console_prod',
+        'copy:console_prod',
+        'copy:languages_prod',
+        'compile:console_prod',
+        'localizer:console_prod'
     ]);
 
     grunt.registerTask('prod_vendor', [
-        'copy:vendor_dist',
-        'copy:node_modules_dist'
+        'copy:vendor_prod',
+        'copy:node_modules_prod'
     ]);
 };

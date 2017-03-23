@@ -1,10 +1,16 @@
 (function () {
-    window.appConfig = {
-        isNative: true,
-        hive: {
-            baseUrl: 'http://localhost:5010/v1',
-            product: "579e2b3b5339c2768234a699",
-            provider: "579e2b3b5339c2768234a626"
+    window.environment = {
+        isNative: true, // phonegap, electron (native) vs. a browser (not native)
+        authService: {
+            baseUrl: 'https://remote.authservice.url/api',
+            params: {  // You can add query params that will be passed as part of login
+                // Here is an example
+                // apiKey: "12345"
+            },
+            useRedirect: false,
+            redirect: {
+                url: "https://remote.authservice.url"
+            }
         },
         services: {
             baseUrl: 'http://localhost/api',
