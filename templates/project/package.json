@@ -33,12 +33,12 @@
     "angular-sanitize": "^1.6.2",
     "angular-ui-router": "^1.0.0-rc.1",
     "animate.css": "^3.5.2",
-    "chosen-js": "^1.6.2",
+    "chosen-js": "^1.7.0",
     "hbjs": "^0.21.10",
     "headroom.js": "^0.9.3",
     "material-design-icons": "^3.0.1",
     "ngletteravatar": "^4.0.4",
-    "normalize.css": "^5.0.0",
+    "normalize.css": "^6.0.0",
     "offline-js": "^0.7.18",
     "sinon": "^2.1.0"
   }
