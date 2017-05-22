@@ -1,7 +1,12 @@
+/* global angular, module, environment */
 module.factory('Dialog', function () {
     var api = {};
 
     api.show = false;
+
+    api.getLocal = function (name) {
+        return this.options.locals && this.options.locals[name];
+    };
 
     api.open = function (options) {
         if (!options.component) {

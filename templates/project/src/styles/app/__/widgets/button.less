@@ -23,7 +23,7 @@ button {
   justify-content: center;
   color: #333333;
   padding: 5px 10px;
-  font-size: 12px;
+  font-size: 13px;
   line-height: 1.5;
   border: 1px solid transparent;
   border-radius: 3px;
@@ -33,6 +33,26 @@ button {
   -moz-user-select: none;     /* Firefox all */
   -ms-user-select: none;      /* IE 10+ */
   user-select: none;          /* Likely future */
+
+  @media only screen and (max-width: @mobile-view-size) {
+    font-size: 14px;
+    padding: 5px 12px;
+  }
+}
+
+.console-btn-with-icon {
+  padding-left: 2px;
+}
+
+.console-buttons {
+  display: flex;
+  .console-btn {
+    margin-left: 10px;
+
+    &:first-child {
+      margin-left: 0;
+    }
+  }
 }
 
 //.console-btn {
@@ -54,6 +74,7 @@ button {
   }
 
   &[disabled] {
+    color: #999999;
     border-color: #DDDDDD;
     cursor: not-allowed;
     &:hover {
@@ -65,14 +86,25 @@ button {
 
 .console-btn-primary {
   color: white;
-  background-color: #1E88E5;
+  background-color: #1565C0;
   //border-color: #266e9d;
 
   &:hover,
   &.console-btn-active {
     color: #fff;
-    background-color: #1565C0;
+    background-color: #1976D2;
     //border-color: #204d74;
+  }
+
+  &[disabled] {
+    background-color: #EEEEEE;
+    border-color: #DDDDDD;
+    color: #999999;
+    cursor: not-allowed;
+    &:hover {
+      background-color: #EEEEEE;
+      border-color: #DDDDDD;
+    }
   }
 }
 
@@ -88,6 +120,16 @@ button {
     //border-color: #204d74;
   }
 
+  &[disabled] {
+    background-color: #EEEEEE;
+    border-color: #DDDDDD;
+    color: #999999;
+    cursor: not-allowed;
+    &:hover {
+      background-color: #EEEEEE;
+      border-color: #DDDDDD;
+    }
+  }
 }
 
 .console-btn-lg {

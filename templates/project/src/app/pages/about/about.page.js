@@ -1,6 +1,6 @@
 module.component('aboutPage', {
     templateUrl: 'about.page',
-    controller: function ($stateParams) {
-
+    controller: function (Toast, $stateParams) {
+        Toast.remove('message');
     }
 });

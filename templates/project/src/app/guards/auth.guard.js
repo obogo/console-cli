@@ -1,6 +1,6 @@
 module.factory('authGuard', function AuthGuardProvider() {
     var supplant = require('supplant');
-    return function ($q, $state, environment) {
+    return ["$q", "$state", function ($q, $state) {
         var deferred = $q.defer();
         if (environment.sso.accessToken) {
             deferred.resolve();
@@ -13,5 +13,5 @@ module.factory('authGuard', function AuthGuardProvider() {
             }
         }
         return deferred.promise;
-    }
+    }]
 });

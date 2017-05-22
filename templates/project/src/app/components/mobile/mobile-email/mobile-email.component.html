@@ -1,0 +1,25 @@
+<div class="mobile-input" layout="column" flex>
+    <div layout="row" layout-align="start center">
+        <div class="console-btn" ng-click="$ctrl.cancel()">
+            <i class="material-icons">arrow_back</i>
+        </div>
+        <form name="mobileForm" ng-submit="$ctrl.save()" flex layout="column">
+            <input name="input" type="email" placeholder="{{$ctrl.attrs.mobileEditPlaceholder}}"
+                   flex class="console-form-input" required
+                   ng-model="$ctrl.value">
+            <!--<tt>text = {{$ctrl.value}}</tt><br/>-->
+            <!--<tt>myForm.input.$valid = {{mobileForm.input.$valid}}</tt><br/>-->
+            <!--<tt>myForm.input.$error = {{mobileForm.input.$error}}</tt><br/>-->
+            <!--<tt>myForm.$valid = {{mobileForm.$valid}}</tt><br/>-->
+            <!--<tt>myForm.$error.required = {{!!mobileForm.input.$error.required}}</tt><br/>-->
+            <!--<tt>myForm.$error.email = {{!!mobileForm.input.$error.email}}</tt><br/>-->
+        </form>
+        <div class="console-btn" ng-show="mobileForm.$valid" ng-click="$ctrl.save()">
+            <i class="material-icons console-color-success">check</i>
+        </div>
+    </div>
+    <div ng-hide="mobileForm.$valid" class="mobile-input-alert" ng-class="{'animated fadeIn': !mobileForm.$valid}">
+        <span class="error" ng-show="mobileForm.input.$error.required">This field is required</span>
+        <span class="error" ng-show="mobileForm.input.$error.email">Invalid email</span>
+    </div>
+</div>

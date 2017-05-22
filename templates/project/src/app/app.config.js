@@ -1,1 +1,1 @@
-module.value('environment', window.environment);
+module.value('environment', environment);

@@ -1,3 +1,4 @@
+/* global angular, module, environment */
 module.directive('consoleDropdown', function () {
     return {
         link: function ($scope, $el, $attrs) {

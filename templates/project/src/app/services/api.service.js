@@ -1,4 +1,4 @@
-module.factory('ApiService', function (environment) {
+module.factory('ApiService', function () {
     var crudify = require('rest.crudify');
     var http = require('http');
     var api = {};

@@ -1,25 +1,20 @@
-<div layout="column" ng-hide="$ctrl.state.hideHeader">
+<div layout="column" ng-hide="$ctrl.state.hideHeader" class="console-header-component">
     <div class="console-header">
-        <button class="console-btn-menu console-desktop-hide" ng-click="$ctrl.menu.toggle()">
+        <button class="console-btn-menu console-desktop-hide" ng-click="$ctrl.toggleMenu()">
             <i class="material-icons">menu</i>
         </button>
         <div class="console-btn-menu console-mobile-hide">
-            <ng-letter-avatar data="{ProductName}"
-                              width="24" height="24" fontSize="12px" shape="round"
-                              avatarcustombgcolor="#2196F3"></ng-letter-avatar>
+            <ng-letter-avatar data="{AppName}" width="24" height="24" fontSize="12px" shape="round" avatarcustombgcolor="#333333"></ng-letter-avatar>
         </div>
-        <div class="console-title console-bold" layout="row" layout-align="start center">
-            {ProductName}
-        </div>
+        <div class="console-title console-bold" layout="row" layout-align="start center">{AppName}</div>
         <div flex></div>
 
         <!-- Dropdown-->
         <div layout="row">
             <console-dropdown class="console-dropdown console-dropdown-right" autoclose="true" ng-class="{'open': show}">
                 <button type="button" class="console-btn" ng-click="toggle()">
-                    <ng-letter-avatar data="{{$ctrl.user.profile.displayName}}"
-                                      width="32" height="32" fontSize="12px" shape="round"
-                                      avatarcustombgcolor="#2196F3"></ng-letter-avatar>
+                    <ng-letter-avatar data="{{$ctrl.user.profile.displayName}}" avatarcustombgcolor="#2196F3"
+                                      width="32" height="32" fontSize="12px" shape="round"></ng-letter-avatar>
                 </button>
                 <console-account name="popup"></console-account>
 

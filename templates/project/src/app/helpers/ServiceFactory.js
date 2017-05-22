@@ -1,9 +1,5 @@
-/* global angular */
+/* global angular, module, environment */
 module.factory('ServiceFactory', function ($q, $rootScope) {
-
-    function redirectToLogin() {
-        console.log('#redirectToLogin');
-    }
 
     function plainToClass(ClassRef, data) {
         if (ClassRef) {

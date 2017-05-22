@@ -9,7 +9,8 @@ module.exports = function (grunt, options) {
                     cwd: 'src',
                     src: [
                         'index.html',
-                        'vendor/**/*'
+                        'vendor/**/*',
+                        'assets/**/*'
                     ],
                     dest: 'phonegap/',
                     filter: 'isFile'

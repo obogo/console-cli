@@ -1,6 +1,7 @@
 /**
  * Used to temporarily keep information. Can only be consumed once.
  */
+/* global angular, module, environment */
 module.service('Flashback', function () {
     var defaultKey = 'flashback';
     var localStorage = require('localStorage');

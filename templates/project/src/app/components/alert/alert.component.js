@@ -1,3 +1,4 @@
+/* global angular, module, environment */
 module.component('consoleAlert', {
     templateUrl: 'alert',
     controller: function (Alert) {

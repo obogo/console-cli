@@ -12,12 +12,19 @@
 
 .console-form-input {
   width: 100%;
+  min-height: 31px;
   box-shadow: none;
-  padding: 4px 5px;
+  padding: 4px 8px;
   line-height: 1.5;
   border: 1px solid #cccccc;
   //margin-bottom: 8px;
   will-change: border-color;
+  font-size: 14px;
+
+  @media only screen and (max-width: @mobile-view-size) {
+    padding: 4px 8px;
+    font-size: 16px;
+  }
 
   &:focus {
     border-color: #007fa3;
@@ -31,6 +38,11 @@
 .console-form-input-lg {
   padding: 10px 15px;
   font-size: 18px;
+}
+
+.console-form-hint {
+  padding: 4px 0;
+  font-size: 11px;
 }
 
 .console-form-select {

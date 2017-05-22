@@ -46,7 +46,8 @@ module.exports = function (grunt, options) {
                     src: [
                         'index.html',
                         'mocks/**/*',
-                        'vendor/**/*'
+                        'vendor/**/*',
+                        'assets/**/*'
                     ],
                     dest: 'build/',
                     filter: 'isFile'

@@ -1,3 +1,4 @@
+/* global angular, module, environment */
 module.directive('viewTransition', function ($state, $transitions) {
     var prevState;
     var prevStateParams;

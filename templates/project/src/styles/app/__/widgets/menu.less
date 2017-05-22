@@ -36,35 +36,49 @@
     font-weight: bold;
     color: #333333;
     cursor: pointer;
-    padding: 0 20px;
+    padding: 0 10px;
     height: 50px;
     min-height: 50px;
     background: #FAFAFA;
     border-bottom: 1px solid #dddddd;
+
+    .console-menu-close {
+      color: #666;
+      font-size: 18px;
+    }
   }
 
   .console-menu-item {
+    border-left: 4px solid transparent;
     color: #333333;
     cursor: default;
 
     //background: #efefef;
-    padding: 16px 20px;
-    font-weight: bold;
+    padding: 8px 20px;
+    margin: 0;
+    //margin: 6px 0;
+    //font-weight: bold;
     font-size: 15px;
 
+    &:last-child {
+      margin-bottom: 10px;
+    }
+
     &.console-menu-item-active {
-      color: #ffffff;
-      background: #2962FF;
-      font-weight: bold;
+      border-left: 4px solid #2962FF;
+      color: #2962FF;
+      //color: #ffffff;
+      //background: #2962FF;
+      //font-weight: bold;
 
       a {
         color: #ffffff;
       }
     }
 
-    &[href]:hover {
-      color: #ffffff;
-      background: #448AFF;
+    &[href]:hover, &[ui-sref]:hover {
+      //color: #ffffff;
+      background: #F5F5F5;
       cursor: pointer;
 
       a {

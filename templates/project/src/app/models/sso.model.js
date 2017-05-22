@@ -1,3 +1,3 @@
-module.factory('sso', function (environment) {
+module.factory('sso', function () {
     return environment.sso;
 });

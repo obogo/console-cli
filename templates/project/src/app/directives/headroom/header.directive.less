@@ -1,0 +1,21 @@
+@import "../../../styles/app/__/core/variables";
+@media (max-width: @mobile-view-width) {
+  .headroom {
+    @headroom-header-height: 52px;
+    console-header .console-header-component {
+      will-change: margin-top;
+      transition: margin-top 200ms linear;
+    }
+
+    &.headroom--pinned {
+      console-header .console-header-component {
+        margin-top: 0;;
+      }
+    }
+    &.headroom--unpinned {
+      console-header .console-header-component {
+        margin-top: -@headroom-header-height;
+      }
+    }
+  }
+}

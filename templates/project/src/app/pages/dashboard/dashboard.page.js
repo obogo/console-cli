@@ -1,6 +1,6 @@
 module.component('dashboardPage', {
     templateUrl: 'dashboard.page',
-    controller: function (Dialog, Menu, Alert) {
+    controller: function (Dialog, Menu, Alert, Toast) {
         var ctrl = this;
         ctrl.menu = Menu;
 
@@ -31,5 +31,18 @@ module.component('dashboardPage', {
                 message: 'Hello, world!'
             })
         };
+
+        ctrl.toast = function() {
+            Toast.show('Another message', {
+                id: 'anotherMsg',
+                icon: "android",
+                // actionLabel: 'Action',
+                // onAction: function () {
+                //     $state.go('verifyEmail');
+                // },
+                // showClose: true,
+                // hideDelay: 0
+            });
+        }
     }
 });

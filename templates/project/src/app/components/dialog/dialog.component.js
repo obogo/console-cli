@@ -1,12 +1,13 @@
+/* global angular, module, environment */
 module.component('consoleDialog', {
     controller: function ($scope, $element, Dialog, $templateCache, $compile) {
         var ctrl = this;
         var component, options, dialogEl, body, linkFn, content;
 
-        ctrl.close = function () {
+        ctrl.close = function (save) {
             component.$destroy();
             $element.empty();
-            Dialog.close(true);
+            Dialog.close(save);
         };
 
         ctrl.dialog = Dialog;

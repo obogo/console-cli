@@ -1,0 +1,13 @@
+<div class="mobile-input" layout="row" layout-align="start center">
+    <div class="console-btn" ng-click="$ctrl.cancel()">
+        <i class="material-icons">arrow_back</i>
+    </div>
+    <form ng-submit="$ctrl.save()" flex layout="row" layout-align="start center">
+        <input type="text" placeholder="{{$ctrl.attrs.mobileEditPlaceholder}}"
+               flex class="console-form-input"
+               ng-model="$ctrl.value">
+    </form>
+    <div class="console-btn" ng-click="$ctrl.save()">
+        <i class="material-icons console-color-success">check</i>
+    </div>
+</div>

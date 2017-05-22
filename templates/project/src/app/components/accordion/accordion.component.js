@@ -1,3 +1,4 @@
+/* global angular, module, environment */
 module.component('consoleAccordion', {
     templateUrl: 'accordion',
     transclude: true,
@@ -62,6 +63,8 @@ module.component('consoleAccordion', {
                 setTimeout(function () {
                     $accordionBody[0].style['max-height'] = rect.height + 'px';
                     $accordionBody.addClass(openClass);
+
+                    document.querySelector('ui-view .console-scrollable').scrollTop = 250;
                 });
             }
         };
@@ -121,16 +124,25 @@ module.component('consoleAccordion', {
                         accordion: ctrl
                     });
                 }
-            })
+            });
         };
 
         ctrl.$onDestroy = function () {
 
         };
 
-        ctrl.$onChanges = function (changesObj) {
-            // console.log('#changes', changesObj);
-        };
+        // ctrl.$onChanges = function (changesObj) {
+        //     console.log('#changes', changesObj);
+        // };
+
+        // ctrl.$doCheck = function() {
+        //     console.log('#doCheck', ctrl.opened);
+        //     if(ctrl.opened) {
+        //         ctrl.open(true);
+        //     } else {
+        //         ctrl.close(true);
+        //     }
+        // };
     }
 
 });

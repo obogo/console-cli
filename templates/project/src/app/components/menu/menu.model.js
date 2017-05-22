@@ -1,3 +1,4 @@
+/* global angular, module, environment */
 module.factory('Menu', function () {
     var api = {};
 

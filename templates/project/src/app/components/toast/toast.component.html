@@ -1,0 +1,15 @@
+<div class="console-toast" layout="row" layout-align="start center" ng-show="$ctrl.toast.current" ng-click="$ctrl.close()">
+    <i class="console-toast-icon material-icons"
+       ng-show="$ctrl.toast.current.options.icon">{{$ctrl.toast.current.options.icon}}</i>
+    <div class="console-toast-content">{{$ctrl.toast.current.message}}</div>
+    <div flex></div>
+    <div class="console-btn console-btn-action"
+         ng-if="$ctrl.toast.current.options.actionLabel" ng-click="$ctrl.action($event)">
+        {{$ctrl.toast.current.options.actionLabel}}
+    </div>
+    <div class="console-btn console-btn-close"
+         ng-if="$ctrl.toast.current.options.showClose" ng-click="$ctrl.close(true)">
+        <!--Close-->
+        <i class="material-icons" style="font-size: 18px">close</i>
+    </div>
+</div>

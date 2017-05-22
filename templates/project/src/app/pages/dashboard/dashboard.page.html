@@ -12,9 +12,12 @@
                 <div class="console-panel-body">
                     <h4>Dashboard works!!!</h4>
                     <div class="console-spacer"></div>
-                    <div class="console-btn console-btn-default" ng-click="$ctrl.showAlert()">Show Alert</div>
-                    <div class="console-btn console-btn-default" ng-click="$ctrl.openDialog()">Open Dialog</div>
-                    <div class="console-btn console-btn-default console-desktop-hide" ng-click="$ctrl.menu.toggle()">Toggle Menu</div>
+                    <div class="console-buttons">
+                        <div class="console-btn console-btn-default" ng-click="$ctrl.showAlert()">Show Alert</div>
+                        <div class="console-btn console-btn-default" ng-click="$ctrl.openDialog()">Open Dialog</div>
+                        <div class="console-btn console-btn-default" ng-click="$ctrl.toast()">Toast</div>
+                        <div class="console-btn console-btn-default console-desktop-hide" ng-click="$ctrl.menu.toggle()">Toggle Menu</div>
+                    </div>
 
                     <console-account></console-account>
                 </div>

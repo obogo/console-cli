@@ -1,0 +1,124 @@
+@import "../../../styles/app/__/core/variables";
+
+console-toast {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  padding: 8px;
+  box-sizing: border-box;
+  cursor: default;
+  overflow: hidden;
+  //z-index: 105;
+
+  &.top {
+    top: 0;
+    bottom: inherit;
+  }
+
+  &.left {
+    left: 0;
+    right: inherit;
+  }
+
+  &.bottom {
+    top: inherit;
+    bottom: 0;
+  }
+
+  &.right {
+    left: inherit;
+    right: 0;
+  }
+
+  @media only screen and (max-width: @tablet-view-size) {
+    padding: 0;
+    width: 100%;
+  }
+
+  .console-toast {
+    background-color: #323232;
+    color: rgb(250, 250, 250);
+    min-width: 288px;
+    max-height: 168px;
+    max-width: 100%;
+    min-height: 48px;
+    padding: 0 18px;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+    border-radius: 2px;
+    font-size: 13px;
+    overflow: hidden;
+    -webkit-transform: translate3d(0, 0, 0) rotateZ(0deg);
+    transform: translate3d(0, 0, 0) rotateZ(0deg);
+    -webkit-transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+
+    @media only screen and (max-width: @tablet-view-size) {
+      border-radius: 0;
+    }
+  }
+
+  .console-toast-content {
+
+  }
+
+  .console-btn-toast {
+    color: rgb(250, 250, 250);
+    text-transform: uppercase;
+
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+  }
+
+  .console-btn-action {
+    color: #03A9F4;
+    text-transform: uppercase;
+    padding: 5px 10px;
+    margin-left: 8px;
+    margin-right: 4px !important;
+
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+  }
+
+  .console-btn-close {
+    color: rgb(250, 250, 250);
+    text-transform: uppercase;
+    padding: 5px;
+    margin-left: 8px;
+    margin-right: -10px !important;
+
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+  }
+
+  .console-btn-action + .console-btn-close {
+    margin-left: 0;
+  }
+
+  .console-toast-icon {
+    font-size: 18px;
+    margin-right: 10px;
+    margin-left: -4px;
+  }
+
+  &.info {
+    .console-toast-icon {
+      color: #29B6F6
+    }
+  }
+
+  &.success {
+    .console-toast-icon {
+      color: #76FF03
+    }
+  }
+
+  &.error {
+    .console-toast-icon {
+      color: #F44336
+    }
+  }
+}

@@ -1,6 +1,6 @@
 module.component('loginPage', {
     templateUrl: 'login.page',
-    controller: function ($rootScope, $state, $stateParams, locale, Alert, ApiService, environment) {
+    controller: function ($rootScope, $state, $stateParams, locale, Alert, ApiService) {
         var ctrl = this;
 
         $state.indexes = ['/landing', '/login', '/'];

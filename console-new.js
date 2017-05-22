@@ -12,7 +12,7 @@ program.action(function (productName, dest, options) {
     dest = typeof dest === 'string' ? dest : 'test';
     fs.copySync(path.join(templatesPath, 'project'), dest);
     replace({
-        regex: '{ProductName}',
+        regex: '{AppName}',
         replacement: productName,
         paths: [dest],
         recursive: true,
